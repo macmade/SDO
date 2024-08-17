@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="InfoViewController" customModule="SDO" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="kdK-Dd-KKz" id="6bu-7z-6sI"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="kdK-Dd-KKz">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="95"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="95"/>
+                    <subviews>
+                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="NED-EF-fmu">
+                            <rect key="frame" x="18" y="44" width="364" height="31"/>
+                            <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Label" id="UVx-Qc-qPP">
+                                <font key="font" textStyle="largeTitle" name=".SFNS-Regular"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <binding destination="-2" name="value" keyPath="self.image.title" id="Jzb-KU-WIG"/>
+                            </connections>
+                        </textField>
+                        <textField focusRingType="none" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Ajz-JH-vx4">
+                            <rect key="frame" x="18" y="20" width="364" height="16"/>
+                            <textFieldCell key="cell" selectable="YES" title="Multiline Label" id="C6f-z8-axS">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                            <connections>
+                                <binding destination="-2" name="value" keyPath="self.image.text" id="lmk-z5-ohs"/>
+                            </connections>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Ajz-JH-vx4" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" symbolic="YES" id="7rC-Af-Hrg"/>
+                        <constraint firstAttribute="trailing" secondItem="NED-EF-fmu" secondAttribute="trailing" constant="20" symbolic="YES" id="DRg-di-odD"/>
+                        <constraint firstAttribute="bottom" secondItem="Ajz-JH-vx4" secondAttribute="bottom" constant="20" symbolic="YES" id="Mpo-cL-F9J"/>
+                        <constraint firstItem="NED-EF-fmu" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" symbolic="YES" id="W3E-v6-gW3"/>
+                        <constraint firstAttribute="trailing" secondItem="Ajz-JH-vx4" secondAttribute="trailing" constant="20" symbolic="YES" id="Yoq-cI-2s2"/>
+                        <constraint firstAttribute="width" constant="400" id="ZBf-bn-hfb"/>
+                        <constraint firstItem="Ajz-JH-vx4" firstAttribute="top" secondItem="NED-EF-fmu" secondAttribute="bottom" constant="8" symbolic="YES" id="dgk-z9-urE"/>
+                        <constraint firstItem="NED-EF-fmu" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" symbolic="YES" id="nUl-1d-iv1"/>
+                    </constraints>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="c22-O7-iKe" secondAttribute="bottom" id="Egu-rY-df3"/>
+                <constraint firstAttribute="trailing" secondItem="c22-O7-iKe" secondAttribute="trailing" id="gQk-99-EQ3"/>
+                <constraint firstItem="c22-O7-iKe" firstAttribute="top" secondItem="kdK-Dd-KKz" secondAttribute="top" id="vov-Yy-6WP"/>
+                <constraint firstItem="c22-O7-iKe" firstAttribute="leading" secondItem="kdK-Dd-KKz" secondAttribute="leading" id="wAk-AF-Nkr"/>
+            </constraints>
+            <point key="canvasLocation" x="-350" y="62"/>
+        </customView>
+    </objects>
+</document>

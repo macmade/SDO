@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="GOC-vY-kdy" customClass="ImageItem" customModule="SDO" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="c22-O7-iKe" id="O9k-gS-7Pv"/>
+            </connections>
+        </customObject>
+        <customView wantsLayer="YES" id="c22-O7-iKe" customClass="ImageBackgroundView" customModule="SDO" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="331" height="324"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="NTU-3b-Dyc" customClass="ImageBorderView" customModule="SDO" customModuleProvider="target">
+                    <rect key="frame" x="26" y="34" width="280" height="280"/>
+                    <subviews>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="skp-gU-Qze">
+                            <rect key="frame" x="1" y="1" width="278" height="278"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="skp-gU-Qze" secondAttribute="height" multiplier="1:1" id="B4k-nR-ydh"/>
+                            </constraints>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSApplicationIcon" id="3bw-ov-WlO"/>
+                            <connections>
+                                <binding destination="GOC-vY-kdy" name="toolTip" keyPath="self.image.title" id="Gqz-PX-iRq"/>
+                                <binding destination="GOC-vY-kdy" name="value" keyPath="self.image.image" id="m0B-YQ-baQ"/>
+                            </connections>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="skp-gU-Qze" secondAttribute="bottom" constant="1" id="HPx-MB-dWx"/>
+                        <constraint firstItem="skp-gU-Qze" firstAttribute="leading" secondItem="NTU-3b-Dyc" secondAttribute="leading" constant="1" id="Naf-ye-ojy"/>
+                        <constraint firstAttribute="trailing" secondItem="skp-gU-Qze" secondAttribute="trailing" constant="1" id="koj-cT-HCS"/>
+                        <constraint firstItem="skp-gU-Qze" firstAttribute="top" secondItem="NTU-3b-Dyc" secondAttribute="top" constant="1" id="v5C-Np-YaB"/>
+                    </constraints>
+                </customView>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="aYI-fj-EMy">
+                    <rect key="frame" x="20" y="6" width="16.5" height="25"/>
+                    <buttonCell key="cell" type="square" title="Share" bezelStyle="shadowlessSquare" image="square.and.arrow.up" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="2Uf-cJ-Alw">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="16" id="e8M-KL-EeD"/>
+                        <constraint firstAttribute="height" constant="16" id="sh1-wm-95F"/>
+                    </constraints>
+                    <connections>
+                        <action selector="share:" target="GOC-vY-kdy" id="wsD-id-Gs5"/>
+                    </connections>
+                </button>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="gLD-4E-pmA">
+                    <rect key="frame" x="149" y="10" width="33" height="14"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Label" id="a5N-bf-AiH">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                    <connections>
+                        <binding destination="GOC-vY-kdy" name="value" keyPath="self.image.title" id="9Sh-DZ-aXj"/>
+                    </connections>
+                </textField>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="0pN-6C-1Li">
+                    <rect key="frame" x="295" y="6" width="16" height="22"/>
+                    <buttonCell key="cell" type="square" title="View Info" bezelStyle="shadowlessSquare" image="info.circle.fill" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="3pU-dp-snY">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="16" id="7C7-rX-noj"/>
+                        <constraint firstAttribute="width" constant="16" id="Cu2-dY-iga"/>
+                    </constraints>
+                    <connections>
+                        <action selector="showInfo:" target="GOC-vY-kdy" id="Geu-fA-bBm"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="gLD-4E-pmA" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="3f8-8f-Lg8"/>
+                <constraint firstItem="NTU-3b-Dyc" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="10" id="6Nn-qp-i1x"/>
+                <constraint firstAttribute="bottom" secondItem="gLD-4E-pmA" secondAttribute="bottom" constant="10" id="9Bo-jM-soN"/>
+                <constraint firstItem="gLD-4E-pmA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aYI-fj-EMy" secondAttribute="trailing" constant="8" symbolic="YES" id="BY9-62-oE6"/>
+                <constraint firstItem="0pN-6C-1Li" firstAttribute="centerY" secondItem="gLD-4E-pmA" secondAttribute="centerY" id="IOq-QC-CJG"/>
+                <constraint firstItem="aYI-fj-EMy" firstAttribute="centerY" secondItem="gLD-4E-pmA" secondAttribute="centerY" id="MDh-7Q-15C"/>
+                <constraint firstAttribute="trailing" secondItem="0pN-6C-1Li" secondAttribute="trailing" constant="20" symbolic="YES" id="XWu-47-xBq"/>
+                <constraint firstItem="gLD-4E-pmA" firstAttribute="top" secondItem="NTU-3b-Dyc" secondAttribute="bottom" constant="10" id="f8P-nJ-h37"/>
+                <constraint firstItem="aYI-fj-EMy" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" symbolic="YES" id="fPc-6K-jXb"/>
+                <constraint firstItem="0pN-6C-1Li" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gLD-4E-pmA" secondAttribute="trailing" constant="8" symbolic="YES" id="huZ-i8-0q3"/>
+                <constraint firstItem="NTU-3b-Dyc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="sH1-0W-mDG"/>
+                <constraint firstItem="NTU-3b-Dyc" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="syY-Ps-434"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="NTU-3b-Dyc" secondAttribute="trailing" constant="10" id="w5B-10-Pmg"/>
+            </constraints>
+            <point key="canvasLocation" x="140" y="-158"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="NSApplicationIcon" width="32" height="32"/>
+        <image name="info.circle.fill" catalog="system" width="15" height="15"/>
+        <image name="square.and.arrow.up" catalog="system" width="15" height="18"/>
+    </resources>
+</document>

@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="MainWindowController" customModule="SDO" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="faS-HV-buQ" id="zvq-o7-oFe"/>
+                <outlet property="slider" destination="SHb-A6-6mB" id="HLL-YE-zy6"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="Wkc-Rf-cl3"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="SDO - Solar Dynamics Observatory" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="MainWindowController" animationBehavior="default" titlebarAppearsTransparent="YES" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="810" height="610"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="3008" height="1228"/>
+            <value key="minSize" type="size" width="810" height="610"/>
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="810" height="610"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <visualEffectView blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="dve-xt-hvi">
+                        <rect key="frame" x="0.0" y="0.0" width="810" height="610"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="4RS-TO-Jsb">
+                                <rect key="frame" x="0.0" y="0.0" width="810" height="610"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oc7-PX-uQq">
+                                        <rect key="frame" x="277" y="227" width="256" height="256"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="256" id="TJU-GP-hHd"/>
+                                            <constraint firstAttribute="width" constant="256" id="kJo-wO-HHb"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSApplicationIcon" id="i4P-Ri-UCD"/>
+                                    </imageView>
+                                    <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Lu7-5b-Xk4">
+                                        <rect key="frame" x="389" y="187" width="32" height="32"/>
+                                        <connections>
+                                            <binding destination="-2" name="animate" keyPath="self.loading" id="mpR-no-rSB"/>
+                                        </connections>
+                                    </progressIndicator>
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j2T-J9-ZVu">
+                                        <rect key="frame" x="308" y="151" width="195" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Loading Images - Please Wait..." id="I2G-a2-NGE">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="oc7-PX-uQq" firstAttribute="centerY" secondItem="4RS-TO-Jsb" secondAttribute="centerY" constant="-50" id="GWo-Fi-tkP"/>
+                                    <constraint firstItem="oc7-PX-uQq" firstAttribute="centerX" secondItem="4RS-TO-Jsb" secondAttribute="centerX" id="IYT-Ez-l46"/>
+                                    <constraint firstItem="j2T-J9-ZVu" firstAttribute="centerX" secondItem="Lu7-5b-Xk4" secondAttribute="centerX" id="Rsk-by-irr"/>
+                                    <constraint firstItem="j2T-J9-ZVu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4RS-TO-Jsb" secondAttribute="leading" constant="20" symbolic="YES" id="TQs-Lj-Tzj"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="j2T-J9-ZVu" secondAttribute="trailing" constant="20" symbolic="YES" id="bna-w1-EEO"/>
+                                    <constraint firstItem="Lu7-5b-Xk4" firstAttribute="top" secondItem="oc7-PX-uQq" secondAttribute="bottom" constant="8" symbolic="YES" id="nNG-8R-cAJ"/>
+                                    <constraint firstItem="j2T-J9-ZVu" firstAttribute="top" secondItem="Lu7-5b-Xk4" secondAttribute="bottom" constant="20" id="skw-yh-Xwr"/>
+                                    <constraint firstItem="Lu7-5b-Xk4" firstAttribute="centerX" secondItem="oc7-PX-uQq" secondAttribute="centerX" id="y0Y-oW-PbR"/>
+                                </constraints>
+                                <connections>
+                                    <binding destination="-2" name="hidden" keyPath="self.loading" id="7y0-hx-9VX">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </customView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="XrR-fo-5Vn">
+                                <rect key="frame" x="0.0" y="0.0" width="810" height="610"/>
+                                <subviews>
+                                    <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsH-VW-zqs">
+                                        <rect key="frame" x="10" y="51" width="790" height="559"/>
+                                        <clipView key="contentView" drawsBackground="NO" id="lgf-2J-p7u">
+                                            <rect key="frame" x="0.0" y="0.0" width="790" height="559"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <collectionView id="faS-HV-buQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="790" height="559"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="IyE-Cv-Rpf" customClass="CollectionViewLayout" customModule="SDO" customModuleProvider="target">
+                                                        <size key="itemSize" width="50" height="50"/>
+                                                    </collectionViewFlowLayout>
+                                                    <color key="primaryBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="-2" id="jk9-6W-34H"/>
+                                                        <outlet property="delegate" destination="-2" id="V8Y-Aq-PhB"/>
+                                                    </connections>
+                                                </collectionView>
+                                            </subviews>
+                                        </clipView>
+                                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="pvK-A2-46w">
+                                            <rect key="frame" x="-100" y="-100" width="600" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="Akw-wn-Aul">
+                                            <rect key="frame" x="784" y="0.0" width="16" height="96"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="gPg-KI-9p8">
+                                        <rect key="frame" x="0.0" y="48" width="810" height="5"/>
+                                    </box>
+                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="7ab-ar-tE4">
+                                        <rect key="frame" x="0.0" y="0.0" width="810" height="50"/>
+                                        <subviews>
+                                            <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YJK-2c-aXS">
+                                                <rect key="frame" x="13" y="8" width="81" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="IOc-Xe-qV3">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="refresh:" target="-2" id="toQ-MM-9GN"/>
+                                                    <binding destination="-2" name="enabled" keyPath="self.refreshing" id="eCS-rY-Roh">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                </connections>
+                                            </button>
+                                            <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="yp6-Iv-PKV">
+                                                <rect key="frame" x="95" y="17" width="16" height="16"/>
+                                                <connections>
+                                                    <binding destination="-2" name="hidden" keyPath="self.refreshing" id="KUB-KZ-ACk">
+                                                        <dictionary key="options">
+                                                            <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                        </dictionary>
+                                                    </binding>
+                                                    <binding destination="-2" name="animate" keyPath="self.refreshing" id="dx0-du-i9I"/>
+                                                </connections>
+                                            </progressIndicator>
+                                            <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="hud-Og-I2X">
+                                                <rect key="frame" x="93" y="18" width="33" height="14"/>
+                                                <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" title="Label" id="FAB-aE-Ggs">
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <binding destination="-2" name="value" keyPath="self.lastRefresh" id="SiB-p5-0Ws"/>
+                                                    <binding destination="-2" name="hidden" keyPath="self.refreshing" id="tyV-RR-c8J"/>
+                                                </connections>
+                                            </textField>
+                                            <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="4l7-W1-GSj">
+                                                <rect key="frame" x="532" y="18" width="65" height="14"/>
+                                                <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" title="Image Size:" id="bZD-mr-uz0">
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SHb-A6-6mB" customClass="Slider" customModule="SDO" customModuleProvider="target">
+                                                <rect key="frame" x="601" y="9" width="154" height="28"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="j5T-3P-1tG"/>
+                                                </constraints>
+                                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="128" maxValue="1024" doubleValue="256" tickMarkPosition="above" sliderType="linear" id="xkk-cA-l8j">
+                                                    <font key="font" size="12" name="Helvetica"/>
+                                                </sliderCell>
+                                                <connections>
+                                                    <binding destination="-2" name="value" keyPath="self.imageSize" id="3AP-a0-1O2"/>
+                                                </connections>
+                                            </slider>
+                                            <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tJV-OI-gvg">
+                                                <rect key="frame" x="759" y="18" width="33" height="14"/>
+                                                <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" title="Label" id="w8R-2V-xbC">
+                                                    <font key="font" metaFont="smallSystem"/>
+                                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                                <connections>
+                                                    <binding destination="-2" name="value" keyPath="self.imageSize" id="ca6-Yw-SDx"/>
+                                                </connections>
+                                            </textField>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="tJV-OI-gvg" firstAttribute="leading" secondItem="SHb-A6-6mB" secondAttribute="trailing" constant="8" symbolic="YES" id="2Ml-Vh-qLF"/>
+                                            <constraint firstItem="YJK-2c-aXS" firstAttribute="centerY" secondItem="7ab-ar-tE4" secondAttribute="centerY" id="CJt-c1-QWT"/>
+                                            <constraint firstItem="4l7-W1-GSj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hud-Og-I2X" secondAttribute="trailing" constant="8" symbolic="YES" id="CLl-gY-Lk1"/>
+                                            <constraint firstItem="SHb-A6-6mB" firstAttribute="centerY" secondItem="7ab-ar-tE4" secondAttribute="centerY" id="Jce-vA-55C"/>
+                                            <constraint firstItem="yp6-Iv-PKV" firstAttribute="leading" secondItem="YJK-2c-aXS" secondAttribute="trailing" constant="8" symbolic="YES" id="VJN-Pt-M0I"/>
+                                            <constraint firstItem="SHb-A6-6mB" firstAttribute="leading" secondItem="4l7-W1-GSj" secondAttribute="trailing" constant="8" symbolic="YES" id="bPY-AZ-iJk"/>
+                                            <constraint firstAttribute="trailing" secondItem="tJV-OI-gvg" secondAttribute="trailing" constant="20" symbolic="YES" id="bsK-k6-tjc"/>
+                                            <constraint firstAttribute="height" constant="50" id="l6L-SV-mO9"/>
+                                            <constraint firstItem="hud-Og-I2X" firstAttribute="leading" secondItem="YJK-2c-aXS" secondAttribute="trailing" constant="8" symbolic="YES" id="oLF-pg-KZV"/>
+                                            <constraint firstItem="4l7-W1-GSj" firstAttribute="centerY" secondItem="7ab-ar-tE4" secondAttribute="centerY" id="qlL-ah-lkg"/>
+                                            <constraint firstItem="YJK-2c-aXS" firstAttribute="leading" secondItem="7ab-ar-tE4" secondAttribute="leading" constant="20" symbolic="YES" id="rbU-xC-6eT"/>
+                                            <constraint firstItem="hud-Og-I2X" firstAttribute="centerY" secondItem="7ab-ar-tE4" secondAttribute="centerY" id="wH8-zA-0bO"/>
+                                            <constraint firstItem="tJV-OI-gvg" firstAttribute="centerY" secondItem="7ab-ar-tE4" secondAttribute="centerY" id="wm3-25-3yQ"/>
+                                            <constraint firstItem="yp6-Iv-PKV" firstAttribute="centerY" secondItem="7ab-ar-tE4" secondAttribute="centerY" id="zak-lB-pMg"/>
+                                        </constraints>
+                                    </customView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="gPg-KI-9p8" firstAttribute="leading" secondItem="XrR-fo-5Vn" secondAttribute="leading" id="DcS-r0-XSW"/>
+                                    <constraint firstAttribute="bottom" secondItem="7ab-ar-tE4" secondAttribute="bottom" id="Nc2-pN-oaf"/>
+                                    <constraint firstAttribute="trailing" secondItem="7ab-ar-tE4" secondAttribute="trailing" id="UhX-jb-eZr"/>
+                                    <constraint firstAttribute="trailing" secondItem="gPg-KI-9p8" secondAttribute="trailing" id="Vm8-an-sYA"/>
+                                    <constraint firstItem="lsH-VW-zqs" firstAttribute="leading" secondItem="XrR-fo-5Vn" secondAttribute="leading" constant="10" id="Xav-K8-w8Y"/>
+                                    <constraint firstAttribute="trailing" secondItem="lsH-VW-zqs" secondAttribute="trailing" constant="10" id="YAM-tE-9eh"/>
+                                    <constraint firstItem="7ab-ar-tE4" firstAttribute="top" secondItem="gPg-KI-9p8" secondAttribute="bottom" id="eMa-Q8-wBJ"/>
+                                    <constraint firstItem="lsH-VW-zqs" firstAttribute="top" secondItem="XrR-fo-5Vn" secondAttribute="top" id="rsY-kv-fsf"/>
+                                    <constraint firstItem="7ab-ar-tE4" firstAttribute="leading" secondItem="XrR-fo-5Vn" secondAttribute="leading" id="yQJ-BP-jTd"/>
+                                    <constraint firstItem="gPg-KI-9p8" firstAttribute="top" secondItem="lsH-VW-zqs" secondAttribute="bottom" id="ygR-Pz-oDJ"/>
+                                </constraints>
+                                <connections>
+                                    <binding destination="-2" name="hidden" keyPath="self.loading" id="7Fr-mR-K2F"/>
+                                </connections>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="XrR-fo-5Vn" firstAttribute="top" secondItem="dve-xt-hvi" secondAttribute="top" id="4vU-Bv-6n8"/>
+                            <constraint firstItem="XrR-fo-5Vn" firstAttribute="leading" secondItem="dve-xt-hvi" secondAttribute="leading" id="Byb-Ez-7mm"/>
+                            <constraint firstAttribute="bottom" secondItem="XrR-fo-5Vn" secondAttribute="bottom" id="FL3-QT-nQg"/>
+                            <constraint firstAttribute="trailing" secondItem="4RS-TO-Jsb" secondAttribute="trailing" id="HxJ-uN-hAt"/>
+                            <constraint firstItem="4RS-TO-Jsb" firstAttribute="leading" secondItem="dve-xt-hvi" secondAttribute="leading" id="Kpo-xK-JPJ"/>
+                            <constraint firstItem="4RS-TO-Jsb" firstAttribute="top" secondItem="dve-xt-hvi" secondAttribute="top" id="NtM-DF-zBb"/>
+                            <constraint firstAttribute="trailing" secondItem="XrR-fo-5Vn" secondAttribute="trailing" id="iNv-py-tey"/>
+                            <constraint firstAttribute="bottom" secondItem="4RS-TO-Jsb" secondAttribute="bottom" id="j6R-A6-rE8"/>
+                        </constraints>
+                    </visualEffectView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="dve-xt-hvi" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="5ff-ak-Ojw"/>
+                    <constraint firstAttribute="trailing" secondItem="dve-xt-hvi" secondAttribute="trailing" id="9HH-Pd-Inr"/>
+                    <constraint firstAttribute="bottom" secondItem="dve-xt-hvi" secondAttribute="bottom" id="cbZ-Af-1dI"/>
+                    <constraint firstItem="dve-xt-hvi" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="kyE-cQ-q1m"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="32" y="114"/>
+        </window>
+    </objects>
+    <resources>
+        <image name="NSApplicationIcon" width="32" height="32"/>
+    </resources>
+</document>
