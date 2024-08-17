@@ -51,17 +51,31 @@
                                 </binding>
                             </connections>
                         </imageView>
+                        <button toolTip="View Image" translatesAutoresizingMaskIntoConstraints="NO" id="4dW-aC-Xdu" customClass="CursorButton" customModule="SDO" customModuleProvider="target">
+                            <rect key="frame" x="1" y="1" width="278" height="278"/>
+                            <buttonCell key="cell" type="bevel" title="View Image" bezelStyle="rounded" alignment="center" transparent="YES" imageScaling="proportionallyDown" inset="2" id="Zbl-FL-4mM">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="viewImage:" target="GOC-vY-kdy" id="XEF-Co-GHv"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
+                        <constraint firstItem="4dW-aC-Xdu" firstAttribute="height" secondItem="skp-gU-Qze" secondAttribute="height" id="7Fr-KJ-DPb"/>
+                        <constraint firstItem="4dW-aC-Xdu" firstAttribute="centerY" secondItem="skp-gU-Qze" secondAttribute="centerY" id="7PE-sn-Go9"/>
                         <constraint firstAttribute="bottom" secondItem="skp-gU-Qze" secondAttribute="bottom" constant="1" id="HPx-MB-dWx"/>
+                        <constraint firstItem="4dW-aC-Xdu" firstAttribute="width" secondItem="skp-gU-Qze" secondAttribute="width" id="LA5-Qm-6Ft"/>
                         <constraint firstItem="skp-gU-Qze" firstAttribute="leading" secondItem="NTU-3b-Dyc" secondAttribute="leading" constant="1" id="Naf-ye-ojy"/>
                         <constraint firstItem="A2d-yK-HfI" firstAttribute="centerY" secondItem="skp-gU-Qze" secondAttribute="centerY" id="Rb0-uO-iHF"/>
                         <constraint firstItem="A2d-yK-HfI" firstAttribute="centerX" secondItem="skp-gU-Qze" secondAttribute="centerX" id="bCd-qA-fr3"/>
+                        <constraint firstItem="4dW-aC-Xdu" firstAttribute="centerX" secondItem="skp-gU-Qze" secondAttribute="centerX" id="dMq-mM-vOA"/>
                         <constraint firstAttribute="trailing" secondItem="skp-gU-Qze" secondAttribute="trailing" constant="1" id="koj-cT-HCS"/>
                         <constraint firstItem="skp-gU-Qze" firstAttribute="top" secondItem="NTU-3b-Dyc" secondAttribute="top" constant="1" id="v5C-Np-YaB"/>
                     </constraints>
                 </customView>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="aYI-fj-EMy">
+                <button toolTip="Share" translatesAutoresizingMaskIntoConstraints="NO" id="aYI-fj-EMy">
                     <rect key="frame" x="20" y="6" width="16.5" height="25"/>
                     <buttonCell key="cell" type="square" title="Share" bezelStyle="shadowlessSquare" image="square.and.arrow.up" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="2Uf-cJ-Alw">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -91,7 +105,7 @@
                         <binding destination="GOC-vY-kdy" name="value" keyPath="self.image.title" id="9Sh-DZ-aXj"/>
                     </connections>
                 </textField>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="0pN-6C-1Li">
+                <button toolTip="View Info" translatesAutoresizingMaskIntoConstraints="NO" id="0pN-6C-1Li">
                     <rect key="frame" x="295" y="6" width="16" height="22"/>
                     <buttonCell key="cell" type="square" title="View Info" bezelStyle="shadowlessSquare" image="info.circle.fill" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="3pU-dp-snY">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>

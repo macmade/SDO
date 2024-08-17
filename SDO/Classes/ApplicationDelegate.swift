@@ -23,14 +23,19 @@
  ******************************************************************************/
 
 import Cocoa
+import QuickLook
+import QuickLookUI
 
 @main
-public class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate
+public class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, QLPreviewPanelDataSource, QLPreviewPanelDelegate, QLPreviewItem
 {
     @objc private dynamic var aboutWindowController = AboutWindowController()
     @objc private dynamic var mainWindowController  = MainWindowController()
 
-    private var updater = GitHubUpdater( owner: "macmade", repository: "SDO" )
+    private var updater     = GitHubUpdater( owner: "macmade", repository: "SDO" )
+    private var previewImage: Image?
+
+    public var previewItemURL: URL?
 
     public func applicationDidFinishLaunching( _ notification: Notification )
     {
@@ -43,7 +48,12 @@ public class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDeleg
     }
 
     public func applicationWillTerminate( _ notification: Notification )
-    {}
+    {
+        if let url = self.previewItemURL
+        {
+            try? FileManager.default.removeItem( at: url )
+        }
+    }
 
     public func applicationShouldTerminateAfterLastWindowClosed( _ sender: NSApplication ) -> Bool
     {
@@ -83,5 +93,77 @@ public class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDeleg
 
             default: break
         }
+    }
+
+    public func showQuickLookPanel( image: Image )
+    {
+        if self.previewItemURL == nil
+        {
+            guard let data  = image.image?.tiffRepresentation,
+                  let rep   = NSBitmapImageRep( data: data ),
+                  let png   = rep.representation( using: .png, properties: [ : ] )
+            else
+            {
+                NSSound.beep()
+
+                return
+            }
+
+            let url             = URL( filePath: NSTemporaryDirectory() ).appendingPathComponent( NSUUID().uuidString ).appendingPathExtension( "png" )
+            self.previewItemURL = url
+            self.previewImage   = image
+
+            do
+            {
+                try png.write( to: url )
+            }
+            catch
+            {
+                NSSound.beep()
+
+                return
+            }
+        }
+
+        QLPreviewPanel.shared().makeKeyAndOrderFront( nil )
+    }
+
+    public override func acceptsPreviewPanelControl( _ panel: QLPreviewPanel! ) -> Bool
+    {
+        true
+    }
+
+    public override func beginPreviewPanelControl( _ panel: QLPreviewPanel! )
+    {
+        panel.delegate   = self
+        panel.dataSource = self
+    }
+
+    public override func endPreviewPanelControl( _ panel: QLPreviewPanel! )
+    {
+        if let url = self.previewItemURL
+        {
+            try? FileManager.default.removeItem( at: url )
+        }
+
+        self.previewItemURL = nil
+        self.previewImage   = nil
+        panel.delegate      = nil
+        panel.dataSource    = nil
+    }
+
+    public func numberOfPreviewItems( in panel: QLPreviewPanel! ) -> Int
+    {
+        1
+    }
+
+    public func previewPanel( _ panel: QLPreviewPanel!, previewItemAt index: Int ) -> ( any QLPreviewItem )!
+    {
+        self
+    }
+
+    public var previewItemTitle: String!
+    {
+        self.previewImage?.title ?? "Unknown"
     }
 }

@@ -77,4 +77,19 @@ public class ImageItem: NSCollectionViewItem
 
         self.popover.show( relativeTo: .zero, of: view, preferredEdge: .maxY )
     }
+
+    @IBAction
+    public func viewImage( _ sender: Any? )
+    {
+        guard let image    = self.image,
+              let delegate = NSApp.delegate as? ApplicationDelegate
+        else
+        {
+            NSSound.beep()
+
+            return
+        }
+
+        delegate.showQuickLookPanel( image: image )
+    }
 }
