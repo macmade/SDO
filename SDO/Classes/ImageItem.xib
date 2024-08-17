@@ -27,14 +27,36 @@
                             </constraints>
                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSApplicationIcon" id="3bw-ov-WlO"/>
                             <connections>
-                                <binding destination="GOC-vY-kdy" name="toolTip" keyPath="self.image.title" id="Gqz-PX-iRq"/>
+                                <binding destination="GOC-vY-kdy" name="hidden" keyPath="self.image.image" id="qew-oY-goq">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSIsNil</string>
+                                    </dictionary>
+                                </binding>
                                 <binding destination="GOC-vY-kdy" name="value" keyPath="self.image.image" id="m0B-YQ-baQ"/>
+                                <binding destination="GOC-vY-kdy" name="toolTip" keyPath="self.image.title" id="Gqz-PX-iRq"/>
+                            </connections>
+                        </imageView>
+                        <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A2d-yK-HfI">
+                            <rect key="frame" x="108" y="104.5" width="64.5" height="71"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="64" id="OnF-wF-59C"/>
+                                <constraint firstAttribute="height" constant="64" id="Uv2-SH-tA8"/>
+                            </constraints>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="sun.max.trianglebadge.exclamationmark.fill" catalog="system" id="JKc-F0-tyc"/>
+                            <connections>
+                                <binding destination="GOC-vY-kdy" name="hidden" keyPath="self.image.image" id="frn-Ho-mjc">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSIsNotNil</string>
+                                    </dictionary>
+                                </binding>
                             </connections>
                         </imageView>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="skp-gU-Qze" secondAttribute="bottom" constant="1" id="HPx-MB-dWx"/>
                         <constraint firstItem="skp-gU-Qze" firstAttribute="leading" secondItem="NTU-3b-Dyc" secondAttribute="leading" constant="1" id="Naf-ye-ojy"/>
+                        <constraint firstItem="A2d-yK-HfI" firstAttribute="centerY" secondItem="skp-gU-Qze" secondAttribute="centerY" id="Rb0-uO-iHF"/>
+                        <constraint firstItem="A2d-yK-HfI" firstAttribute="centerX" secondItem="skp-gU-Qze" secondAttribute="centerX" id="bCd-qA-fr3"/>
                         <constraint firstAttribute="trailing" secondItem="skp-gU-Qze" secondAttribute="trailing" constant="1" id="koj-cT-HCS"/>
                         <constraint firstItem="skp-gU-Qze" firstAttribute="top" secondItem="NTU-3b-Dyc" secondAttribute="top" constant="1" id="v5C-Np-YaB"/>
                     </constraints>
@@ -101,5 +123,6 @@
         <image name="NSApplicationIcon" width="32" height="32"/>
         <image name="info.circle.fill" catalog="system" width="15" height="15"/>
         <image name="square.and.arrow.up" catalog="system" width="15" height="18"/>
+        <image name="sun.max.trianglebadge.exclamationmark.fill" catalog="system" width="17" height="16"/>
     </resources>
 </document>

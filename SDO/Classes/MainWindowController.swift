@@ -99,6 +99,22 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
         {
             images in DispatchQueue.main.async
             {
+                if let _ = images.first( where: { $0.image == nil } )
+                {
+                    let alert             = NSAlert()
+                    alert.messageText     = "Missing Images"
+                    alert.informativeText = "Some images could not be downloaded at this time."
+
+                    if let window = self.window
+                    {
+                        alert.beginSheetModal( for: window )
+                    }
+                    else
+                    {
+                        alert.runModal()
+                    }
+                }
+
                 self.loading    = false
                 self.refreshing = false
                 self.images     = images
