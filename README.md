@@ -10,7 +10,9 @@ SDO
 
 ### About
 
-...
+A macOS application displaying the latest solar images from NASA's SDO - Solar Dynamics Observatory.
+
+![Screenshot](Assets/Screenshot.png "Screenshot")
 
 License
 -------
