@@ -19,6 +19,8 @@
 		05646BB52685020A00707676 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05646BB12685020A00707676 /* MainMenu.xib */; };
 		05646BEF2685055F00707676 /* AboutWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05646BEE2685055F00707676 /* AboutWindowController.swift */; };
 		05646BF22685058700707676 /* AboutWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05646BF02685058700707676 /* AboutWindowController.xib */; };
+		0570C0192C722D9D0005089F /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570C0182C722D9D0005089F /* PreferencesWindowController.swift */; };
+		0570C01B2C722DC00005089F /* PreferencesWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0570C01A2C722DC00005089F /* PreferencesWindowController.xib */; };
 		05B999772C6ED45500DF4C08 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B999762C6ED45500DF4C08 /* MainWindowController.swift */; };
 		05B9997C2C6ED4BD00DF4C08 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B9997B2C6ED4BD00DF4C08 /* MainWindowController.xib */; };
 		05CB9D212C6F48F800314AAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05CB9D202C6F48F800314AAC /* Assets.xcassets */; };
@@ -109,6 +111,8 @@
 		05646BEB268503D300707676 /* Debug - zld.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Debug - zld.xcconfig"; sourceTree = "<group>"; };
 		05646BEE2685055F00707676 /* AboutWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutWindowController.swift; sourceTree = "<group>"; };
 		05646BF12685058700707676 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/AboutWindowController.xib; sourceTree = "<group>"; };
+		0570C0182C722D9D0005089F /* PreferencesWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		0570C01A2C722DC00005089F /* PreferencesWindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesWindowController.xib; sourceTree = "<group>"; };
 		05B999762C6ED45500DF4C08 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		05B9997A2C6ED4BD00DF4C08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainWindowController.xib; sourceTree = "<group>"; };
 		05CB9D202C6F48F800314AAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -181,13 +185,11 @@
 				05375F152C715F3900730090 /* CursorButton.swift */,
 				051A78A12C70D993006328DF /* GitHubUpdater.swift */,
 				05F0C4822C70E9A000CBCDD5 /* Image.swift */,
-				05375F172C71965D00730090 /* ImageInfo.swift */,
 				05F0C48A2C70F6D700CBCDD5 /* ImageBackgroundView.swift */,
 				05F0C4922C7104E800CBCDD5 /* ImageBorderView.swift */,
+				05375F172C71965D00730090 /* ImageInfo.swift */,
 				05F0C4862C70F1BF00CBCDD5 /* ImageItem.swift */,
 				05F0C4882C70F3FD00CBCDD5 /* ImageItem.xib */,
-				05375F192C719F7900730090 /* VideoWindowController.swift */,
-				05375F1B2C719F8800730090 /* VideoWindowController.xib */,
 				05F0C48E2C71005200CBCDD5 /* InfoViewController.swift */,
 				05F0C4902C71005D00CBCDD5 /* InfoViewController.xib */,
 				05B999762C6ED45500DF4C08 /* MainWindowController.swift */,
@@ -195,9 +197,13 @@
 				05F0C48C2C70FA3200CBCDD5 /* NSAppearance.swift */,
 				055FBBA62C6F82B7003B51AC /* NSView.swift */,
 				055FBBAC2C6FC380003B51AC /* Preferences.swift */,
+				0570C0182C722D9D0005089F /* PreferencesWindowController.swift */,
+				0570C01A2C722DC00005089F /* PreferencesWindowController.xib */,
 				05F0C4842C70ECFA00CBCDD5 /* RuntimeError.swift */,
 				05F0C4802C70E74700CBCDD5 /* SDO.swift */,
 				05F0C49E2C7111EB00CBCDD5 /* Slider.swift */,
+				05375F192C719F7900730090 /* VideoWindowController.swift */,
+				05375F1B2C719F8800730090 /* VideoWindowController.xib */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -403,6 +409,7 @@
 				05646BF22685058700707676 /* AboutWindowController.xib in Resources */,
 				05F0C4892C70F3FD00CBCDD5 /* ImageItem.xib in Resources */,
 				05F0C4912C71005D00CBCDD5 /* InfoViewController.xib in Resources */,
+				0570C01B2C722DC00005089F /* PreferencesWindowController.xib in Resources */,
 				05CB9D212C6F48F800314AAC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,6 +444,7 @@
 			files = (
 				051A78A22C70D993006328DF /* GitHubUpdater.swift in Sources */,
 				05F0C4832C70E9A000CBCDD5 /* Image.swift in Sources */,
+				0570C0192C722D9D0005089F /* PreferencesWindowController.swift in Sources */,
 				05F0C48B2C70F6D700CBCDD5 /* ImageBackgroundView.swift in Sources */,
 				05375F182C71965D00730090 /* ImageInfo.swift in Sources */,
 				05646BB42685020A00707676 /* ApplicationDelegate.swift in Sources */,

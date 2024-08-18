@@ -190,4 +190,18 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
 
         NSWorkspace.shared.open( url )
     }
+
+    @IBAction
+    private func showPreferences( _ sender: Any? )
+    {
+        guard let delegate = NSApp.delegate as? ApplicationDelegate
+        else
+        {
+            NSSound.beep()
+
+            return
+        }
+
+        delegate.showPreferencesWindow( sender )
+    }
 }

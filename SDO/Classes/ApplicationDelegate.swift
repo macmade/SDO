@@ -29,8 +29,9 @@ import QuickLookUI
 @main
 public class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate, QLPreviewPanelDataSource, QLPreviewPanelDelegate, QLPreviewItem
 {
-    @objc private dynamic var aboutWindowController = AboutWindowController()
-    @objc private dynamic var mainWindowController  = MainWindowController()
+    @objc private dynamic var aboutWindowController       = AboutWindowController()
+    @objc private dynamic var mainWindowController        = MainWindowController()
+    @objc private dynamic var preferencesWindowController = PreferencesWindowController()
 
     private var updater     = GitHubUpdater( owner: "macmade", repository: "SDO" )
     private var previewImage: Image?
@@ -81,6 +82,18 @@ public class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDeleg
         }
 
         self.aboutWindowController.window?.makeKeyAndOrderFront( sender )
+    }
+
+    @IBAction
+    public func showPreferencesWindow( _ sender: Any? )
+    {
+        if self.preferencesWindowController.window?.isVisible == false
+        {
+            self.preferencesWindowController.window?.layoutIfNeeded()
+            self.preferencesWindowController.window?.center()
+        }
+
+        self.preferencesWindowController.window?.makeKeyAndOrderFront( sender )
     }
 
     @IBAction
