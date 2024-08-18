@@ -26,11 +26,11 @@ import Cocoa
 
 public class Preferences: NSObject
 {
-    @objc public dynamic var imageSize:        Int        = 0
-    @objc public dynamic var refreshInterval:  Int        = 0
-    @objc public dynamic var automaticRefresh: Bool       = false
-    @objc public dynamic var firstLaunch:      Bool       = false
-    @objc public dynamic var images:           [ String ] = []
+    @objc public dynamic var imageSize:        Int                 = 0
+    @objc public dynamic var refreshInterval:  Int                 = 0
+    @objc public dynamic var automaticRefresh: Bool                = false
+    @objc public dynamic var firstLaunch:      Bool                = false
+    @objc public dynamic var images:           [ [ String: Any ] ] = []
 
     @objc public static let shared = Preferences()
 

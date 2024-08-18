@@ -27,8 +27,9 @@ import Foundation
 @objc
 public class PreferencesImageItem: NSObject
 {
-    @objc public private( set ) dynamic var title: String
-    @objc public private( set ) dynamic var uuid:  String
+    @objc public private( set ) dynamic var title:   String
+    @objc public private( set ) dynamic var uuid:    String
+    @objc public private( set ) dynamic var hasInfo: Bool
 
     @objc public dynamic var isChecked: Bool
     {
@@ -45,8 +46,9 @@ public class PreferencesImageItem: NSObject
     public init( info: ImageInfo )
     {
         self.info      = info
-        self.isChecked = false
+        self.isChecked = true
         self.title     = info.title
         self.uuid      = info.uuid
+        self.hasInfo   = info.text != nil
     }
 }

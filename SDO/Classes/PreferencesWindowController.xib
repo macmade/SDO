@@ -96,6 +96,11 @@
                                                                                 <string key="NSSelectorName">showInfoForView:item:</string>
                                                                             </dictionary>
                                                                         </binding>
+                                                                        <binding destination="7sU-br-syx" name="hidden" keyPath="objectValue.hasInfo" id="hmA-N8-ytS">
+                                                                            <dictionary key="options">
+                                                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                            </dictionary>
+                                                                        </binding>
                                                                         <binding destination="-2" name="target" keyPath="self" previousBinding="qP3-qZ-C3y" id="g2B-di-S5f">
                                                                             <dictionary key="options">
                                                                                 <string key="NSSelectorName">showInfoForView:item:</string>

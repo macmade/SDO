@@ -93,11 +93,7 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
                 return
             }
 
-            self.images = self.allImages.filter
-            {
-                image in Preferences.shared.images.contains { $0 == image.uuid }
-            }
-
+            self.updateImages()
             self.collectionView?.reloadData()
         }
 
@@ -153,10 +149,8 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
                 self.loading    = false
                 self.refreshing = false
                 self.allImages  = images
-                self.images     = images.filter
-                {
-                    image in Preferences.shared.images.contains { $0 == image.uuid }
-                }
+
+                self.updateImages()
 
                 let fmt                        = DateFormatter()
                 fmt.dateStyle                  = .short
@@ -170,6 +164,25 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
                 {
                     self.refresh( nil )
                 }
+            }
+        }
+    }
+
+    private func updateImages()
+    {
+        self.images = Preferences.shared.images.compactMap
+        {
+            guard let uuid    = $0[ "uuid" ]    as? String,
+                  let display = $0[ "display" ] as? Bool,
+                  display == true
+            else
+            {
+                return nil
+            }
+
+            return self.allImages.first
+            {
+                $0.uuid == uuid
             }
         }
     }

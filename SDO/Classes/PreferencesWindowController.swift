@@ -58,6 +58,7 @@ public class PreferencesWindowController: NSWindowController, NSTableViewDelegat
     {
         super.windowDidLoad()
         self.refreshImages()
+        self.imagesTableView?.registerForDraggedTypes( [ .string ] )
     }
 
     @IBAction
@@ -75,21 +76,42 @@ public class PreferencesWindowController: NSWindowController, NSTableViewDelegat
     {
         self.imagesController?.content = NSMutableArray()
 
-        ImageInfo.all.map
+        let all = ImageInfo.all.map
         {
             PreferencesImageItem( info: $0 )
         }
-        .forEach
+
+        var images: [ PreferencesImageItem ] = Preferences.shared.images.compactMap
+        {
+            guard let uuid    = $0[ "uuid" ]    as? String,
+                  let display = $0[ "display" ] as? Bool
+            else
+            {
+                return nil
+            }
+
+            let item        = all.first { $0.uuid == uuid }
+            item?.isChecked = display
+
+            return item
+        }
+
+        all.forEach
+        {
+            image in
+
+            if images.contains( where: { $0.uuid == image.uuid } ) == false
+            {
+                images.append( image )
+            }
+        }
+
+        images.forEach
         {
             [ weak self ] item in guard let self = self
             else
             {
                 return
-            }
-
-            item.isChecked = Preferences.shared.images.contains
-            {
-                $0 == item.uuid
             }
 
             item.onCheck =
@@ -109,13 +131,12 @@ public class PreferencesWindowController: NSWindowController, NSTableViewDelegat
             return
         }
 
-        Preferences.shared.images = items.filter
+        Preferences.shared.images = items.map
         {
-            $0.isChecked
-        }
-        .map
-        {
-            $0.uuid
+            [
+                "uuid":    $0.uuid,
+                "display": $0.isChecked,
+            ]
         }
     }
 
@@ -148,6 +169,44 @@ public class PreferencesWindowController: NSWindowController, NSTableViewDelegat
         self.infoPopover              = popover
         self.infoController           = controller
 
-        popover.show( relativeTo: .zero, of: button ?? view, preferredEdge: .minY )
+        popover.show( relativeTo: .zero, of: button ?? view, preferredEdge: .maxY )
+    }
+
+    public func tableView( _ tableView: NSTableView, pasteboardWriterForRow row: Int ) -> ( any NSPasteboardWriting )?
+    {
+        guard let content = self.imagesController?.content as? [ PreferencesImageItem ]
+        else
+        {
+            return nil
+        }
+
+        let item = NSPasteboardItem()
+
+        item.setString( content[ row ].uuid, forType: .string )
+
+        return item
+    }
+
+    public func tableView( _ tableView: NSTableView, validateDrop info: any NSDraggingInfo, proposedRow row: Int, proposedDropOperation dropOperation: NSTableView.DropOperation ) -> NSDragOperation
+    {
+        dropOperation == .above ? .move : []
+    }
+
+    public func tableView( _ tableView: NSTableView, acceptDrop info: any NSDraggingInfo, row: Int, dropOperation: NSTableView.DropOperation ) -> Bool
+    {
+        guard let uuid   = info.draggingPasteboard.string( forType: .string ),
+              var images = self.imagesController?.content as? [ PreferencesImageItem ],
+              let index  = images.firstIndex( where: { $0.uuid == uuid } )
+        else
+        {
+            return false
+        }
+
+        images.move( fromOffsets: IndexSet( integer: index ), toOffset: row )
+
+        self.imagesController?.content = NSMutableArray( array: images )
+        self.update()
+
+        return true
     }
 }
