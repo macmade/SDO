@@ -35,7 +35,7 @@ public struct ImageInfo
             wavelength:  "193 angstroms (0.0000000193 m) = Extreme Ultraviolet",
             ions:        "11 times ionized iron (Fe XII)",
             temperature: "1.25 million K (2.25 million F)",
-            hasVideo:    true
+            video:       "latest_1024_0193.mp4"
         ),
         ImageInfo(
             file:        "latest_1024_0304.jpg",
@@ -45,7 +45,7 @@ public struct ImageInfo
             wavelength:  "304 angstroms (0.0000000304 m) = Extreme Ultraviolet",
             ions:        "Singly ionized helium (He II)",
             temperature: "50,000 K (90,000 F)",
-            hasVideo:    true
+            video:       "latest_1024_0304.mp4"
         ),
         ImageInfo(
             file:        "latest_1024_0171.jpg",
@@ -55,7 +55,7 @@ public struct ImageInfo
             wavelength:  "171 angstroms (0.0000000171 m) = Extreme Ultraviolet",
             ions:        "8 times ionized iron (Fe IX)",
             temperature: "1 million K (1.8 million F)",
-            hasVideo:    true
+            video:       "latest_1024_0171.mp4"
         ),
         ImageInfo(
             file:        "latest_1024_0211.jpg",
@@ -65,7 +65,7 @@ public struct ImageInfo
             wavelength:  "211 angstroms (0.0000000211 m) = Extreme Ultraviolet",
             ions:        "13 times ionized iron (Fe XIV)",
             temperature: "2 million K (3.6 million F)",
-            hasVideo:    true
+            video:       "latest_1024_0211.mp4"
         ),
         ImageInfo(
             file:        "latest_1024_0131.jpg",
@@ -75,7 +75,7 @@ public struct ImageInfo
             wavelength:  "131 angstroms (0.0000000131 m) = Extreme Ultraviolet",
             ions:        "20 and 7 times ionized iron (Fe VIII, Fe XXI)",
             temperature: "10 million K (18 million F)",
-            hasVideo:    true
+            video:       "latest_1024_0131.mp4"
         ),
         ImageInfo(
             file:        "latest_1024_0335.jpg",
@@ -85,7 +85,7 @@ public struct ImageInfo
             wavelength:  "335 angstroms (0.0000000335 m) = Extreme Ultraviolet",
             ions:        "15 times ionized iron (Fe XVI)",
             temperature: "2.8 million K (5 million F)",
-            hasVideo:    true
+            video:       "latest_1024_0335.mp4"
         ),
         ImageInfo(
             file:        "latest_1024_0094.jpg",
@@ -95,7 +95,7 @@ public struct ImageInfo
             wavelength:  "94 angstroms (0.0000000094 m) = Extreme Ultraviolet/soft X-rays",
             ions:        "17 times ionized iron (Fe XVIII)",
             temperature: "6 million K (10.8 million F)",
-            hasVideo:    true
+            video:       "latest_1024_0094.mp4"
         ),
         ImageInfo(
             file:        "latest_1024_1600.jpg",
@@ -105,7 +105,7 @@ public struct ImageInfo
             wavelength:  "1600 angstroms (0.00000016 m) = Far Ultraviolet",
             ions:        "Thrice ionized carbon (C IV) and Continuum",
             temperature: "6,000 K (11,000 F), and 100,000 K (180,000 F)",
-            hasVideo:    true
+            video:       "latest_1024_1600.mp4"
         ),
         ImageInfo(
             file:        "latest_1024_1700.jpg",
@@ -115,7 +115,7 @@ public struct ImageInfo
             wavelength:  "1700 angstroms (0.00000017 m) = Far Ultraviolet",
             ions:        "Continuum",
             temperature: "6,000 K (11,000 F)",
-            hasVideo:    true
+            video:       "latest_1024_1700.mp4"
         ),
         ImageInfo(
             file:        "latest_1024_211193171.jpg",
@@ -125,7 +125,7 @@ public struct ImageInfo
             wavelength:  nil,
             ions:        nil,
             temperature: nil,
-            hasVideo:    false
+            video:       nil
         ),
         ImageInfo(
             file:        "f_304_211_171_1024.jpg",
@@ -135,7 +135,7 @@ public struct ImageInfo
             wavelength:  nil,
             ions:        nil,
             temperature: nil,
-            hasVideo:    false
+            video:       nil
         ),
         ImageInfo(
             file:        "f_094_335_193_1024.jpg",
@@ -145,7 +145,7 @@ public struct ImageInfo
             wavelength:  nil,
             ions:        nil,
             temperature: nil,
-            hasVideo:    false
+            video:       nil
         ),
         ImageInfo(
             file:        "f_HMImag_171_1024.jpg",
@@ -155,7 +155,7 @@ public struct ImageInfo
             wavelength:  nil,
             ions:        nil,
             temperature: nil,
-            hasVideo:    false
+            video:       nil
         ),
         ImageInfo(
             file:        "latest_1024_HMIB.jpg",
@@ -165,7 +165,7 @@ public struct ImageInfo
             wavelength:  nil,
             ions:        nil,
             temperature: nil,
-            hasVideo:    false
+            video:       nil
         ),
         ImageInfo(
             file:        "latest_1024_HMIBC.jpg",
@@ -175,7 +175,7 @@ public struct ImageInfo
             wavelength:  nil,
             ions:        nil,
             temperature: nil,
-            hasVideo:    false
+            video:       nil
         ),
         ImageInfo(
             file:        "latest_1024_HMIIC.jpg",
@@ -185,7 +185,7 @@ public struct ImageInfo
             wavelength:  nil,
             ions:        nil,
             temperature: nil,
-            hasVideo:    false
+            video:       nil
         ),
         ImageInfo(
             file:        "latest_1024_HMIIF.jpg",
@@ -195,7 +195,7 @@ public struct ImageInfo
             wavelength:  nil,
             ions:        nil,
             temperature: nil,
-            hasVideo:    false
+            video:       nil
         ),
         ImageInfo(
             file:        "latest_1024_HMII.jpg",
@@ -205,7 +205,7 @@ public struct ImageInfo
             wavelength:  nil,
             ions:        nil,
             temperature: nil,
-            hasVideo:    false
+            video:       nil
         ),
         ImageInfo(
             file:        "latest_1024_HMID.jpg",
@@ -215,7 +215,7 @@ public struct ImageInfo
             wavelength:  nil,
             ions:        nil,
             temperature: nil,
-            hasVideo:    false
+            video:       nil
         ),
     ]
 
@@ -226,5 +226,5 @@ public struct ImageInfo
     public var wavelength:  String?
     public var ions:        String?
     public var temperature: String?
-    public var hasVideo:    Bool
+    public var video:       String?
 }

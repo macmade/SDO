@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="22690"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="VideoWindowController" customModule="SDO" customModuleProvider="target">
+            <connections>
+                <outlet property="player" destination="URz-Ub-stj" id="VBG-E8-4tK"/>
+                <outlet property="window" destination="QvC-M9-y7g" id="rMK-IM-eBF"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="600" height="600"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="3008" height="1228"/>
+            <value key="minSize" type="size" width="600" height="600"/>
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <avPlayerView controlsStyle="inline" showsFullScreenToggleButton="YES" showsSharingServiceButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="URz-Ub-stj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <connections>
+                            <binding destination="-2" name="hidden" keyPath="self.loading" id="XJX-od-JpU"/>
+                        </connections>
+                    </avPlayerView>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="WQ7-MR-k4L">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <subviews>
+                            <progressIndicator maxValue="100" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="RWP-jY-rK9">
+                                <rect key="frame" x="284" y="304" width="32" height="32"/>
+                                <connections>
+                                    <binding destination="-2" name="animate" keyPath="self.loading" id="bdB-Ps-ufn"/>
+                                </connections>
+                            </progressIndicator>
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bwt-T5-aIE">
+                                <rect key="frame" x="207" y="268" width="186" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Loading Video - Please Wait..." id="TJu-Em-sVB">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="RWP-jY-rK9" firstAttribute="centerY" secondItem="WQ7-MR-k4L" secondAttribute="centerY" constant="-20" id="Cim-ql-sPZ"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bwt-T5-aIE" secondAttribute="trailing" constant="20" symbolic="YES" id="McD-RA-p7b"/>
+                            <constraint firstItem="bwt-T5-aIE" firstAttribute="centerX" secondItem="RWP-jY-rK9" secondAttribute="centerX" id="Xof-Xo-8BS"/>
+                            <constraint firstItem="bwt-T5-aIE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WQ7-MR-k4L" secondAttribute="leading" constant="20" symbolic="YES" id="bsb-wQ-a4p"/>
+                            <constraint firstItem="bwt-T5-aIE" firstAttribute="top" secondItem="RWP-jY-rK9" secondAttribute="bottom" constant="20" id="c9g-Uv-F8d"/>
+                            <constraint firstItem="RWP-jY-rK9" firstAttribute="centerX" secondItem="WQ7-MR-k4L" secondAttribute="centerX" id="jnm-vI-xLt"/>
+                        </constraints>
+                        <connections>
+                            <binding destination="-2" name="hidden" keyPath="self.loading" id="3vx-k1-8x5">
+                                <dictionary key="options">
+                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                </dictionary>
+                            </binding>
+                        </connections>
+                    </customView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="URz-Ub-stj" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="8mv-UU-xtj"/>
+                    <constraint firstAttribute="bottom" secondItem="URz-Ub-stj" secondAttribute="bottom" id="8sO-U5-avj"/>
+                    <constraint firstItem="URz-Ub-stj" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="IGg-sS-TDm"/>
+                    <constraint firstItem="WQ7-MR-k4L" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="OaD-rf-dfF"/>
+                    <constraint firstAttribute="trailing" secondItem="WQ7-MR-k4L" secondAttribute="trailing" id="XzR-DO-Qrz"/>
+                    <constraint firstAttribute="trailing" secondItem="URz-Ub-stj" secondAttribute="trailing" id="h8s-xE-PeW"/>
+                    <constraint firstAttribute="bottom" secondItem="WQ7-MR-k4L" secondAttribute="bottom" id="ncw-s2-G36"/>
+                    <constraint firstItem="WQ7-MR-k4L" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="y9R-kM-zKt"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="139" y="144"/>
+        </window>
+    </objects>
+</document>

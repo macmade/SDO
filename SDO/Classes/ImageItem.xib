@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -37,12 +38,12 @@
                             </connections>
                         </imageView>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A2d-yK-HfI">
-                            <rect key="frame" x="108" y="104.5" width="64.5" height="71"/>
+                            <rect key="frame" x="108" y="104.5" width="64.5" height="72"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="64" id="OnF-wF-59C"/>
                                 <constraint firstAttribute="height" constant="64" id="Uv2-SH-tA8"/>
                             </constraints>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="sun.max.trianglebadge.exclamationmark.fill" catalog="system" id="JKc-F0-tyc"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="network.slash" catalog="system" id="JKc-F0-tyc"/>
                             <connections>
                                 <binding destination="GOC-vY-kdy" name="hidden" keyPath="self.image.image" id="frn-Ho-mjc">
                                     <dictionary key="options">
@@ -103,42 +104,75 @@
                     </textFieldCell>
                     <connections>
                         <binding destination="GOC-vY-kdy" name="value" keyPath="self.image.title" id="9Sh-DZ-aXj"/>
+                        <binding destination="GOC-vY-kdy" name="toolTip" keyPath="self.image.title" id="RRk-hB-Lkt"/>
                     </connections>
                 </textField>
-                <button toolTip="View Info" translatesAutoresizingMaskIntoConstraints="NO" id="0pN-6C-1Li">
-                    <rect key="frame" x="295" y="6" width="16" height="22"/>
-                    <buttonCell key="cell" type="square" title="View Info" bezelStyle="shadowlessSquare" image="info.circle.fill" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="3pU-dp-snY">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="16" id="7C7-rX-noj"/>
-                        <constraint firstAttribute="width" constant="16" id="Cu2-dY-iga"/>
-                    </constraints>
-                    <connections>
-                        <action selector="showInfo:" target="GOC-vY-kdy" id="Geu-fA-bBm"/>
-                        <binding destination="GOC-vY-kdy" name="hidden" keyPath="self.image.text" id="0it-vr-BZW">
-                            <dictionary key="options">
-                                <string key="NSValueTransformerName">NSIsNil</string>
-                            </dictionary>
-                        </binding>
-                    </connections>
-                </button>
+                <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eJJ-2r-5K6">
+                    <rect key="frame" x="271" y="9" width="40" height="16"/>
+                    <subviews>
+                        <button toolTip="Watch Video" translatesAutoresizingMaskIntoConstraints="NO" id="bJ4-0K-1uG">
+                            <rect key="frame" x="0.0" y="-1.5" width="16" height="20"/>
+                            <buttonCell key="cell" type="square" title="Watch Video" bezelStyle="shadowlessSquare" image="video.fill" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="pLo-CE-rSr">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="16" id="Q7K-Mo-vj1"/>
+                                <constraint firstAttribute="height" constant="16" id="e9L-tA-Ela"/>
+                            </constraints>
+                            <connections>
+                                <action selector="viewVideo:" target="GOC-vY-kdy" id="r3q-9b-Q4J"/>
+                                <binding destination="GOC-vY-kdy" name="hidden" keyPath="self.image.video" id="Byf-5a-C1s">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSIsNil</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </button>
+                        <button toolTip="View Info" translatesAutoresizingMaskIntoConstraints="NO" id="0pN-6C-1Li">
+                            <rect key="frame" x="24" y="-3" width="16" height="22"/>
+                            <buttonCell key="cell" type="square" title="View Info" bezelStyle="shadowlessSquare" image="info.circle.fill" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="3pU-dp-snY">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16" id="7C7-rX-noj"/>
+                                <constraint firstAttribute="width" constant="16" id="Cu2-dY-iga"/>
+                            </constraints>
+                            <connections>
+                                <action selector="showInfo:" target="GOC-vY-kdy" id="Geu-fA-bBm"/>
+                                <binding destination="GOC-vY-kdy" name="hidden" keyPath="self.image.text" id="0it-vr-BZW">
+                                    <dictionary key="options">
+                                        <string key="NSValueTransformerName">NSIsNil</string>
+                                    </dictionary>
+                                </binding>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
             </subviews>
             <constraints>
                 <constraint firstItem="gLD-4E-pmA" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="3f8-8f-Lg8"/>
                 <constraint firstItem="NTU-3b-Dyc" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="10" id="6Nn-qp-i1x"/>
                 <constraint firstAttribute="bottom" secondItem="gLD-4E-pmA" secondAttribute="bottom" constant="10" id="9Bo-jM-soN"/>
-                <constraint firstItem="gLD-4E-pmA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aYI-fj-EMy" secondAttribute="trailing" constant="8" symbolic="YES" id="BY9-62-oE6"/>
-                <constraint firstItem="0pN-6C-1Li" firstAttribute="centerY" secondItem="gLD-4E-pmA" secondAttribute="centerY" id="IOq-QC-CJG"/>
+                <constraint firstItem="gLD-4E-pmA" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="aYI-fj-EMy" secondAttribute="trailing" constant="10" id="BY9-62-oE6"/>
                 <constraint firstItem="aYI-fj-EMy" firstAttribute="centerY" secondItem="gLD-4E-pmA" secondAttribute="centerY" id="MDh-7Q-15C"/>
-                <constraint firstAttribute="trailing" secondItem="0pN-6C-1Li" secondAttribute="trailing" constant="20" symbolic="YES" id="XWu-47-xBq"/>
                 <constraint firstItem="gLD-4E-pmA" firstAttribute="top" secondItem="NTU-3b-Dyc" secondAttribute="bottom" constant="10" id="f8P-nJ-h37"/>
                 <constraint firstItem="aYI-fj-EMy" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" symbolic="YES" id="fPc-6K-jXb"/>
-                <constraint firstItem="0pN-6C-1Li" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gLD-4E-pmA" secondAttribute="trailing" constant="8" symbolic="YES" id="huZ-i8-0q3"/>
+                <constraint firstItem="eJJ-2r-5K6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="gLD-4E-pmA" secondAttribute="trailing" constant="10" id="fme-ph-LEG"/>
+                <constraint firstItem="eJJ-2r-5K6" firstAttribute="centerY" secondItem="gLD-4E-pmA" secondAttribute="centerY" id="jha-xO-pbq"/>
                 <constraint firstItem="NTU-3b-Dyc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="sH1-0W-mDG"/>
                 <constraint firstItem="NTU-3b-Dyc" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="syY-Ps-434"/>
                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="NTU-3b-Dyc" secondAttribute="trailing" constant="10" id="w5B-10-Pmg"/>
+                <constraint firstAttribute="trailing" secondItem="eJJ-2r-5K6" secondAttribute="trailing" constant="20" symbolic="YES" id="xYL-lC-qFW"/>
             </constraints>
             <point key="canvasLocation" x="140" y="-158"/>
         </customView>
@@ -146,7 +180,8 @@
     <resources>
         <image name="NSApplicationIcon" width="32" height="32"/>
         <image name="info.circle.fill" catalog="system" width="15" height="15"/>
+        <image name="network.slash" catalog="system" width="16" height="17"/>
         <image name="square.and.arrow.up" catalog="system" width="15" height="18"/>
-        <image name="sun.max.trianglebadge.exclamationmark.fill" catalog="system" width="17" height="16"/>
+        <image name="video.fill" catalog="system" width="19" height="13"/>
     </resources>
 </document>

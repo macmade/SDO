@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -160,7 +161,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="j5T-3P-1tG"/>
                                                 </constraints>
-                                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="128" maxValue="1024" doubleValue="256" tickMarkPosition="above" sliderType="linear" id="xkk-cA-l8j">
+                                                <sliderCell key="cell" continuous="YES" state="on" alignment="left" minValue="144" maxValue="1024" doubleValue="256" tickMarkPosition="above" sliderType="linear" id="xkk-cA-l8j">
                                                     <font key="font" size="12" name="Helvetica"/>
                                                 </sliderCell>
                                                 <connections>

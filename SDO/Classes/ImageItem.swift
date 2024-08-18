@@ -92,4 +92,16 @@ public class ImageItem: NSCollectionViewItem
 
         delegate.showQuickLookPanel( image: image )
     }
+
+    @IBAction
+    public func viewVideo( _ sender: Any? )
+    {
+        guard let image = self.image, VideoWindowController.showWindow( for: image )
+        else
+        {
+            NSSound.beep()
+
+            return
+        }
+    }
 }

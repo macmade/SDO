@@ -34,7 +34,7 @@ public class Image: NSObject
     @objc public dynamic var wavelength:  String?
     @objc public dynamic var ions:        String?
     @objc public dynamic var temperature: String?
-    @objc public dynamic var hasVideo:    Bool
+    @objc public dynamic var video:       String?
     @objc public dynamic var image:       NSImage?
 
     public init( info: ImageInfo )
@@ -46,6 +46,6 @@ public class Image: NSObject
         self.wavelength  = info.wavelength
         self.ions        = info.ions
         self.temperature = info.temperature
-        self.hasVideo    = info.hasVideo
+        self.video       = info.video
     }
 }
