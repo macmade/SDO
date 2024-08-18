@@ -46,6 +46,9 @@ public class PreferencesWindowController: NSWindowController, NSTableViewDelegat
     @IBOutlet private var imagesController: NSArrayController?
     @IBOutlet private var imagesTableView:  NSTableView?
 
+    private var infoPopover:    NSPopover?
+    private var infoController: InfoViewController?
+
     public override var windowNibName: NSNib.Name?
     {
         "PreferencesWindowController"
@@ -114,5 +117,37 @@ public class PreferencesWindowController: NSWindowController, NSTableViewDelegat
         {
             $0.uuid
         }
+    }
+
+    @objc
+    private func showInfo( forView view: Any?, item: Any? )
+    {
+        guard let view = view as? NSView,
+              let item = item as? PreferencesImageItem
+        else
+        {
+            NSSound.beep()
+
+            return
+        }
+
+        let button = view.subviews.first
+        {
+            $0.identifier?.rawValue == "InfoButton"
+        }
+
+        if let popover = self.infoPopover, popover.isShown
+        {
+            popover.close()
+        }
+
+        let popover                   = NSPopover()
+        popover.behavior              = .semitransient
+        let controller                = InfoViewController( image: Image( info: item.info ) )
+        popover.contentViewController = controller
+        self.infoPopover              = popover
+        self.infoController           = controller
+
+        popover.show( relativeTo: .zero, of: button ?? view, preferredEdge: .minY )
     }
 }
