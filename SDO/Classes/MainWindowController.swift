@@ -48,8 +48,11 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
     @IBOutlet private var collectionView: NSCollectionView?
     @IBOutlet private var slider:         Slider?
 
-    private var imageSizeObserver: NSKeyValueObservation?
-    private var imagesObserver:    NSKeyValueObservation?
+    private var imageSizeObserver:        NSKeyValueObservation?
+    private var imagesObserver:           NSKeyValueObservation?
+    private var refreshIntervalObserver:  NSKeyValueObservation?
+    private var automaticRefreshObserver: NSKeyValueObservation?
+    private var refreshTimer:             Timer?
 
     public init()
     {
@@ -69,6 +72,7 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
     public override func windowDidLoad()
     {
         super.windowDidLoad()
+        self.updateRefreshTimer()
 
         self.imageSizeObserver = Preferences.shared.observe( \.imageSize )
         {
@@ -96,6 +100,16 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
             self.collectionView?.reloadData()
         }
 
+        self.refreshIntervalObserver = Preferences.shared.observe( \.refreshInterval )
+        {
+            [ weak self ] _, _ in self?.updateRefreshTimer()
+        }
+
+        self.automaticRefreshObserver = Preferences.shared.observe( \.automaticRefresh )
+        {
+            [ weak self ] _, _ in self?.updateRefreshTimer()
+        }
+
         self.collectionView?.register( NSNib( nibNamed: "ImageItem", bundle: nil ), forItemWithIdentifier: self.itemID )
         self.refresh( nil )
         self.updateLayout()
@@ -105,6 +119,19 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
             [ weak self ] in DispatchQueue.main.async
             {
                 self?.resetImageSize( nil )
+            }
+        }
+    }
+
+    private func updateRefreshTimer()
+    {
+        self.refreshTimer?.invalidate()
+
+        if Preferences.shared.automaticRefresh
+        {
+            self.refreshTimer = Timer.scheduledTimer( withTimeInterval: TimeInterval( Preferences.shared.refreshInterval ), repeats: true )
+            {
+                [ weak self ] _ in self?.refresh( nil )
             }
         }
     }
@@ -158,11 +185,6 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
                 self.lastRefresh               = "Last Refreshed: \( fmt.string( from: Date() ) )"
 
                 self.collectionView?.reloadData()
-
-                DispatchQueue.main.asyncAfter( deadline: .now() + .seconds( 60 * 5 ) )
-                {
-                    self.refresh( nil )
-                }
             }
         }
     }
