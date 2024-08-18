@@ -190,8 +190,8 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TKB-Iv-pDI">
-                                                <rect key="frame" x="227" y="23" width="356" height="11"/>
-                                                <textFieldCell key="cell" controlSize="mini" lineBreakMode="clipping" title="All images are courtesy of NASA/SDO and the AIA, EVE, and HMI science teams." id="EV6-yG-slw">
+                                                <rect key="frame" x="207" y="23" width="397" height="11"/>
+                                                <textFieldCell key="cell" controlSize="mini" lineBreakMode="clipping" title="All data and images are courtesy of NASA/SDO and the AIA, EVE, and HMI science teams." id="EV6-yG-slw">
                                                     <font key="font" metaFont="miniSystem"/>
                                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

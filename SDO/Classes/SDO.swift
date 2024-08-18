@@ -46,9 +46,9 @@ public class SDO
         {
             let session = URLSession( configuration: .ephemeral )
 
-            let workers: [ ( image: Image, group: DispatchGroup ) ] = Image.all.map
+            let workers: [ ( image: Image, group: DispatchGroup ) ] = ImageInfo.all.map
             {
-                ( Image( file: $0.file, title: $0.title, text: $0.text ), DispatchGroup() )
+                ( Image( info: $0 ), DispatchGroup() )
             }
 
             workers.forEach
