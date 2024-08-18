@@ -29,15 +29,15 @@ public class ImageBorderView: NSView
 {
     public override func draw( _ rect: NSRect )
     {
-        guard self.effectiveAppearance.isDark
-        else
-        {
-            return
-        }
-
         let path = NSBezierPath( rect: self.bounds )
 
-        NSColor.white.withAlphaComponent( 0.2 ).setStroke()
-        path.stroke()
+        NSColor.black.setFill()
+        path.fill()
+
+        if self.effectiveAppearance.isDark
+        {
+            NSColor.white.withAlphaComponent( 0.2 ).setStroke()
+            path.stroke()
+        }
     }
 }
