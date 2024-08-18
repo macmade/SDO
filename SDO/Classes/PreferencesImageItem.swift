@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import Foundation
+import Cocoa
 
 @objc
 public class PreferencesImageItem: NSObject
@@ -30,6 +30,7 @@ public class PreferencesImageItem: NSObject
     @objc public private( set ) dynamic var title:   String
     @objc public private( set ) dynamic var uuid:    String
     @objc public private( set ) dynamic var hasInfo: Bool
+    @objc public private( set ) dynamic var image:   NSImage?
 
     @objc public dynamic var isChecked: Bool
     {
@@ -50,5 +51,6 @@ public class PreferencesImageItem: NSObject
         self.title     = info.title
         self.uuid      = info.uuid
         self.hasInfo   = info.text != nil
+        self.image     = SDO.shared?.latest.first { $0.uuid == info.uuid }?.image
     }
 }

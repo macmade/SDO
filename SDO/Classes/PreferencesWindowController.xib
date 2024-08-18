@@ -75,46 +75,86 @@
                                                                         <binding destination="7sU-br-syx" name="value" keyPath="objectValue.isChecked" id="JtE-yu-ZFD"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button identifier="InfoButton" translatesAutoresizingMaskIntoConstraints="NO" id="CMK-Xu-Op4">
-                                                                    <rect key="frame" x="432" y="5" width="16" height="22"/>
-                                                                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="info.circle.fill" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="XTu-8d-7hb">
-                                                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                                        <font key="font" metaFont="system"/>
-                                                                    </buttonCell>
-                                                                    <constraints>
-                                                                        <constraint firstAttribute="height" constant="16" id="GdS-Ss-0BP"/>
-                                                                        <constraint firstAttribute="width" constant="16" id="Y65-N4-9BC"/>
-                                                                    </constraints>
-                                                                    <connections>
-                                                                        <binding destination="7sU-br-syx" name="argument2" keyPath="objectValue" previousBinding="LzD-1G-nl9" id="qP3-qZ-C3y">
-                                                                            <dictionary key="options">
-                                                                                <string key="NSSelectorName">showInfoForView:item:</string>
-                                                                            </dictionary>
-                                                                        </binding>
-                                                                        <binding destination="7sU-br-syx" name="argument" keyPath="self" id="LzD-1G-nl9">
-                                                                            <dictionary key="options">
-                                                                                <string key="NSSelectorName">showInfoForView:item:</string>
-                                                                            </dictionary>
-                                                                        </binding>
-                                                                        <binding destination="7sU-br-syx" name="hidden" keyPath="objectValue.hasInfo" id="hmA-N8-ytS">
-                                                                            <dictionary key="options">
-                                                                                <string key="NSValueTransformerName">NSNegateBoolean</string>
-                                                                            </dictionary>
-                                                                        </binding>
-                                                                        <binding destination="-2" name="target" keyPath="self" previousBinding="qP3-qZ-C3y" id="g2B-di-S5f">
-                                                                            <dictionary key="options">
-                                                                                <string key="NSSelectorName">showInfoForView:item:</string>
-                                                                            </dictionary>
-                                                                        </binding>
-                                                                    </connections>
-                                                                </button>
+                                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="hsK-CD-2zE">
+                                                                    <rect key="frame" x="399" y="4" width="49" height="25"/>
+                                                                    <subviews>
+                                                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="6xc-AK-aJ2" customClass="ImageBorderView" customModule="SDO" customModuleProvider="target">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                                            <subviews>
+                                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T37-Hf-9PD">
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
+                                                                                    <constraints>
+                                                                                        <constraint firstAttribute="width" constant="25" id="CaG-E7-Kkm"/>
+                                                                                        <constraint firstAttribute="height" constant="25" id="gUk-1X-Z0s"/>
+                                                                                    </constraints>
+                                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSApplicationIcon" id="xC3-79-b55"/>
+                                                                                    <connections>
+                                                                                        <binding destination="7sU-br-syx" name="hidden" keyPath="objectValue.image" id="qA2-IN-kW5">
+                                                                                            <dictionary key="options">
+                                                                                                <string key="NSValueTransformerName">NSIsNil</string>
+                                                                                            </dictionary>
+                                                                                        </binding>
+                                                                                        <binding destination="7sU-br-syx" name="value" keyPath="objectValue.image" id="mOw-vT-aMf"/>
+                                                                                    </connections>
+                                                                                </imageView>
+                                                                            </subviews>
+                                                                            <constraints>
+                                                                                <constraint firstItem="T37-Hf-9PD" firstAttribute="leading" secondItem="6xc-AK-aJ2" secondAttribute="leading" id="7qp-u7-8NV"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="T37-Hf-9PD" secondAttribute="bottom" id="IMq-Jy-dgf"/>
+                                                                                <constraint firstItem="T37-Hf-9PD" firstAttribute="top" secondItem="6xc-AK-aJ2" secondAttribute="top" id="MdT-PV-J1A"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="T37-Hf-9PD" secondAttribute="trailing" id="NSC-sS-FMB"/>
+                                                                            </constraints>
+                                                                        </customView>
+                                                                        <button identifier="InfoButton" translatesAutoresizingMaskIntoConstraints="NO" id="CMK-Xu-Op4">
+                                                                            <rect key="frame" x="33" y="1" width="16" height="22"/>
+                                                                            <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="info.circle.fill" catalog="system" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="XTu-8d-7hb">
+                                                                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                                                <font key="font" metaFont="system"/>
+                                                                            </buttonCell>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="16" id="GdS-Ss-0BP"/>
+                                                                                <constraint firstAttribute="width" constant="16" id="Y65-N4-9BC"/>
+                                                                            </constraints>
+                                                                            <connections>
+                                                                                <binding destination="7sU-br-syx" name="argument2" keyPath="objectValue" previousBinding="LzD-1G-nl9" id="qP3-qZ-C3y">
+                                                                                    <dictionary key="options">
+                                                                                        <string key="NSSelectorName">showInfoForView:item:</string>
+                                                                                    </dictionary>
+                                                                                </binding>
+                                                                                <binding destination="7sU-br-syx" name="argument" keyPath="self" id="LzD-1G-nl9">
+                                                                                    <dictionary key="options">
+                                                                                        <string key="NSSelectorName">showInfoForView:item:</string>
+                                                                                    </dictionary>
+                                                                                </binding>
+                                                                                <binding destination="7sU-br-syx" name="hidden" keyPath="objectValue.hasInfo" id="hmA-N8-ytS">
+                                                                                    <dictionary key="options">
+                                                                                        <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                                    </dictionary>
+                                                                                </binding>
+                                                                                <binding destination="-2" name="target" keyPath="self" previousBinding="qP3-qZ-C3y" id="g2B-di-S5f">
+                                                                                    <dictionary key="options">
+                                                                                        <string key="NSSelectorName">showInfoForView:item:</string>
+                                                                                    </dictionary>
+                                                                                </binding>
+                                                                            </connections>
+                                                                        </button>
+                                                                    </subviews>
+                                                                    <visibilityPriorities>
+                                                                        <integer value="1000"/>
+                                                                        <integer value="1000"/>
+                                                                    </visibilityPriorities>
+                                                                    <customSpacing>
+                                                                        <real value="3.4028234663852886e+38"/>
+                                                                        <real value="3.4028234663852886e+38"/>
+                                                                    </customSpacing>
+                                                                </stackView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="CMK-Xu-Op4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vRg-BT-TRU" secondAttribute="trailing" constant="8" symbolic="YES" id="3kG-dk-Mhi"/>
-                                                                <constraint firstItem="vRg-BT-TRU" firstAttribute="leading" secondItem="7sU-br-syx" secondAttribute="leading" constant="10" id="LVb-Tc-eiC"/>
-                                                                <constraint firstAttribute="trailing" secondItem="CMK-Xu-Op4" secondAttribute="trailing" constant="10" id="dDk-Hh-GW7"/>
-                                                                <constraint firstItem="vRg-BT-TRU" firstAttribute="centerY" secondItem="7sU-br-syx" secondAttribute="centerY" id="sv2-ow-4G0"/>
-                                                                <constraint firstItem="CMK-Xu-Op4" firstAttribute="centerY" secondItem="7sU-br-syx" secondAttribute="centerY" id="wMt-nY-cyS"/>
+                                                                <constraint firstAttribute="trailing" secondItem="hsK-CD-2zE" secondAttribute="trailing" constant="10" id="JMs-I2-Xdu"/>
+                                                                <constraint firstItem="hsK-CD-2zE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="vRg-BT-TRU" secondAttribute="trailing" constant="8" symbolic="YES" id="JhT-cw-aoh"/>
+                                                                <constraint firstItem="vRg-BT-TRU" firstAttribute="leading" secondItem="7sU-br-syx" secondAttribute="leading" constant="10" id="Ttr-XF-Ow8"/>
+                                                                <constraint firstItem="hsK-CD-2zE" firstAttribute="centerY" secondItem="7sU-br-syx" secondAttribute="centerY" id="U4D-Xf-hMR"/>
+                                                                <constraint firstItem="vRg-BT-TRU" firstAttribute="centerY" secondItem="7sU-br-syx" secondAttribute="centerY" id="w2b-HA-K1Q"/>
                                                             </constraints>
                                                         </tableCellView>
                                                     </prototypeCellViews>
@@ -229,6 +269,7 @@
         <arrayController selectsInsertedObjects="NO" avoidsEmptySelection="NO" automaticallyRearrangesObjects="YES" id="BVF-4m-Vkr"/>
     </objects>
     <resources>
+        <image name="NSApplicationIcon" width="32" height="32"/>
         <image name="info.circle.fill" catalog="system" width="15" height="15"/>
     </resources>
 </document>

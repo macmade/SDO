@@ -27,7 +27,6 @@ import Cocoa
 @objc
 public class MainWindowController: NSWindowController, NSCollectionViewDataSource, NSCollectionViewDelegate
 {
-    private let sdo    = SDO()
     private let itemID = NSUserInterfaceItemIdentifier( "ImageItem" )
 
     @objc private dynamic var allImages  = [ Image ]()
@@ -126,7 +125,7 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
 
         self.refreshing = true
 
-        self.sdo?.downloadAll
+        SDO.shared?.downloadAll
         {
             images in DispatchQueue.main.async
             {

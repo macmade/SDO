@@ -26,10 +26,14 @@ import Cocoa
 
 public class SDO
 {
+    public static let shared = SDO()
+
     private var url:    URL
     private let queue = DispatchQueue( label: "com.xs-labs.SDO", attributes: .concurrent, autoreleaseFrequency: .workItem )
 
-    public init?()
+    @objc public private( set ) dynamic var latest: [ Image ] = []
+
+    private init?()
     {
         guard let url = URL( string: "https://sdo.gsfc.nasa.gov/assets/img/latest/" )
         else
@@ -73,7 +77,12 @@ public class SDO
                 $0.image
             }
 
-            completion( images )
+            DispatchQueue.main.async
+            {
+                self.latest = images
+
+                completion( images )
+            }
         }
     }
 
