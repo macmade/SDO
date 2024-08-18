@@ -249,7 +249,7 @@ public struct ImageInfo
         ),
         ImageInfo(
             uuid:        "9A0134F9-E7C1-4CF5-91EF-D3154EB692452",
-            file:        "latest_composite_map",
+            file:        "latest_composite_map.png",
             title:       "Composite Map",
             text:        nil,
             location:    nil,

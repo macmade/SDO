@@ -170,20 +170,34 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
 
     private func updateImages()
     {
-        self.images = Preferences.shared.images.compactMap
+        var images: [ ( image: Image, display: Bool ) ] = Preferences.shared.images.compactMap
         {
             guard let uuid    = $0[ "uuid" ]    as? String,
                   let display = $0[ "display" ] as? Bool,
-                  display == true
+                  let image   = self.allImages.first( where: { $0.uuid == uuid } )
             else
             {
                 return nil
             }
 
-            return self.allImages.first
+            return ( image, display )
+        }
+
+        self.allImages.forEach
+        {
+            image in if images.contains( where: { $0.image.uuid == image.uuid } ) == false
             {
-                $0.uuid == uuid
+                images.append( ( image, true ) )
             }
+        }
+
+        self.images = images.filter
+        {
+            $0.display
+        }
+        .map
+        {
+            $0.image
         }
     }
 
