@@ -30,6 +30,7 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
     private let sdo    = SDO()
     private let itemID = NSUserInterfaceItemIdentifier( "ImageItem" )
 
+    @objc private dynamic var allImages  = [ Image ]()
     @objc private dynamic var images     = [ Image ]()
     @objc private dynamic var loading    = true
     @objc private dynamic var refreshing = false
@@ -49,6 +50,7 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
     @IBOutlet private var slider:         Slider?
 
     private var imageSizeObserver: NSKeyValueObservation?
+    private var imagesObserver:    NSKeyValueObservation?
 
     public init()
     {
@@ -81,6 +83,22 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
             {
                 self.imageSize = Preferences.shared.imageSize
             }
+        }
+
+        self.imagesObserver = Preferences.shared.observe( \.images )
+        {
+            [ weak self ] _, _ in guard let self = self
+            else
+            {
+                return
+            }
+
+            self.images = self.allImages.filter
+            {
+                image in Preferences.shared.images.contains { $0 == image.uuid }
+            }
+
+            self.collectionView?.reloadData()
         }
 
         self.collectionView?.register( NSNib( nibNamed: "ImageItem", bundle: nil ), forItemWithIdentifier: self.itemID )
@@ -134,7 +152,11 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
 
                 self.loading    = false
                 self.refreshing = false
-                self.images     = images
+                self.allImages  = images
+                self.images     = images.filter
+                {
+                    image in Preferences.shared.images.contains { $0 == image.uuid }
+                }
 
                 let fmt                        = DateFormatter()
                 fmt.dateStyle                  = .short

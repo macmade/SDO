@@ -25,7 +25,7 @@
 import Cocoa
 
 @objc
-public class PreferencesWindowController: NSWindowController
+public class PreferencesWindowController: NSWindowController, NSTableViewDelegate, NSTableViewDataSource
 {
     @objc public dynamic var refreshInterval  = Preferences.shared.refreshInterval
     {
@@ -43,6 +43,9 @@ public class PreferencesWindowController: NSWindowController
         }
     }
 
+    @IBOutlet private var imagesController: NSArrayController?
+    @IBOutlet private var imagesTableView:  NSTableView?
+
     public override var windowNibName: NSNib.Name?
     {
         "PreferencesWindowController"
@@ -51,6 +54,7 @@ public class PreferencesWindowController: NSWindowController
     public override func windowDidLoad()
     {
         super.windowDidLoad()
+        self.refreshImages()
     }
 
     @IBAction
@@ -60,5 +64,55 @@ public class PreferencesWindowController: NSWindowController
 
         self.refreshInterval  = Preferences.shared.refreshInterval
         self.automaticRefresh = Preferences.shared.automaticRefresh
+
+        self.refreshImages()
+    }
+
+    private func refreshImages()
+    {
+        self.imagesController?.content = NSMutableArray()
+
+        ImageInfo.all.map
+        {
+            PreferencesImageItem( info: $0 )
+        }
+        .forEach
+        {
+            [ weak self ] item in guard let self = self
+            else
+            {
+                return
+            }
+
+            item.isChecked = Preferences.shared.images.contains
+            {
+                $0 == item.uuid
+            }
+
+            item.onCheck =
+            {
+                [ weak self ] in self?.update()
+            }
+
+            self.imagesController?.addObject( item )
+        }
+    }
+
+    private func update()
+    {
+        guard let items = self.imagesController?.content as? [ PreferencesImageItem ]
+        else
+        {
+            return
+        }
+
+        Preferences.shared.images = items.filter
+        {
+            $0.isChecked
+        }
+        .map
+        {
+            $0.uuid
+        }
     }
 }

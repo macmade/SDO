@@ -22,32 +22,31 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import Cocoa
+import Foundation
 
 @objc
-public class Image: NSObject
+public class PreferencesImageItem: NSObject
 {
-    @objc public dynamic var uuid:        String
-    @objc public dynamic var file:        String
-    @objc public dynamic var title:       String
-    @objc public dynamic var text:        String?
-    @objc public dynamic var location:    String?
-    @objc public dynamic var wavelength:  String?
-    @objc public dynamic var ions:        String?
-    @objc public dynamic var temperature: String?
-    @objc public dynamic var video:       String?
-    @objc public dynamic var image:       NSImage?
+    @objc public private( set ) dynamic var title: String
+    @objc public private( set ) dynamic var uuid:  String
+
+    @objc public dynamic var isChecked: Bool
+    {
+        didSet
+        {
+            self.onCheck?()
+        }
+    }
+
+    public private( set ) var info: ImageInfo
+
+    public var onCheck: ( () -> Void )?
 
     public init( info: ImageInfo )
     {
-        self.uuid        = info.uuid
-        self.file        = info.file
-        self.title       = info.title
-        self.text        = info.text
-        self.location    = info.location
-        self.wavelength  = info.wavelength
-        self.ions        = info.ions
-        self.temperature = info.temperature
-        self.video       = info.video
+        self.info      = info
+        self.isChecked = false
+        self.title     = info.title
+        self.uuid      = info.uuid
     }
 }
