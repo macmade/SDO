@@ -258,6 +258,50 @@ public struct ImageInfo
             temperature: nil,
             video:       "latest_composite_map.mp4"
         ),
+        ImageInfo(
+            uuid:        "34622904-5349-4D22-A10F-0605BEE52DC0",
+            file:        "SDO_2D.jpg",
+            title:       "Location - 2D",
+            text:        nil,
+            location:    nil,
+            wavelength:  nil,
+            ions:        nil,
+            temperature: nil,
+            video:       "latest48_SDO_2D.mp4"
+        ),
+        ImageInfo(
+            uuid:        "6A86AFE6-A331-4DF1-96B4-C53299A8A487",
+            file:        "SDO_VO1.jpg",
+            title:       "Location - VO1",
+            text:        nil,
+            location:    nil,
+            wavelength:  nil,
+            ions:        nil,
+            temperature: nil,
+            video:       "latest48_SDO_VO3.mp4"
+        ),
+        ImageInfo(
+            uuid:        "838E08FE-ECC2-4DAC-9C3E-5D2CD2DDCBFD",
+            file:        "SDO_VO2.jpg",
+            title:       "Location - VO2",
+            text:        nil,
+            location:    nil,
+            wavelength:  nil,
+            ions:        nil,
+            temperature: nil,
+            video:       "latest48_SDO_VO2.mp4"
+        ),
+        ImageInfo(
+            uuid:        "4B964800-BE80-4EFB-A331-A8E5A134D0B1",
+            file:        "SDO_VO3.jpg",
+            title:       "Location - VO3",
+            text:        nil,
+            location:    nil,
+            wavelength:  nil,
+            ions:        nil,
+            temperature: nil,
+            video:       "latest48_SDO_VO3.mp4"
+        ),
     ]
 
     public var uuid:        String

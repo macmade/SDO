@@ -138,6 +138,30 @@
 			<key>display</key>
 			<true/>
 		</dict>
+		<dict>
+			<key>uuid</key>
+			<string>34622904-5349-4D22-A10F-0605BEE52DC0</string>
+			<key>display</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>uuid</key>
+			<string>6A86AFE6-A331-4DF1-96B4-C53299A8A487</string>
+			<key>display</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>uuid</key>
+			<string>838E08FE-ECC2-4DAC-9C3E-5D2CD2DDCBFD</string>
+			<key>display</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>uuid</key>
+			<string>4B964800-BE80-4EFB-A331-A8E5A134D0B1</string>
+			<key>display</key>
+			<true/>
+		</dict>
 	</array>
 </dict>
 </plist>
