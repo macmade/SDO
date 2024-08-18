@@ -12,7 +12,7 @@ SDO
 
 A macOS application displaying the latest solar images from [NASA's SDO - Solar Dynamics Observatory](https://sdo.gsfc.nasa.gov).
 
-![Screenshot](Assets/Screenshot.png "Screenshot")
+![Screenshot](Assets/SDO.jpg "Screenshot")
 
 License
 -------
