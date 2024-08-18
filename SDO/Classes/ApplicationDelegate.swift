@@ -109,7 +109,7 @@ public class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDeleg
                 return
             }
 
-            let url             = URL( filePath: NSTemporaryDirectory() ).appendingPathComponent( NSUUID().uuidString ).appendingPathExtension( "png" )
+            let url             = URL( fileURLWithPath: NSTemporaryDirectory() ).appendingPathComponent( NSUUID().uuidString ).appendingPathExtension( "png" )
             self.previewItemURL = url
             self.previewImage   = image
 
