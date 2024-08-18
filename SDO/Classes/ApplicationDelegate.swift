@@ -66,6 +66,12 @@ public class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDeleg
     }
 
     @IBAction
+    public func openDocument( _ sender: Any? )
+    {
+        self.mainWindowController.window?.makeKeyAndOrderFront( nil )
+    }
+
+    @IBAction
     public func showAboutWindow( _ sender: Any? )
     {
         if self.aboutWindowController.window?.isVisible == false
