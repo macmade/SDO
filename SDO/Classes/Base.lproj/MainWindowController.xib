@@ -17,21 +17,21 @@
         <window title="SDO - Solar Dynamics Observatory" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="MainWindowController" animationBehavior="default" titlebarAppearsTransparent="YES" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="810" height="660"/>
+            <rect key="contentRect" x="196" y="240" width="810" height="655"/>
             <rect key="screenRect" x="0.0" y="0.0" width="3008" height="1228"/>
-            <value key="minSize" type="size" width="810" height="660"/>
+            <value key="minSize" type="size" width="810" height="655"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="810" height="660"/>
+                <rect key="frame" x="0.0" y="0.0" width="810" height="655"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <visualEffectView blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="dve-xt-hvi">
-                        <rect key="frame" x="0.0" y="0.0" width="810" height="660"/>
+                        <rect key="frame" x="0.0" y="0.0" width="810" height="655"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="4RS-TO-Jsb">
-                                <rect key="frame" x="0.0" y="0.0" width="810" height="660"/>
+                                <rect key="frame" x="0.0" y="0.0" width="810" height="655"/>
                                 <subviews>
                                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oc7-PX-uQq">
-                                        <rect key="frame" x="230" y="205" width="350" height="350"/>
+                                        <rect key="frame" x="230" y="203" width="350" height="350"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="350" id="TJU-GP-hHd"/>
                                             <constraint firstAttribute="width" constant="350" id="kJo-wO-HHb"/>
@@ -39,13 +39,13 @@
                                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSApplicationIcon" id="i4P-Ri-UCD"/>
                                     </imageView>
                                     <progressIndicator wantsLayer="YES" maxValue="100" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="Lu7-5b-Xk4">
-                                        <rect key="frame" x="389" y="165" width="32" height="32"/>
+                                        <rect key="frame" x="389" y="163" width="32" height="32"/>
                                         <connections>
                                             <binding destination="-2" name="animate" keyPath="self.loading" id="mpR-no-rSB"/>
                                         </connections>
                                     </progressIndicator>
                                     <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j2T-J9-ZVu">
-                                        <rect key="frame" x="256" y="129" width="299" height="16"/>
+                                        <rect key="frame" x="256" y="127" width="299" height="16"/>
                                         <textFieldCell key="cell" lineBreakMode="clipping" title="Loading Latest Images from SDO - Please Wait..." id="I2G-a2-NGE">
                                             <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -72,16 +72,16 @@
                                 </connections>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="XrR-fo-5Vn">
-                                <rect key="frame" x="0.0" y="0.0" width="810" height="660"/>
+                                <rect key="frame" x="0.0" y="0.0" width="810" height="655"/>
                                 <subviews>
                                     <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsH-VW-zqs">
-                                        <rect key="frame" x="10" y="99" width="790" height="561"/>
+                                        <rect key="frame" x="10" y="99" width="790" height="556"/>
                                         <clipView key="contentView" drawsBackground="NO" id="lgf-2J-p7u">
-                                            <rect key="frame" x="0.0" y="0.0" width="790" height="561"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="790" height="556"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <collectionView id="faS-HV-buQ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="790" height="561"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="790" height="556"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="IyE-Cv-Rpf" customClass="CollectionViewLayout" customModule="SDO" customModuleProvider="target">
                                                         <size key="itemSize" width="50" height="50"/>
@@ -99,7 +99,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                         <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="Akw-wn-Aul">
-                                            <rect key="frame" x="774" y="0.0" width="16" height="221"/>
+                                            <rect key="frame" x="774" y="0.0" width="16" height="556"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </scroller>
                                     </scrollView>
@@ -205,7 +205,7 @@
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <button toolTip="Visit the SDO website" wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BDW-Mc-c3b" customClass="CursorButton" customModule="SDO" customModuleProvider="target">
+                                            <button toolTip="Visit the SDO Website" wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BDW-Mc-c3b" customClass="CursorButton" customModule="SDO" customModuleProvider="target">
                                                 <rect key="frame" x="-7" y="-7" width="824" height="69"/>
                                                 <buttonCell key="cell" type="push" title="Visit the SDO website" bezelStyle="rounded" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="gtk-Db-Ivy">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
