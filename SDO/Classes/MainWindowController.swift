@@ -176,4 +176,18 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
             }
         }
     }
+
+    @IBAction
+    private func openSDOWebsite( _ sender: Any? )
+    {
+        guard let url = URL( string: "https://sdo.gsfc.nasa.gov" )
+        else
+        {
+            NSSound.beep()
+
+            return
+        }
+
+        NSWorkspace.shared.open( url )
+    }
 }
