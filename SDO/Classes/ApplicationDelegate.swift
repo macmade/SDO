@@ -40,6 +40,11 @@ public class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDeleg
 
     public func applicationDidFinishLaunching( _ notification: Notification )
     {
+        if Preferences.shared.firstLaunch
+        {
+            self.mainWindowController.window?.center()
+        }
+
         self.mainWindowController.window?.makeKeyAndOrderFront( nil )
 
         DispatchQueue.main.asyncAfter( deadline: .now() + .seconds( 2 ) )
@@ -50,6 +55,8 @@ public class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDeleg
 
     public func applicationWillTerminate( _ notification: Notification )
     {
+        Preferences.shared.firstLaunch = false
+
         if let url = self.previewItemURL
         {
             try? FileManager.default.removeItem( at: url )

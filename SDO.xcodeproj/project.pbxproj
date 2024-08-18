@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0514B5652C723AA400F598BA /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0514B5642C723AA400F598BA /* Defaults.plist */; };
+		0514B5692C723C1B00F598BA /* NSException.m in Sources */ = {isa = PBXBuildFile; fileRef = 0514B5672C723C1B00F598BA /* NSException.m */; };
 		051A78A22C70D993006328DF /* GitHubUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A78A12C70D993006328DF /* GitHubUpdater.swift */; };
 		05375F162C715F3900730090 /* CursorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05375F152C715F3900730090 /* CursorButton.swift */; };
 		05375F182C71965D00730090 /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05375F172C71965D00730090 /* ImageInfo.swift */; };
@@ -52,6 +54,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0514B5642C723AA400F598BA /* Defaults.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Defaults.plist; sourceTree = "<group>"; };
+		0514B5662C723C1A00F598BA /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		0514B5672C723C1B00F598BA /* NSException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSException.m; sourceTree = "<group>"; };
+		0514B5682C723C1B00F598BA /* NSException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSException.h; sourceTree = "<group>"; };
 		051A78A12C70D993006328DF /* GitHubUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUpdater.swift; sourceTree = "<group>"; };
 		05375F152C715F3900730090 /* CursorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorButton.swift; sourceTree = "<group>"; };
 		05375F172C71965D00730090 /* ImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
@@ -195,6 +201,8 @@
 				05B999762C6ED45500DF4C08 /* MainWindowController.swift */,
 				05B9997B2C6ED4BD00DF4C08 /* MainWindowController.xib */,
 				05F0C48C2C70FA3200CBCDD5 /* NSAppearance.swift */,
+				0514B5682C723C1B00F598BA /* NSException.h */,
+				0514B5672C723C1B00F598BA /* NSException.m */,
 				055FBBA62C6F82B7003B51AC /* NSView.swift */,
 				055FBBAC2C6FC380003B51AC /* Preferences.swift */,
 				0570C0182C722D9D0005089F /* PreferencesWindowController.swift */,
@@ -211,7 +219,9 @@
 		05646BB62685021500707676 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0514B5662C723C1A00F598BA /* Bridging-Header.h */,
 				05CB9D202C6F48F800314AAC /* Assets.xcassets */,
+				0514B5642C723AA400F598BA /* Defaults.plist */,
 				05646BA4268501B400707676 /* Info.plist */,
 				05646BB12685020A00707676 /* MainMenu.xib */,
 				05646BA5268501B400707676 /* SDO.entitlements */,
@@ -376,7 +386,7 @@
 				TargetAttributes = {
 					05646B99268501B300707676 = {
 						CreatedOnToolsVersion = 12.5.1;
-						LastSwiftMigration = 1250;
+						LastSwiftMigration = 1540;
 					};
 				};
 			};
@@ -408,6 +418,7 @@
 				05B9997C2C6ED4BD00DF4C08 /* MainWindowController.xib in Resources */,
 				05646BF22685058700707676 /* AboutWindowController.xib in Resources */,
 				05F0C4892C70F3FD00CBCDD5 /* ImageItem.xib in Resources */,
+				0514B5652C723AA400F598BA /* Defaults.plist in Resources */,
 				05F0C4912C71005D00CBCDD5 /* InfoViewController.xib in Resources */,
 				0570C01B2C722DC00005089F /* PreferencesWindowController.xib in Resources */,
 				05CB9D212C6F48F800314AAC /* Assets.xcassets in Resources */,
@@ -461,6 +472,7 @@
 				05F0C48F2C71005200CBCDD5 /* InfoViewController.swift in Sources */,
 				055FBBA72C6F82B7003B51AC /* NSView.swift in Sources */,
 				05646BEF2685055F00707676 /* AboutWindowController.swift in Sources */,
+				0514B5692C723C1B00F598BA /* NSException.m in Sources */,
 				05B999772C6ED45500DF4C08 /* MainWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -528,6 +540,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.SDO";
 				PRODUCT_NAME = SDO;
+				SWIFT_OBJC_BRIDGING_HEADER = "SDO/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -550,6 +563,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xs-labs.SDO";
 				PRODUCT_NAME = SDO;
+				SWIFT_OBJC_BRIDGING_HEADER = "SDO/Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;

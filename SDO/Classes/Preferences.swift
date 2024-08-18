@@ -26,13 +26,21 @@ import Cocoa
 
 public class Preferences: NSObject
 {
-    @objc public dynamic var imageSize: Int = 256
+    @objc public dynamic var imageSize:        Int  = 0
+    @objc public dynamic var refreshInterval:  Int  = 0
+    @objc public dynamic var automaticRefresh: Bool = false
+    @objc public dynamic var firstLaunch:      Bool = false
 
     @objc public static let shared = Preferences()
 
     override init()
     {
         super.init()
+
+        if let path = Bundle.main.path( forResource: "Defaults", ofType: "plist" )
+        {
+            UserDefaults.standard.register( defaults: NSDictionary( contentsOfFile: path ) as? [ String: Any ] ?? [ : ] )
+        }
 
         for c in Mirror( reflecting: self ).children
         {
@@ -79,6 +87,27 @@ public class Preferences: NSObject
             if ( key == keyPath )
             {
                 UserDefaults.standard.set( change?[ NSKeyValueChangeKey.newKey ], forKey: key )
+            }
+        }
+    }
+
+    public func restoreDefaults()
+    {
+        guard let path     = Bundle.main.path( forResource: "Defaults", ofType: "plist" ),
+              let data     = try? Data( contentsOf: URL( fileURLWithPath: path ) ),
+              let defaults = try? PropertyListSerialization.propertyList( from: data, format: nil ) as? [ String: Any ]
+        else
+        {
+            return
+        }
+
+        defaults.forEach
+        {
+            value in
+
+            try? NSException.doTry
+            {
+                self.setValue( value.value, forKey: value.key )
             }
         }
     }

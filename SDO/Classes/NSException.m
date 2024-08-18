@@ -22,43 +22,28 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import Cocoa
+#import "NSException.h"
 
-@objc
-public class PreferencesWindowController: NSWindowController
+@implementation NSException( SDO )
+
++ ( BOOL )doTry: ( void ( ^ )( void ) )tryBlock error: ( NSError * __autoreleasing * _Nullable )error
 {
-    @objc public dynamic var refreshInterval  = Preferences.shared.refreshInterval
+    @try
     {
-        didSet
+        tryBlock();
+        
+        return true;
+    }
+    @catch( NSException * e )
+    {
+        if( error != nil )
         {
-            Preferences.shared.refreshInterval = self.refreshInterval
+            NSString * reason = ( e.reason != nil ) ? ( NSString * )( e.reason ) : @"Unknown Exception";
+            *( error )        = [ NSError errorWithDomain: NSCocoaErrorDomain code: 0 userInfo: @{ NSLocalizedDescriptionKey : reason } ];
         }
-    }
-
-    @objc public dynamic var automaticRefresh = Preferences.shared.automaticRefresh
-    {
-        didSet
-        {
-            Preferences.shared.automaticRefresh = self.automaticRefresh
-        }
-    }
-
-    public override var windowNibName: NSNib.Name?
-    {
-        "PreferencesWindowController"
-    }
-
-    public override func windowDidLoad()
-    {
-        super.windowDidLoad()
-    }
-
-    @IBAction
-    private func restoreDefaults( _ sender: Any? )
-    {
-        Preferences.shared.restoreDefaults()
-
-        self.refreshInterval  = Preferences.shared.refreshInterval
-        self.automaticRefresh = Preferences.shared.automaticRefresh
+        
+        return false;
     }
 }
+
+@end

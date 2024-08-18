@@ -22,43 +22,14 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import Cocoa
+@import Foundation;
 
-@objc
-public class PreferencesWindowController: NSWindowController
-{
-    @objc public dynamic var refreshInterval  = Preferences.shared.refreshInterval
-    {
-        didSet
-        {
-            Preferences.shared.refreshInterval = self.refreshInterval
-        }
-    }
+NS_ASSUME_NONNULL_BEGIN
 
-    @objc public dynamic var automaticRefresh = Preferences.shared.automaticRefresh
-    {
-        didSet
-        {
-            Preferences.shared.automaticRefresh = self.automaticRefresh
-        }
-    }
+@interface NSException( SDO )
 
-    public override var windowNibName: NSNib.Name?
-    {
-        "PreferencesWindowController"
-    }
++ ( BOOL )doTry: ( void ( ^ )( void ) )tryBlock error: ( NSError * __autoreleasing * _Nullable )error;
 
-    public override func windowDidLoad()
-    {
-        super.windowDidLoad()
-    }
+@end
 
-    @IBAction
-    private func restoreDefaults( _ sender: Any? )
-    {
-        Preferences.shared.restoreDefaults()
-
-        self.refreshInterval  = Preferences.shared.refreshInterval
-        self.automaticRefresh = Preferences.shared.automaticRefresh
-    }
-}
+NS_ASSUME_NONNULL_END

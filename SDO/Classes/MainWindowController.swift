@@ -48,6 +48,8 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
     @IBOutlet private var collectionView: NSCollectionView?
     @IBOutlet private var slider:         Slider?
 
+    private var imageSizeObserver: NSKeyValueObservation?
+
     public init()
     {
         super.init( window: nil )
@@ -66,6 +68,21 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
     public override func windowDidLoad()
     {
         super.windowDidLoad()
+
+        self.imageSizeObserver = Preferences.shared.observe( \.imageSize )
+        {
+            [ weak self ] _, _ in guard let self = self
+            else
+            {
+                return
+            }
+
+            if Preferences.shared.imageSize != self.imageSize
+            {
+                self.imageSize = Preferences.shared.imageSize
+            }
+        }
+
         self.collectionView?.register( NSNib( nibNamed: "ImageItem", bundle: nil ), forItemWithIdentifier: self.itemID )
         self.refresh( nil )
         self.updateLayout()

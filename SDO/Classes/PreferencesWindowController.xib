@@ -24,6 +24,64 @@
                 <subviews>
                     <visualEffectView blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="xLH-uY-t5K">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8CJ-Xn-MqA">
+                                <rect key="frame" x="18" y="70" width="195" height="18"/>
+                                <buttonCell key="cell" type="check" title="Automatically refresh every:" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="rHg-hN-FE1">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="-2" name="value" keyPath="self.automaticRefresh" id="AvO-Io-93B"/>
+                                </connections>
+                            </button>
+                            <popUpButton wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fAL-Mw-mfc">
+                                <rect key="frame" x="218" y="65" width="107" height="25"/>
+                                <popUpButtonCell key="cell" type="push" title="Minute" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" tag="60" imageScaling="proportionallyDown" inset="2" selectedItem="rNM-Ez-Z5y" id="fue-vI-t4N">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="AOh-7P-UBW">
+                                        <items>
+                                            <menuItem title="Minute" state="on" tag="60" id="rNM-Ez-Z5y"/>
+                                            <menuItem title="5 Minutes" tag="300" id="ps4-1s-poH"/>
+                                            <menuItem title="10 Minutes" tag="600" id="FeE-ND-kb4"/>
+                                            <menuItem title="20 Minutes" tag="1200" id="8ZY-dr-5C3"/>
+                                            <menuItem title="30 Minutes" tag="1800" id="tmg-5P-wDs"/>
+                                            <menuItem title="Hour" tag="3600" id="FSG-ol-qG5"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                                <connections>
+                                    <binding destination="-2" name="selectedTag" keyPath="self.refreshInterval" id="NrR-mG-sO3"/>
+                                </connections>
+                            </popUpButton>
+                            <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Osa-Co-4qr">
+                                <rect key="frame" x="20" y="58" width="440" height="5"/>
+                            </box>
+                            <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1bt-JD-JaJ">
+                                <rect key="frame" x="13" y="13" width="135" height="32"/>
+                                <buttonCell key="cell" type="push" title="Restore Defaults" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vNR-7o-JvT">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="restoreDefaults:" target="-2" id="LRd-JU-VpZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="fAL-Mw-mfc" firstAttribute="centerY" secondItem="8CJ-Xn-MqA" secondAttribute="centerY" id="7E9-NH-Y8r"/>
+                            <constraint firstItem="Osa-Co-4qr" firstAttribute="leading" secondItem="xLH-uY-t5K" secondAttribute="leading" constant="20" symbolic="YES" id="8W8-wC-Sah"/>
+                            <constraint firstItem="Osa-Co-4qr" firstAttribute="top" secondItem="fAL-Mw-mfc" secondAttribute="bottom" constant="8" symbolic="YES" id="Gu4-WF-AVC"/>
+                            <constraint firstItem="8CJ-Xn-MqA" firstAttribute="leading" secondItem="xLH-uY-t5K" secondAttribute="leading" constant="20" symbolic="YES" id="NFv-2H-dOt"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1bt-JD-JaJ" secondAttribute="trailing" constant="20" symbolic="YES" id="Tjd-qI-IPL"/>
+                            <constraint firstItem="1bt-JD-JaJ" firstAttribute="top" secondItem="Osa-Co-4qr" secondAttribute="bottom" constant="20" symbolic="YES" id="f5Y-8t-BZh"/>
+                            <constraint firstAttribute="trailing" secondItem="Osa-Co-4qr" secondAttribute="trailing" constant="20" symbolic="YES" id="hHY-HV-QWR"/>
+                            <constraint firstItem="fAL-Mw-mfc" firstAttribute="leading" secondItem="8CJ-Xn-MqA" secondAttribute="trailing" constant="8" symbolic="YES" id="j0E-jA-Dbf"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fAL-Mw-mfc" secondAttribute="trailing" constant="20" symbolic="YES" id="r1E-Em-XN3"/>
+                            <constraint firstItem="1bt-JD-JaJ" firstAttribute="leading" secondItem="xLH-uY-t5K" secondAttribute="leading" constant="20" symbolic="YES" id="ssu-Zl-ouK"/>
+                            <constraint firstAttribute="bottom" secondItem="1bt-JD-JaJ" secondAttribute="bottom" constant="20" symbolic="YES" id="tEP-zF-Hvs"/>
+                        </constraints>
                     </visualEffectView>
                 </subviews>
                 <constraints>
