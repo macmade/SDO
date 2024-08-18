@@ -38,12 +38,12 @@
                             </connections>
                         </imageView>
                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="A2d-yK-HfI">
-                            <rect key="frame" x="108" y="104.5" width="64.5" height="72"/>
+                            <rect key="frame" x="108" y="105" width="64" height="70"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="64" id="OnF-wF-59C"/>
                                 <constraint firstAttribute="height" constant="64" id="Uv2-SH-tA8"/>
                             </constraints>
-                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="network.slash" catalog="system" id="JKc-F0-tyc"/>
+                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="xmark.circle.fill" catalog="system" id="JKc-F0-tyc"/>
                             <connections>
                                 <binding destination="GOC-vY-kdy" name="hidden" keyPath="self.image.image" id="frn-Ho-mjc">
                                     <dictionary key="options">
@@ -191,8 +191,8 @@
     <resources>
         <image name="NSApplicationIcon" width="32" height="32"/>
         <image name="info.circle.fill" catalog="system" width="15" height="15"/>
-        <image name="network.slash" catalog="system" width="16" height="17"/>
         <image name="square.and.arrow.up" catalog="system" width="15" height="18"/>
         <image name="video.fill" catalog="system" width="19" height="13"/>
+        <image name="xmark.circle.fill" catalog="system" width="15" height="15"/>
     </resources>
 </document>
