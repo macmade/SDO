@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22690"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,44 +14,253 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="kdK-Dd-KKz">
-            <rect key="frame" x="0.0" y="0.0" width="400" height="95"/>
+            <rect key="frame" x="0.0" y="0.0" width="500" height="183"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
-                    <rect key="frame" x="0.0" y="0.0" width="400" height="95"/>
+                    <rect key="frame" x="0.0" y="0.0" width="500" height="183"/>
                     <subviews>
-                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="NED-EF-fmu">
-                            <rect key="frame" x="18" y="44" width="364" height="31"/>
-                            <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Label" id="UVx-Qc-qPP">
-                                <font key="font" textStyle="largeTitle" name=".SFNS-Regular"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                            <connections>
-                                <binding destination="-2" name="value" keyPath="self.image.title" id="Jzb-KU-WIG"/>
-                            </connections>
-                        </textField>
-                        <textField focusRingType="none" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Ajz-JH-vx4">
-                            <rect key="frame" x="18" y="20" width="364" height="16"/>
-                            <textFieldCell key="cell" selectable="YES" title="Multiline Label" id="C6f-z8-axS">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                            <connections>
-                                <binding destination="-2" name="value" keyPath="self.image.text" id="lmk-z5-ohs"/>
-                            </connections>
-                        </textField>
+                        <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yE3-F7-WTW">
+                            <rect key="frame" x="20" y="20" width="460" height="143"/>
+                            <subviews>
+                                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="NED-EF-fmu">
+                                    <rect key="frame" x="-2" y="112" width="66" height="31"/>
+                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" title="Label" id="UVx-Qc-qPP">
+                                        <font key="font" textStyle="largeTitle" name=".SFNS-Regular"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="-2" name="value" keyPath="self.image.title" id="Jzb-KU-WIG"/>
+                                    </connections>
+                                </textField>
+                                <textField focusRingType="none" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Ajz-JH-vx4">
+                                    <rect key="frame" x="-2" y="88" width="464" height="16"/>
+                                    <textFieldCell key="cell" selectable="YES" title="Multiline Label" id="C6f-z8-axS">
+                                        <font key="font" metaFont="system"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                    <connections>
+                                        <binding destination="-2" name="value" keyPath="self.image.text" id="lmk-z5-ohs"/>
+                                    </connections>
+                                </textField>
+                                <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vAF-Kr-U2c">
+                                    <rect key="frame" x="0.0" y="66" width="460" height="14"/>
+                                    <subviews>
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="130-Lb-Yyg">
+                                            <rect key="frame" x="-2" y="0.0" width="151" height="14"/>
+                                            <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" title="Where:" id="lvc-yV-9c3">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField focusRingType="none" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="ios-QJ-EHE">
+                                            <rect key="frame" x="153" y="0.0" width="309" height="14"/>
+                                            <textFieldCell key="cell" controlSize="small" selectable="YES" title="Multiline Label" id="cKH-7g-KhG">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="-2" name="value" keyPath="self.image.location" id="rZG-9A-ZQc"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="ios-QJ-EHE" secondAttribute="trailing" id="9D5-Z9-w29"/>
+                                        <constraint firstAttribute="bottom" secondItem="130-Lb-Yyg" secondAttribute="bottom" id="pQc-3U-hSq"/>
+                                        <constraint firstItem="130-Lb-Yyg" firstAttribute="top" secondItem="vAF-Kr-U2c" secondAttribute="top" id="xvW-fP-BW9"/>
+                                    </constraints>
+                                    <visibilityPriorities>
+                                        <integer value="1000"/>
+                                        <integer value="1000"/>
+                                    </visibilityPriorities>
+                                    <customSpacing>
+                                        <real value="3.4028234663852886e+38"/>
+                                        <real value="3.4028234663852886e+38"/>
+                                    </customSpacing>
+                                    <connections>
+                                        <binding destination="-2" name="hidden" keyPath="self.image.location" id="gnf-Oa-gbQ">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">NSIsNil</string>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </stackView>
+                                <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a4T-kJ-Bxl">
+                                    <rect key="frame" x="0.0" y="44" width="460" height="14"/>
+                                    <subviews>
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="HF8-QY-KLR">
+                                            <rect key="frame" x="-2" y="0.0" width="151" height="14"/>
+                                            <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" title="Wavelength:" id="c3s-Eh-Y9K">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField focusRingType="none" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="eIh-8p-1GW">
+                                            <rect key="frame" x="153" y="0.0" width="309" height="14"/>
+                                            <textFieldCell key="cell" controlSize="small" selectable="YES" title="Multiline Label" id="bis-V2-NKA">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="-2" name="value" keyPath="self.image.wavelength" id="Ia5-XA-ug6"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="eIh-8p-1GW" secondAttribute="trailing" id="8Iu-A7-ZIu"/>
+                                        <constraint firstItem="HF8-QY-KLR" firstAttribute="top" secondItem="a4T-kJ-Bxl" secondAttribute="top" id="Am0-WX-YJi"/>
+                                        <constraint firstAttribute="bottom" secondItem="HF8-QY-KLR" secondAttribute="bottom" id="GhV-kh-8qY"/>
+                                    </constraints>
+                                    <visibilityPriorities>
+                                        <integer value="1000"/>
+                                        <integer value="1000"/>
+                                    </visibilityPriorities>
+                                    <customSpacing>
+                                        <real value="3.4028234663852886e+38"/>
+                                        <real value="3.4028234663852886e+38"/>
+                                    </customSpacing>
+                                    <connections>
+                                        <binding destination="-2" name="hidden" keyPath="self.image.wavelength" id="eev-4M-ZHT">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">NSIsNil</string>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </stackView>
+                                <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5YX-db-5Cq">
+                                    <rect key="frame" x="0.0" y="22" width="460" height="14"/>
+                                    <subviews>
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="UcM-sj-hfb">
+                                            <rect key="frame" x="-2" y="0.0" width="151" height="14"/>
+                                            <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" title="Primary Ions Seen:" id="oWV-oM-uCU">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField focusRingType="none" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="e2E-Qm-gFQ">
+                                            <rect key="frame" x="153" y="0.0" width="309" height="14"/>
+                                            <textFieldCell key="cell" controlSize="small" selectable="YES" title="Multiline Label" id="su0-sZ-vre">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="-2" name="value" keyPath="self.image.ions" id="I1D-AI-qf7"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="UcM-sj-hfb" secondAttribute="bottom" id="Iwk-I4-WOu"/>
+                                        <constraint firstItem="UcM-sj-hfb" firstAttribute="top" secondItem="5YX-db-5Cq" secondAttribute="top" id="bIq-6Z-dVO"/>
+                                        <constraint firstAttribute="trailing" secondItem="e2E-Qm-gFQ" secondAttribute="trailing" id="rSF-08-1qW"/>
+                                    </constraints>
+                                    <visibilityPriorities>
+                                        <integer value="1000"/>
+                                        <integer value="1000"/>
+                                    </visibilityPriorities>
+                                    <customSpacing>
+                                        <real value="3.4028234663852886e+38"/>
+                                        <real value="3.4028234663852886e+38"/>
+                                    </customSpacing>
+                                    <connections>
+                                        <binding destination="-2" name="hidden" keyPath="self.image.ions" id="wod-jo-8Je">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">NSIsNil</string>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </stackView>
+                                <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h5O-6m-stO">
+                                    <rect key="frame" x="0.0" y="0.0" width="460" height="14"/>
+                                    <subviews>
+                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="N7m-jI-iq5">
+                                            <rect key="frame" x="-2" y="0.0" width="151" height="14"/>
+                                            <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" title="Characteristic Temperature:" id="ymf-Ha-lXB">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField focusRingType="none" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="Dwb-VR-gRx">
+                                            <rect key="frame" x="153" y="0.0" width="309" height="14"/>
+                                            <textFieldCell key="cell" controlSize="small" selectable="YES" title="Multiline Label" id="c02-ah-D6A">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <connections>
+                                                <binding destination="-2" name="value" keyPath="self.image.temperature" id="jXO-UV-hED"/>
+                                            </connections>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="Dwb-VR-gRx" secondAttribute="trailing" id="dUZ-t2-Thk"/>
+                                        <constraint firstAttribute="bottom" secondItem="N7m-jI-iq5" secondAttribute="bottom" id="ywd-Ge-cDQ"/>
+                                        <constraint firstItem="N7m-jI-iq5" firstAttribute="top" secondItem="h5O-6m-stO" secondAttribute="top" id="zh9-vu-p7C"/>
+                                    </constraints>
+                                    <visibilityPriorities>
+                                        <integer value="1000"/>
+                                        <integer value="1000"/>
+                                    </visibilityPriorities>
+                                    <customSpacing>
+                                        <real value="3.4028234663852886e+38"/>
+                                        <real value="3.4028234663852886e+38"/>
+                                    </customSpacing>
+                                    <connections>
+                                        <binding destination="-2" name="hidden" keyPath="self.image.temperature" id="sKi-Gn-YIn">
+                                            <dictionary key="options">
+                                                <string key="NSValueTransformerName">NSIsNil</string>
+                                            </dictionary>
+                                        </binding>
+                                    </connections>
+                                </stackView>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="a4T-kJ-Bxl" secondAttribute="trailing" id="CcB-Ec-Sef"/>
+                                <constraint firstAttribute="trailing" secondItem="5YX-db-5Cq" secondAttribute="trailing" id="FbV-Hd-Nmx"/>
+                                <constraint firstItem="5YX-db-5Cq" firstAttribute="leading" secondItem="yE3-F7-WTW" secondAttribute="leading" id="IZK-Hk-1K3"/>
+                                <constraint firstItem="h5O-6m-stO" firstAttribute="leading" secondItem="yE3-F7-WTW" secondAttribute="leading" id="OEu-vl-yfO"/>
+                                <constraint firstAttribute="trailing" secondItem="vAF-Kr-U2c" secondAttribute="trailing" id="R2A-EK-Zb7"/>
+                                <constraint firstItem="Ajz-JH-vx4" firstAttribute="leading" secondItem="yE3-F7-WTW" secondAttribute="leading" id="V3a-pZ-TtY"/>
+                                <constraint firstAttribute="trailing" secondItem="h5O-6m-stO" secondAttribute="trailing" id="atG-ta-w9I"/>
+                                <constraint firstItem="a4T-kJ-Bxl" firstAttribute="leading" secondItem="yE3-F7-WTW" secondAttribute="leading" id="cJD-qg-M4S"/>
+                                <constraint firstItem="N7m-jI-iq5" firstAttribute="width" secondItem="UcM-sj-hfb" secondAttribute="width" id="em2-kb-E5R"/>
+                                <constraint firstItem="vAF-Kr-U2c" firstAttribute="leading" secondItem="yE3-F7-WTW" secondAttribute="leading" id="fjD-v2-V6D"/>
+                                <constraint firstAttribute="trailing" secondItem="Ajz-JH-vx4" secondAttribute="trailing" id="mEi-Ow-pJh"/>
+                                <constraint firstItem="HF8-QY-KLR" firstAttribute="width" secondItem="130-Lb-Yyg" secondAttribute="width" id="psg-5R-lc3"/>
+                                <constraint firstItem="UcM-sj-hfb" firstAttribute="width" secondItem="HF8-QY-KLR" secondAttribute="width" id="vnx-XC-fs3"/>
+                            </constraints>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="Ajz-JH-vx4" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" symbolic="YES" id="7rC-Af-Hrg"/>
-                        <constraint firstAttribute="trailing" secondItem="NED-EF-fmu" secondAttribute="trailing" constant="20" symbolic="YES" id="DRg-di-odD"/>
-                        <constraint firstAttribute="bottom" secondItem="Ajz-JH-vx4" secondAttribute="bottom" constant="20" symbolic="YES" id="Mpo-cL-F9J"/>
-                        <constraint firstItem="NED-EF-fmu" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" symbolic="YES" id="W3E-v6-gW3"/>
-                        <constraint firstAttribute="trailing" secondItem="Ajz-JH-vx4" secondAttribute="trailing" constant="20" symbolic="YES" id="Yoq-cI-2s2"/>
-                        <constraint firstAttribute="width" constant="400" id="ZBf-bn-hfb"/>
-                        <constraint firstItem="Ajz-JH-vx4" firstAttribute="top" secondItem="NED-EF-fmu" secondAttribute="bottom" constant="8" symbolic="YES" id="dgk-z9-urE"/>
-                        <constraint firstItem="NED-EF-fmu" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" symbolic="YES" id="nUl-1d-iv1"/>
+                        <constraint firstAttribute="trailing" secondItem="yE3-F7-WTW" secondAttribute="trailing" constant="20" symbolic="YES" id="8Q1-g9-lzP"/>
+                        <constraint firstAttribute="bottom" secondItem="yE3-F7-WTW" secondAttribute="bottom" constant="20" symbolic="YES" id="8X5-jX-BoL"/>
+                        <constraint firstItem="yE3-F7-WTW" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="20" symbolic="YES" id="Kwb-Ds-Ylv"/>
+                        <constraint firstAttribute="width" constant="500" id="ZBf-bn-hfb"/>
+                        <constraint firstItem="yE3-F7-WTW" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" symbolic="YES" id="uUY-oD-nOZ"/>
                     </constraints>
                 </customView>
             </subviews>
@@ -60,7 +270,7 @@
                 <constraint firstItem="c22-O7-iKe" firstAttribute="top" secondItem="kdK-Dd-KKz" secondAttribute="top" id="vov-Yy-6WP"/>
                 <constraint firstItem="c22-O7-iKe" firstAttribute="leading" secondItem="kdK-Dd-KKz" secondAttribute="leading" id="wAk-AF-Nkr"/>
             </constraints>
-            <point key="canvasLocation" x="-350" y="62"/>
+            <point key="canvasLocation" x="-350" y="61.5"/>
         </customView>
     </objects>
 </document>
