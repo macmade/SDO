@@ -155,7 +155,7 @@
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SHb-A6-6mB" customClass="Slider" customModule="SDO" customModuleProvider="target">
+                                            <slider toolTip="Double Click to Reset" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SHb-A6-6mB" customClass="Slider" customModule="SDO" customModuleProvider="target">
                                                 <rect key="frame" x="611" y="62" width="154" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="j5T-3P-1tG"/>
