@@ -252,7 +252,7 @@ You can select which images to display in the application's settings.</string>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <button toolTip="Visit the SDO Website" wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BDW-Mc-c3b" customClass="CursorButton" customModule="SDO" customModuleProvider="target">
+                                            <button toolTip="Visit the SDO website" wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BDW-Mc-c3b" customClass="CursorButton" customModule="SDO" customModuleProvider="target">
                                                 <rect key="frame" x="-7" y="-7" width="824" height="69"/>
                                                 <buttonCell key="cell" type="push" title="Visit the SDO website" bezelStyle="rounded" alignment="center" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="gtk-Db-Ivy">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
