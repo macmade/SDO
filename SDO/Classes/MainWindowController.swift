@@ -33,6 +33,7 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
     @objc private dynamic var images     = [ Image ]()
     @objc private dynamic var loading    = true
     @objc private dynamic var refreshing = false
+    @objc private dynamic var empty      = false
     @objc private dynamic var lastRefresh: String?
 
     @objc private dynamic var imageSize = Preferences.shared.imageSize
@@ -220,6 +221,8 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
         {
             $0.image
         }
+
+        self.empty = self.images.isEmpty
     }
 
     public func numberOfSections( in collectionView: NSCollectionView ) -> Int

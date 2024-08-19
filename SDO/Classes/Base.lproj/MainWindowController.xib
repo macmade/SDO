@@ -75,6 +75,38 @@
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="XrR-fo-5Vn">
                                 <rect key="frame" x="0.0" y="0.0" width="810" height="655"/>
                                 <subviews>
+                                    <textField wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ASv-H6-x5b">
+                                        <rect key="frame" x="196" y="361" width="418" height="32"/>
+                                        <textFieldCell key="cell" selectable="YES" alignment="center" id="Jte-6D-xKv">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <string key="title">All available images are disabled.
+You can select which images to display in the application's settings.</string>
+                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <binding destination="-2" name="hidden" keyPath="self.empty" id="wTy-m7-b48">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </textField>
+                                    <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="v69-G0-dgF">
+                                        <rect key="frame" x="345" y="314" width="121" height="32"/>
+                                        <buttonCell key="cell" type="push" title="Open Settings" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kRe-4y-CWD">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="showPreferences:" target="-2" id="2Np-qe-FPb"/>
+                                            <binding destination="-2" name="hidden" keyPath="self.empty" id="a8m-Yt-E2E">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
+                                    </button>
                                     <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lsH-VW-zqs">
                                         <rect key="frame" x="10" y="99" width="790" height="556"/>
                                         <clipView key="contentView" drawsBackground="NO" id="lgf-2J-p7u">
@@ -272,12 +304,18 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="gPg-KI-9p8" firstAttribute="leading" secondItem="XrR-fo-5Vn" secondAttribute="leading" id="DcS-r0-XSW"/>
+                                    <constraint firstItem="ASv-H6-x5b" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="XrR-fo-5Vn" secondAttribute="leading" constant="20" symbolic="YES" id="JrK-N6-AYQ"/>
+                                    <constraint firstItem="ASv-H6-x5b" firstAttribute="centerX" secondItem="XrR-fo-5Vn" secondAttribute="centerX" id="L2k-gs-PnP"/>
                                     <constraint firstAttribute="bottom" secondItem="7ab-ar-tE4" secondAttribute="bottom" id="Nc2-pN-oaf"/>
+                                    <constraint firstItem="v69-G0-dgF" firstAttribute="centerX" secondItem="ASv-H6-x5b" secondAttribute="centerX" id="PKl-07-KUh"/>
+                                    <constraint firstItem="ASv-H6-x5b" firstAttribute="centerY" secondItem="lsH-VW-zqs" secondAttribute="centerY" id="Qfr-U1-h6O"/>
                                     <constraint firstAttribute="trailing" secondItem="7ab-ar-tE4" secondAttribute="trailing" id="UhX-jb-eZr"/>
                                     <constraint firstAttribute="trailing" secondItem="gPg-KI-9p8" secondAttribute="trailing" id="Vm8-an-sYA"/>
                                     <constraint firstItem="lsH-VW-zqs" firstAttribute="leading" secondItem="XrR-fo-5Vn" secondAttribute="leading" constant="10" id="Xav-K8-w8Y"/>
                                     <constraint firstAttribute="trailing" secondItem="lsH-VW-zqs" secondAttribute="trailing" constant="10" id="YAM-tE-9eh"/>
                                     <constraint firstItem="7ab-ar-tE4" firstAttribute="top" secondItem="gPg-KI-9p8" secondAttribute="bottom" id="eMa-Q8-wBJ"/>
+                                    <constraint firstItem="v69-G0-dgF" firstAttribute="top" secondItem="ASv-H6-x5b" secondAttribute="bottom" constant="20" id="iDC-wI-N9J"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ASv-H6-x5b" secondAttribute="trailing" constant="20" symbolic="YES" id="lPJ-dN-tkw"/>
                                     <constraint firstItem="lsH-VW-zqs" firstAttribute="top" secondItem="XrR-fo-5Vn" secondAttribute="top" id="rsY-kv-fsf"/>
                                     <constraint firstItem="7ab-ar-tE4" firstAttribute="leading" secondItem="XrR-fo-5Vn" secondAttribute="leading" id="yQJ-BP-jTd"/>
                                     <constraint firstItem="gPg-KI-9p8" firstAttribute="top" secondItem="lsH-VW-zqs" secondAttribute="bottom" id="ygR-Pz-oDJ"/>
