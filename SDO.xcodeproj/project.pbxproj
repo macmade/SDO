@@ -10,6 +10,9 @@
 		0514B5652C723AA400F598BA /* Defaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0514B5642C723AA400F598BA /* Defaults.plist */; };
 		0514B5692C723C1B00F598BA /* NSException.m in Sources */ = {isa = PBXBuildFile; fileRef = 0514B5672C723C1B00F598BA /* NSException.m */; };
 		0514B56B2C72429000F598BA /* PreferencesImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0514B56A2C72429000F598BA /* PreferencesImageItem.swift */; };
+		0514B56D2C7309D800F598BA /* VideoDownloadBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0514B56C2C7309D800F598BA /* VideoDownloadBackgroundView.swift */; };
+		0514B56F2C730A6900F598BA /* BlackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0514B56E2C730A6900F598BA /* BlackView.swift */; };
+		0514B5712C730C6100F598BA /* BytesToString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0514B5702C730C6100F598BA /* BytesToString.swift */; };
 		051A78A22C70D993006328DF /* GitHubUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A78A12C70D993006328DF /* GitHubUpdater.swift */; };
 		05375F162C715F3900730090 /* CursorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05375F152C715F3900730090 /* CursorButton.swift */; };
 		05375F182C71965D00730090 /* ImageInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05375F172C71965D00730090 /* ImageInfo.swift */; };
@@ -60,6 +63,9 @@
 		0514B5672C723C1B00F598BA /* NSException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSException.m; sourceTree = "<group>"; };
 		0514B5682C723C1B00F598BA /* NSException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSException.h; sourceTree = "<group>"; };
 		0514B56A2C72429000F598BA /* PreferencesImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesImageItem.swift; sourceTree = "<group>"; };
+		0514B56C2C7309D800F598BA /* VideoDownloadBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDownloadBackgroundView.swift; sourceTree = "<group>"; };
+		0514B56E2C730A6900F598BA /* BlackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlackView.swift; sourceTree = "<group>"; };
+		0514B5702C730C6100F598BA /* BytesToString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BytesToString.swift; sourceTree = "<group>"; };
 		051A78A12C70D993006328DF /* GitHubUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUpdater.swift; sourceTree = "<group>"; };
 		05375F152C715F3900730090 /* CursorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CursorButton.swift; sourceTree = "<group>"; };
 		05375F172C71965D00730090 /* ImageInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfo.swift; sourceTree = "<group>"; };
@@ -189,6 +195,8 @@
 				05646BEE2685055F00707676 /* AboutWindowController.swift */,
 				05646BF02685058700707676 /* AboutWindowController.xib */,
 				05646BAF2685020A00707676 /* ApplicationDelegate.swift */,
+				0514B56E2C730A6900F598BA /* BlackView.swift */,
+				0514B5702C730C6100F598BA /* BytesToString.swift */,
 				05F0C4A82C711F2C00CBCDD5 /* CollectionViewLayout.swift */,
 				05375F152C715F3900730090 /* CursorButton.swift */,
 				051A78A12C70D993006328DF /* GitHubUpdater.swift */,
@@ -213,6 +221,7 @@
 				05F0C4842C70ECFA00CBCDD5 /* RuntimeError.swift */,
 				05F0C4802C70E74700CBCDD5 /* SDO.swift */,
 				05F0C49E2C7111EB00CBCDD5 /* Slider.swift */,
+				0514B56C2C7309D800F598BA /* VideoDownloadBackgroundView.swift */,
 				05375F192C719F7900730090 /* VideoWindowController.swift */,
 				05375F1B2C719F8800730090 /* VideoWindowController.xib */,
 			);
@@ -458,6 +467,7 @@
 			files = (
 				051A78A22C70D993006328DF /* GitHubUpdater.swift in Sources */,
 				05F0C4832C70E9A000CBCDD5 /* Image.swift in Sources */,
+				0514B56F2C730A6900F598BA /* BlackView.swift in Sources */,
 				0570C0192C722D9D0005089F /* PreferencesWindowController.swift in Sources */,
 				05F0C48B2C70F6D700CBCDD5 /* ImageBackgroundView.swift in Sources */,
 				05375F182C71965D00730090 /* ImageInfo.swift in Sources */,
@@ -473,10 +483,12 @@
 				05F0C4A92C711F2C00CBCDD5 /* CollectionViewLayout.swift in Sources */,
 				05F0C4812C70E74700CBCDD5 /* SDO.swift in Sources */,
 				05F0C48F2C71005200CBCDD5 /* InfoViewController.swift in Sources */,
+				0514B5712C730C6100F598BA /* BytesToString.swift in Sources */,
 				055FBBA72C6F82B7003B51AC /* NSView.swift in Sources */,
 				05646BEF2685055F00707676 /* AboutWindowController.swift in Sources */,
 				0514B5692C723C1B00F598BA /* NSException.m in Sources */,
 				05B999772C6ED45500DF4C08 /* MainWindowController.swift in Sources */,
+				0514B56D2C7309D800F598BA /* VideoDownloadBackgroundView.swift in Sources */,
 				0514B56B2C72429000F598BA /* PreferencesImageItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

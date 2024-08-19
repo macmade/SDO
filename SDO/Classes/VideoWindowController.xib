@@ -21,9 +21,9 @@
             <rect key="contentRect" x="196" y="240" width="600" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="3008" height="1228"/>
             <value key="minSize" type="size" width="600" height="600"/>
-            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
+            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ" customClass="BlackView" customModule="SDO" customModuleProvider="target">
                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <avPlayerView controlsStyle="inline" showsFullScreenToggleButton="YES" showsSharingServiceButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="URz-Ub-stj">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -34,28 +34,83 @@
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="WQ7-MR-k4L">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <subviews>
-                            <progressIndicator maxValue="100" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="RWP-jY-rK9">
-                                <rect key="frame" x="284" y="304" width="32" height="32"/>
+                            <imageView horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" alphaValue="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="SLK-fT-aNE">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSApplicationIcon" id="cjc-lw-U0M"/>
                                 <connections>
-                                    <binding destination="-2" name="animate" keyPath="self.loading" id="bdB-Ps-ufn"/>
+                                    <binding destination="-2" name="hidden" keyPath="self.image" id="dmM-40-aUR">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSIsNil</string>
+                                        </dictionary>
+                                    </binding>
+                                    <binding destination="-2" name="value" keyPath="self.image" id="m64-pE-0y4"/>
                                 </connections>
-                            </progressIndicator>
-                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bwt-T5-aIE">
-                                <rect key="frame" x="207" y="268" width="186" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Loading Video - Please Wait..." id="TJu-Em-sVB">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            </imageView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="pQh-8J-qbi" customClass="VideoDownloadBackgroundView" customModule="SDO" customModuleProvider="target">
+                                <rect key="frame" x="101" y="182" width="398" height="237"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2bA-gn-ngk">
+                                        <rect key="frame" x="135" y="86" width="128" height="134"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="Cw4-i3-iFl"/>
+                                            <constraint firstAttribute="width" constant="128" id="oke-ux-cnt"/>
+                                        </constraints>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="video.circle.fill" catalog="system" id="UDB-Mk-b6q"/>
+                                    </imageView>
+                                    <progressIndicator maxValue="100" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="RWP-jY-rK9">
+                                        <rect key="frame" x="183" y="49" width="32" height="32"/>
+                                        <connections>
+                                            <binding destination="-2" name="hidden" keyPath="self.progressIsIndeterminate" id="YrY-uY-XyI">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                </dictionary>
+                                            </binding>
+                                            <binding destination="-2" name="animate" keyPath="self.loading" id="bdB-Ps-ufn"/>
+                                        </connections>
+                                    </progressIndicator>
+                                    <progressIndicator maxValue="100" doubleValue="50" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="XKt-nX-pRy">
+                                        <rect key="frame" x="20" y="55" width="358" height="20"/>
+                                        <connections>
+                                            <binding destination="-2" name="animate" keyPath="self.loading" id="59v-Nt-1Uu"/>
+                                            <binding destination="-2" name="hidden" keyPath="self.progressIsIndeterminate" id="bf5-Ac-0Bd"/>
+                                            <binding destination="-2" name="maxValue" keyPath="self.progressMaxValue" id="rLl-AP-ZRh"/>
+                                            <binding destination="-2" name="value" keyPath="self.progressValue" previousBinding="rLl-AP-ZRh" id="4wL-JC-MV8"/>
+                                        </connections>
+                                    </progressIndicator>
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bwt-T5-aIE">
+                                        <rect key="frame" x="106" y="20" width="186" height="16"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Loading Video - Please Wait..." id="TJu-Em-sVB">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <binding destination="-2" name="value" keyPath="self.progressText" id="xLA-hg-NGj"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="XKt-nX-pRy" firstAttribute="centerX" secondItem="RWP-jY-rK9" secondAttribute="centerX" id="8yG-Dz-RqX"/>
+                                    <constraint firstAttribute="width" constant="398" id="DjH-nU-tBC"/>
+                                    <constraint firstAttribute="bottom" secondItem="bwt-T5-aIE" secondAttribute="bottom" constant="20" symbolic="YES" id="HER-fz-YVL"/>
+                                    <constraint firstItem="RWP-jY-rK9" firstAttribute="centerX" secondItem="2bA-gn-ngk" secondAttribute="centerX" id="K7B-cG-mcR"/>
+                                    <constraint firstItem="XKt-nX-pRy" firstAttribute="centerY" secondItem="RWP-jY-rK9" secondAttribute="centerY" id="V3e-v8-dCh"/>
+                                    <constraint firstAttribute="trailing" secondItem="XKt-nX-pRy" secondAttribute="trailing" constant="20" symbolic="YES" id="YjJ-xe-sA3"/>
+                                    <constraint firstItem="bwt-T5-aIE" firstAttribute="centerX" secondItem="XKt-nX-pRy" secondAttribute="centerX" id="cXX-AD-AGB"/>
+                                    <constraint firstItem="RWP-jY-rK9" firstAttribute="top" secondItem="2bA-gn-ngk" secondAttribute="bottom" constant="8" symbolic="YES" id="day-KG-nbG"/>
+                                    <constraint firstItem="2bA-gn-ngk" firstAttribute="top" secondItem="pQh-8J-qbi" secondAttribute="top" constant="20" symbolic="YES" id="mbu-As-V6n"/>
+                                    <constraint firstItem="XKt-nX-pRy" firstAttribute="leading" secondItem="pQh-8J-qbi" secondAttribute="leading" constant="20" symbolic="YES" id="mhp-70-mvy"/>
+                                    <constraint firstItem="bwt-T5-aIE" firstAttribute="top" secondItem="XKt-nX-pRy" secondAttribute="bottom" constant="20" id="xpg-Gj-teV"/>
+                                </constraints>
+                            </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="RWP-jY-rK9" firstAttribute="centerY" secondItem="WQ7-MR-k4L" secondAttribute="centerY" constant="-20" id="Cim-ql-sPZ"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="bwt-T5-aIE" secondAttribute="trailing" constant="20" symbolic="YES" id="McD-RA-p7b"/>
-                            <constraint firstItem="bwt-T5-aIE" firstAttribute="centerX" secondItem="RWP-jY-rK9" secondAttribute="centerX" id="Xof-Xo-8BS"/>
-                            <constraint firstItem="bwt-T5-aIE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WQ7-MR-k4L" secondAttribute="leading" constant="20" symbolic="YES" id="bsb-wQ-a4p"/>
-                            <constraint firstItem="bwt-T5-aIE" firstAttribute="top" secondItem="RWP-jY-rK9" secondAttribute="bottom" constant="20" id="c9g-Uv-F8d"/>
-                            <constraint firstItem="RWP-jY-rK9" firstAttribute="centerX" secondItem="WQ7-MR-k4L" secondAttribute="centerX" id="jnm-vI-xLt"/>
+                            <constraint firstItem="SLK-fT-aNE" firstAttribute="leading" secondItem="WQ7-MR-k4L" secondAttribute="leading" id="6jm-MI-Etj"/>
+                            <constraint firstAttribute="bottom" secondItem="SLK-fT-aNE" secondAttribute="bottom" id="EIC-Mb-qy8"/>
+                            <constraint firstItem="pQh-8J-qbi" firstAttribute="centerY" secondItem="WQ7-MR-k4L" secondAttribute="centerY" id="Flp-n9-dIN"/>
+                            <constraint firstAttribute="trailing" secondItem="SLK-fT-aNE" secondAttribute="trailing" id="Ofm-64-LYc"/>
+                            <constraint firstItem="pQh-8J-qbi" firstAttribute="centerX" secondItem="WQ7-MR-k4L" secondAttribute="centerX" id="WJI-YB-os3"/>
+                            <constraint firstItem="SLK-fT-aNE" firstAttribute="top" secondItem="WQ7-MR-k4L" secondAttribute="top" id="om0-Eq-nBd"/>
                         </constraints>
                         <connections>
                             <binding destination="-2" name="hidden" keyPath="self.loading" id="3vx-k1-8x5">
@@ -80,4 +135,8 @@
             <point key="canvasLocation" x="139" y="144"/>
         </window>
     </objects>
+    <resources>
+        <image name="NSApplicationIcon" width="32" height="32"/>
+        <image name="video.circle.fill" catalog="system" width="15" height="15"/>
+    </resources>
 </document>

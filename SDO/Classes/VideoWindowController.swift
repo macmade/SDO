@@ -26,14 +26,19 @@ import AVKit
 import Cocoa
 
 @objc
-public class VideoWindowController: NSWindowController, NSWindowDelegate
+public class VideoWindowController: NSWindowController, NSWindowDelegate, URLSessionDownloadDelegate
 {
     private static var controllers = [ VideoWindowController ]()
 
-    @objc private dynamic var title:          String
-    @objc private dynamic var url:            URL
-    @objc private dynamic var downloadedFile: URL?
-    @objc private dynamic var loading       = true
+    @objc private dynamic var title:                    String
+    @objc private dynamic var image:                    NSImage?
+    @objc private dynamic var url:                      URL
+    @objc private dynamic var downloadedFile:           URL?
+    @objc private dynamic var loading                 = true
+    @objc private dynamic var progressIsIndeterminate = true
+    @objc private dynamic var progressValue           = Int64( 0 )
+    @objc private dynamic var progressMaxValue        = Int64( 0 )
+    @objc private dynamic var progressText:             String?
 
     @IBOutlet private var player: AVPlayerView?
 
@@ -45,7 +50,7 @@ public class VideoWindowController: NSWindowController, NSWindowDelegate
             return false
         }
 
-        let controller = VideoWindowController( title: image.title, url: url )
+        let controller = VideoWindowController( title: image.title, url: url, image: image.image )
 
         self.controllers.append( controller )
         controller.window?.center()
@@ -54,10 +59,11 @@ public class VideoWindowController: NSWindowController, NSWindowDelegate
         return true
     }
 
-    private init( title: String, url: URL )
+    private init( title: String, url: URL, image: NSImage? )
     {
         self.title = title
         self.url   = url
+        self.image = image
 
         super.init( window: nil )
     }
@@ -126,62 +132,80 @@ public class VideoWindowController: NSWindowController, NSWindowDelegate
 
     private func download()
     {
-        self.loading = true
+        self.loading                 = true
+        self.progressIsIndeterminate = true
+        self.progressText            = "Downloading Video - Please Wait..."
 
-        let session = URLSession( configuration: .ephemeral )
+        let session = URLSession( configuration: .ephemeral, delegate: self, delegateQueue: nil )
         let request = URLRequest( url: self.url )
         let task    = session.downloadTask( with: request )
-        {
-            ( tempURL, response, error ) in
-
-            if let error = error
-            {
-                self.showError( message: error.localizedDescription )
-
-                return
-            }
-
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200
-            else
-            {
-                self.showError( message: "An unknown error occured." )
-
-                return
-            }
-
-            guard let tempURL = tempURL
-            else
-            {
-                self.showError( message: "An unknown error occured." )
-
-                return
-            }
-
-            let copy = URL( fileURLWithPath: NSTemporaryDirectory() ).appendingPathComponent( NSUUID().uuidString ).appendingPathExtension( "mp4" )
-
-            do
-            {
-                try FileManager.default.copyItem( at: tempURL, to: copy )
-            }
-            catch
-            {
-                self.showError( message: error.localizedDescription )
-
-                return
-            }
-
-            DispatchQueue.main.async
-            {
-                self.loading        = false
-                self.downloadedFile = copy
-
-                let player          = AVPlayer( url: copy )
-                self.player?.player = player
-
-                player.play()
-            }
-        }
 
         task.resume()
+    }
+
+    public func urlSession( _ session: URLSession, task: URLSessionTask, didCompleteWithError error: ( any Error )? )
+    {
+        if let error = error
+        {
+            self.showError( message: error.localizedDescription )
+        }
+    }
+
+    public func urlSession( _ session: URLSession, didBecomeInvalidWithError error: ( any Error )? )
+    {
+        if let error = error
+        {
+            self.showError( message: error.localizedDescription )
+        }
+        else
+        {
+            self.showError( message: "Unknown error" )
+        }
+    }
+
+    public func urlSession( _ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL )
+    {
+        guard let response = downloadTask.response as? HTTPURLResponse, response.statusCode == 200
+        else
+        {
+            self.showError( message: "An unknown error occured." )
+
+            return
+        }
+
+        let copy = URL( fileURLWithPath: NSTemporaryDirectory() ).appendingPathComponent( NSUUID().uuidString ).appendingPathExtension( "mp4" )
+
+        do
+        {
+            try FileManager.default.copyItem( at: location, to: copy )
+        }
+        catch
+        {
+            self.showError( message: error.localizedDescription )
+
+            return
+        }
+
+        DispatchQueue.main.async
+        {
+            self.loading        = false
+            self.downloadedFile = copy
+
+            let player          = AVPlayer( url: copy )
+            self.player?.player = player
+
+            player.play()
+        }
+    }
+
+    public func urlSession( _ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64 )
+    {
+        DispatchQueue.main.async
+        {
+            self.progressIsIndeterminate = false
+            self.progressValue           = totalBytesWritten
+            self.progressMaxValue        = totalBytesExpectedToWrite
+            self.progressText            = "Downloading \( BytesToString.string( from: totalBytesWritten ) ) of \( BytesToString.string( from: totalBytesExpectedToWrite ) )"
+        }
     }
 }
