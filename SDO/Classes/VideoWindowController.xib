@@ -15,8 +15,8 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="QvC-M9-y7g">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" titlebarAppearsTransparent="YES" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="600" height="600"/>
             <rect key="screenRect" x="0.0" y="0.0" width="3008" height="1228"/>
@@ -26,7 +26,7 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <avPlayerView controlsStyle="inline" showsFullScreenToggleButton="YES" showsSharingServiceButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="URz-Ub-stj">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="570"/>
                         <connections>
                             <binding destination="-2" name="hidden" keyPath="self.loading" id="XJX-od-JpU"/>
                         </connections>
@@ -60,12 +60,12 @@
                                     <progressIndicator maxValue="100" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="RWP-jY-rK9">
                                         <rect key="frame" x="183" y="49" width="32" height="32"/>
                                         <connections>
+                                            <binding destination="-2" name="animate" keyPath="self.loading" id="bdB-Ps-ufn"/>
                                             <binding destination="-2" name="hidden" keyPath="self.progressIsIndeterminate" id="YrY-uY-XyI">
                                                 <dictionary key="options">
                                                     <string key="NSValueTransformerName">NSNegateBoolean</string>
                                                 </dictionary>
                                             </binding>
-                                            <binding destination="-2" name="animate" keyPath="self.loading" id="bdB-Ps-ufn"/>
                                         </connections>
                                     </progressIndicator>
                                     <progressIndicator maxValue="100" doubleValue="50" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="XKt-nX-pRy">
@@ -122,7 +122,7 @@
                     </customView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="URz-Ub-stj" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="8mv-UU-xtj"/>
+                    <constraint firstItem="URz-Ub-stj" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="30" id="8mv-UU-xtj"/>
                     <constraint firstAttribute="bottom" secondItem="URz-Ub-stj" secondAttribute="bottom" id="8sO-U5-avj"/>
                     <constraint firstItem="URz-Ub-stj" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="IGg-sS-TDm"/>
                     <constraint firstItem="WQ7-MR-k4L" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" id="OaD-rf-dfF"/>
