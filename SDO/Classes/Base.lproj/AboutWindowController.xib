@@ -35,7 +35,7 @@
                             </imageView>
                             <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="c3B-11-Nnn">
                                 <rect key="frame" x="226" y="149" width="66" height="31"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="Mhf-3U-WaO">
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" title="Label" id="Mhf-3U-WaO">
                                     <font key="font" textStyle="largeTitle" name=".SFNS-Regular"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -46,7 +46,7 @@
                             </textField>
                             <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yLd-6Z-IaF">
                                 <rect key="frame" x="226" y="120" width="46" height="21"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="GPR-R9-Yud">
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" title="Label" id="GPR-R9-Yud">
                                     <font key="font" textStyle="title2" name=".SFNS-Regular"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -57,7 +57,7 @@
                             </textField>
                             <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qK4-am-2Hl">
                                 <rect key="frame" x="226" y="70" width="37" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="CqC-AJ-UHI">
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" title="Label" id="CqC-AJ-UHI">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

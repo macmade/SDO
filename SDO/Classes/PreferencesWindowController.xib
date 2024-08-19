@@ -28,9 +28,9 @@
                     <visualEffectView blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="xLH-uY-t5K">
                         <rect key="frame" x="0.0" y="0.0" width="500" height="400"/>
                         <subviews>
-                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KxX-aq-oPf">
+                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="KxX-aq-oPf">
                                 <rect key="frame" x="18" y="349" width="109" height="16"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Available Images:" id="GdE-5i-Og8">
+                                <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" title="Available Images:" id="GdE-5i-Og8">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -191,9 +191,9 @@
                                     <binding destination="-2" name="value" keyPath="self.allSelected" id="UNH-Ir-bCR"/>
                                 </connections>
                             </button>
-                            <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YNf-2F-XxU">
+                            <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="YNf-2F-XxU">
                                 <rect key="frame" x="18" y="107" width="405" height="14"/>
-                                <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Note: You can re-order the images by dragging them to the desired position." id="pJ9-tJ-eUg">
+                                <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" selectable="YES" title="Note: You can re-order the images by dragging them to the desired position." id="pJ9-tJ-eUg">
                                     <font key="font" metaFont="smallSystem"/>
                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>

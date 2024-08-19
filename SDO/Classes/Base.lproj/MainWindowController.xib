@@ -45,9 +45,9 @@
                                             <binding destination="-2" name="animate" keyPath="self.loading" id="mpR-no-rSB"/>
                                         </connections>
                                     </progressIndicator>
-                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j2T-J9-ZVu">
+                                    <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="j2T-J9-ZVu">
                                         <rect key="frame" x="256" y="127" width="299" height="16"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Loading Latest Images from SDO - Please Wait..." id="I2G-a2-NGE">
+                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" selectable="YES" title="Loading Latest Images from SDO - Please Wait..." id="I2G-a2-NGE">
                                             <font key="font" usesAppearanceFont="YES"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -170,7 +170,7 @@ You can select which images to display in the application's settings.</string>
                                             </progressIndicator>
                                             <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="hud-Og-I2X">
                                                 <rect key="frame" x="83" y="71" width="33" height="14"/>
-                                                <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" title="Label" id="FAB-aE-Ggs">
+                                                <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" selectable="YES" title="Label" id="FAB-aE-Ggs">
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -182,7 +182,7 @@ You can select which images to display in the application's settings.</string>
                                             </textField>
                                             <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="4l7-W1-GSj">
                                                 <rect key="frame" x="518" y="71" width="65" height="14"/>
-                                                <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" title="Image Size:" id="bZD-mr-uz0">
+                                                <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" selectable="YES" title="Image Size:" id="bZD-mr-uz0">
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -202,7 +202,7 @@ You can select which images to display in the application's settings.</string>
                                             </slider>
                                             <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="tJV-OI-gvg">
                                                 <rect key="frame" x="745" y="71" width="33" height="14"/>
-                                                <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" title="Label" id="w8R-2V-xbC">
+                                                <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" selectable="YES" title="Label" id="w8R-2V-xbC">
                                                     <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -228,25 +228,25 @@ You can select which images to display in the application's settings.</string>
                                             <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="mJo-TZ-ywE">
                                                 <rect key="frame" x="0.0" y="55" width="810" height="5"/>
                                             </box>
-                                            <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tqz-6a-qxs">
+                                            <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="Tqz-6a-qxs">
                                                 <rect key="frame" x="203" y="36" width="404" height="11"/>
-                                                <textFieldCell key="cell" controlSize="mini" lineBreakMode="clipping" title="This software is not affiliated with or endorsed by the NASA's Solar Dynamics Observatory." id="399-DP-73t">
+                                                <textFieldCell key="cell" controlSize="mini" lineBreakMode="truncatingTail" selectable="YES" title="This software is not affiliated with or endorsed by the NASA's Solar Dynamics Observatory." id="399-DP-73t">
                                                     <font key="font" metaFont="miniSystem"/>
                                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="TKB-Iv-pDI">
+                                            <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="TKB-Iv-pDI">
                                                 <rect key="frame" x="207" y="23" width="397" height="11"/>
-                                                <textFieldCell key="cell" controlSize="mini" lineBreakMode="clipping" title="All data and images are courtesy of NASA/SDO and the AIA, EVE, and HMI science teams." id="EV6-yG-slw">
+                                                <textFieldCell key="cell" controlSize="mini" lineBreakMode="truncatingTail" selectable="YES" title="All data and images are courtesy of NASA/SDO and the AIA, EVE, and HMI science teams." id="EV6-yG-slw">
                                                     <font key="font" metaFont="miniSystem"/>
                                                     <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YSg-aV-hdf">
+                                            <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="YSg-aV-hdf">
                                                 <rect key="frame" x="309" y="10" width="192" height="11"/>
-                                                <textFieldCell key="cell" controlSize="mini" lineBreakMode="clipping" title="Click here to visit the official SDO website." id="jAV-Jr-YvQ">
+                                                <textFieldCell key="cell" controlSize="mini" lineBreakMode="truncatingTail" selectable="YES" title="Click here to visit the official SDO website." id="jAV-Jr-YvQ">
                                                     <font key="font" metaFont="miniSystem"/>
                                                     <color key="textColor" name="linkColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
