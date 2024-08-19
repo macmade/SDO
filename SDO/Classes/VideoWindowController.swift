@@ -88,6 +88,49 @@ public class VideoWindowController: NSWindowController, NSWindowDelegate, URLSes
         self.download()
     }
 
+    @IBAction
+    public func saveDocument( _ sender: Any? )
+    {
+        guard let movie  = self.downloadedFile,
+              let window = self.window,
+              FileManager.default.fileExists( atPath: movie.path )
+        else
+        {
+            NSSound.beep()
+
+            return
+        }
+
+        let panel                  = NSSavePanel()
+        panel.canCreateDirectories = true
+        panel.allowsOtherFileTypes = false
+        panel.allowedContentTypes  = [ .mpeg4Movie ]
+        panel.nameFieldStringValue = self.url.lastPathComponent
+
+        panel.beginSheetModal( for: window )
+        {
+            guard $0 == .OK, let destination = panel.url
+            else
+            {
+                return
+            }
+
+            do
+            {
+                let data = try Data( contentsOf: movie )
+
+                try data.write( to: destination )
+            }
+            catch
+            {
+                DispatchQueue.main.async
+                {
+                    NSAlert( error: error ).beginSheetModal( for: window )
+                }
+            }
+        }
+    }
+
     public func windowWillClose( _ notification: Notification )
     {
         VideoWindowController.controllers.removeAll

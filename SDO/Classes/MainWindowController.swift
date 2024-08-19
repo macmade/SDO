@@ -137,6 +137,120 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
         }
     }
 
+    private func showError( title: String, message: String )
+    {
+        let alert             = NSAlert()
+        alert.messageText     = title
+        alert.informativeText = message
+
+        if let window = self.window
+        {
+            alert.beginSheetModal( for: window )
+        }
+        else
+        {
+            alert.runModal()
+        }
+    }
+
+    private func showError( error: Error )
+    {
+        let alert = NSAlert( error: error )
+
+        if let window = self.window
+        {
+            alert.beginSheetModal( for: window )
+        }
+        else
+        {
+            alert.runModal()
+        }
+    }
+
+    @IBAction
+    public func saveDocument( _ sender: Any? )
+    {
+        let images: [ ( title: String, file: String, image: NSImage ) ] = self.images.compactMap
+        {
+            if let image = $0.image
+            {
+                return ( $0.title, $0.file, image )
+            }
+
+            return nil
+        }
+
+        guard let window = self.window, self.loading == false, images.isEmpty == false
+        else
+        {
+            NSSound.beep()
+
+            return
+        }
+
+        let panel                     = NSOpenPanel()
+        panel.canChooseFiles          = false
+        panel.canChooseDirectories    = true
+        panel.allowsMultipleSelection = false
+        panel.canCreateDirectories    = true
+
+        panel.beginSheetModal( for: window )
+        {
+            var isDir = ObjCBool( false )
+
+            guard $0 == .OK,
+                  let url = panel.url,
+                  FileManager.default.fileExists( atPath: url.path, isDirectory: &isDir ),
+                  isDir.boolValue
+            else
+            {
+                return
+            }
+
+            images.forEach
+            {
+                guard let data = $0.image.tiffRepresentation
+                else
+                {
+                    self.showError( title: "Error", message: "Could not save image: \( $0.title )" )
+
+                    return
+                }
+
+                let name = "\( NSString( string: $0.file ).deletingPathExtension ).tif"
+
+                do
+                {
+                    try data.write( to: self.uniqueFilename( name: name, inDirectory: url ) )
+                }
+                catch
+                {
+                    self.showError( error: error )
+                }
+            }
+        }
+    }
+
+    private func uniqueFilename( name: String, inDirectory url: URL ) -> URL
+    {
+        let ext   = ( name as NSString ).pathExtension
+        let name  = ( name as NSString ).deletingPathExtension
+        var index = 0
+
+        while true
+        {
+            let num = index > 0 ? "-\( index )" : ""
+            let url = url.appendingPathComponent( "\( name )\( num ).\( ext )" )
+
+            if FileManager.default.fileExists( atPath: url.path ) == false
+            {
+                return url
+            }
+
+            index += 1
+        }
+    }
+
     @IBAction
     public func resetImageSize( _ sender: Any? )
     {
@@ -159,18 +273,7 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
             {
                 if let _ = images.first( where: { $0.image == nil } )
                 {
-                    let alert             = NSAlert()
-                    alert.messageText     = "Missing Images"
-                    alert.informativeText = "Some images could not be downloaded at this time."
-
-                    if let window = self.window
-                    {
-                        alert.beginSheetModal( for: window )
-                    }
-                    else
-                    {
-                        alert.runModal()
-                    }
+                    self.showError( title: "Missing Images", message: "Some images could not be downloaded at this time." )
                 }
 
                 self.loading    = false

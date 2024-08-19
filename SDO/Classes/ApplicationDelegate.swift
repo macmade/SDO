@@ -121,6 +121,12 @@ public class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDeleg
         }
     }
 
+    @IBAction
+    public func saveDocument( _ sender: Any? )
+    {
+        self.mainWindowController.saveDocument( sender )
+    }
+
     public func showQuickLookPanel( image: Image )
     {
         if self.previewItemURL == nil
