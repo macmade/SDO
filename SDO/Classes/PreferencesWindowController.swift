@@ -152,11 +152,6 @@ public class PreferencesWindowController: NSWindowController, NSTableViewDelegat
             return
         }
 
-        let button = view.subviews.first
-        {
-            $0.identifier?.rawValue == "InfoButton"
-        }
-
         if let popover = self.infoPopover, popover.isShown
         {
             popover.close()
@@ -169,7 +164,14 @@ public class PreferencesWindowController: NSWindowController, NSTableViewDelegat
         self.infoPopover              = popover
         self.infoController           = controller
 
-        popover.show( relativeTo: .zero, of: button ?? view, preferredEdge: .maxY )
+        if let button = view.findSubview( identifier: NSUserInterfaceItemIdentifier( "InfoButton" ), recursively: true )
+        {
+            popover.show( relativeTo: .zero, of: button, preferredEdge: .maxY )
+        }
+        else
+        {
+            popover.show( relativeTo: .zero, of: view, preferredEdge: .minY )
+        }
     }
 
     public func tableView( _ tableView: NSTableView, pasteboardWriterForRow row: Int ) -> ( any NSPasteboardWriting )?

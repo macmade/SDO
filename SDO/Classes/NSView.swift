@@ -37,4 +37,22 @@ public extension NSView
         self.addConstraint( NSLayoutConstraint( item: view, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0 ) )
         self.addConstraint( NSLayoutConstraint( item: view, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0 ) )
     }
+
+    func findSubview( identifier: NSUserInterfaceItemIdentifier, recursively: Bool ) -> NSView?
+    {
+        for v in self.subviews
+        {
+            if v.identifier == identifier
+            {
+                return v
+            }
+
+            if recursively, let v = v.findSubview( identifier: identifier, recursively: recursively )
+            {
+                return v
+            }
+        }
+
+        return nil
+    }
 }
