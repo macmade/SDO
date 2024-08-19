@@ -43,6 +43,8 @@ public class PreferencesWindowController: NSWindowController, NSTableViewDelegat
         }
     }
 
+    @objc public dynamic var allSelected = false
+
     @IBOutlet private var imagesController: NSArrayController?
     @IBOutlet private var imagesTableView:  NSTableView?
 
@@ -70,6 +72,27 @@ public class PreferencesWindowController: NSWindowController, NSTableViewDelegat
         self.automaticRefresh = Preferences.shared.automaticRefresh
 
         self.refreshImages()
+    }
+
+    @IBAction
+    private func toggleSelection( _ sender: Any? )
+    {
+        guard let checkbox = sender as? NSButton,
+              let images   = self.imagesController?.content as? [ PreferencesImageItem ]
+        else
+        {
+            return
+        }
+
+        let checked = checkbox.intValue != 0
+
+        images.forEach
+        {
+            $0.isChecked = checked
+        }
+
+        self.update()
+        self.updateSelectionStatus()
     }
 
     private func refreshImages()
@@ -116,10 +139,33 @@ public class PreferencesWindowController: NSWindowController, NSTableViewDelegat
 
             item.onCheck =
             {
-                [ weak self ] in self?.update()
+                [ weak self ] in
+
+                self?.update()
+                self?.updateSelectionStatus()
             }
 
             self.imagesController?.addObject( item )
+        }
+
+        self.updateSelectionStatus()
+    }
+
+    private func updateSelectionStatus()
+    {
+        guard let images = self.imagesController?.content as? [ PreferencesImageItem ]
+        else
+        {
+            return
+        }
+
+        if images.contains( where: { $0.isChecked == false } )
+        {
+            self.allSelected = false
+        }
+        else
+        {
+            self.allSelected = true
         }
     }
 

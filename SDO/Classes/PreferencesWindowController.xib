@@ -23,7 +23,7 @@
             <value key="minSize" type="size" width="500" height="400"/>
             <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="500" height="400"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <visualEffectView blendingMode="behindWindow" material="underWindowBackground" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="xLH-uY-t5K">
                         <rect key="frame" x="0.0" y="0.0" width="500" height="400"/>
@@ -37,13 +37,13 @@
                                 </textFieldCell>
                             </textField>
                             <scrollView autoresizesSubviews="NO" autohidesScrollers="YES" horizontalLineScroll="32" horizontalPageScroll="10" verticalLineScroll="32" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9X-Ow-X36">
-                                <rect key="frame" x="20" y="129" width="460" height="212"/>
+                                <rect key="frame" x="20" y="151" width="460" height="190"/>
                                 <clipView key="contentView" autoresizesSubviews="NO" drawsBackground="NO" id="1sY-j7-CrE">
-                                    <rect key="frame" x="1" y="1" width="458" height="210"/>
+                                    <rect key="frame" x="1" y="1" width="458" height="188"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView autoresizesSubviews="NO" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" tableStyle="fullWidth" selectionHighlightStyle="none" alternatingRowBackgroundColors="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="32" rowSizeStyle="automatic" viewBased="YES" id="GqC-Ut-Alo">
-                                            <rect key="frame" x="0.0" y="0.0" width="458" height="210"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="458" height="188"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -71,8 +71,8 @@
                                                                         <font key="font" metaFont="system"/>
                                                                     </buttonCell>
                                                                     <connections>
-                                                                        <binding destination="7sU-br-syx" name="title" keyPath="objectValue.title" id="t4E-NE-dKo"/>
                                                                         <binding destination="7sU-br-syx" name="value" keyPath="objectValue.isChecked" id="JtE-yu-ZFD"/>
+                                                                        <binding destination="7sU-br-syx" name="title" keyPath="objectValue.title" id="t4E-NE-dKo"/>
                                                                     </connections>
                                                                 </button>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" translatesAutoresizingMaskIntoConstraints="NO" id="hsK-CD-2zE">
@@ -89,12 +89,12 @@
                                                                                     </constraints>
                                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSApplicationIcon" id="xC3-79-b55"/>
                                                                                     <connections>
+                                                                                        <binding destination="7sU-br-syx" name="value" keyPath="objectValue.image" id="mOw-vT-aMf"/>
                                                                                         <binding destination="7sU-br-syx" name="hidden" keyPath="objectValue.image" id="qA2-IN-kW5">
                                                                                             <dictionary key="options">
                                                                                                 <string key="NSValueTransformerName">NSIsNil</string>
                                                                                             </dictionary>
                                                                                         </binding>
-                                                                                        <binding destination="7sU-br-syx" name="value" keyPath="objectValue.image" id="mOw-vT-aMf"/>
                                                                                     </connections>
                                                                                 </imageView>
                                                                             </subviews>
@@ -121,14 +121,14 @@
                                                                                         <string key="NSSelectorName">showInfoForView:item:</string>
                                                                                     </dictionary>
                                                                                 </binding>
-                                                                                <binding destination="7sU-br-syx" name="argument" keyPath="self" id="LzD-1G-nl9">
-                                                                                    <dictionary key="options">
-                                                                                        <string key="NSSelectorName">showInfoForView:item:</string>
-                                                                                    </dictionary>
-                                                                                </binding>
                                                                                 <binding destination="7sU-br-syx" name="hidden" keyPath="objectValue.hasInfo" id="hmA-N8-ytS">
                                                                                     <dictionary key="options">
                                                                                         <string key="NSValueTransformerName">NSNegateBoolean</string>
+                                                                                    </dictionary>
+                                                                                </binding>
+                                                                                <binding destination="7sU-br-syx" name="argument" keyPath="self" id="LzD-1G-nl9">
+                                                                                    <dictionary key="options">
+                                                                                        <string key="NSSelectorName">showInfoForView:item:</string>
                                                                                     </dictionary>
                                                                                 </binding>
                                                                                 <binding destination="-2" name="target" keyPath="self" previousBinding="qP3-qZ-C3y" id="g2B-di-S5f">
@@ -180,6 +180,17 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dgt-xe-VYm">
+                                <rect key="frame" x="19" y="128" width="71" height="16"/>
+                                <buttonCell key="cell" type="check" title="Select All" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="Yli-x2-2at">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="smallSystem"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="toggleSelection:" target="-2" id="Gn5-LF-qa5"/>
+                                    <binding destination="-2" name="value" keyPath="self.allSelected" id="UNH-Ir-bCR"/>
+                                </connections>
+                            </button>
                             <textField wantsLayer="YES" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YNf-2F-XxU">
                                 <rect key="frame" x="18" y="107" width="405" height="14"/>
                                 <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Note: You can re-order the images by dragging them to the desired position." id="pJ9-tJ-eUg">
@@ -238,6 +249,7 @@
                             <constraint firstItem="fAL-Mw-mfc" firstAttribute="centerY" secondItem="8CJ-Xn-MqA" secondAttribute="centerY" id="7E9-NH-Y8r"/>
                             <constraint firstItem="Osa-Co-4qr" firstAttribute="leading" secondItem="xLH-uY-t5K" secondAttribute="leading" constant="20" symbolic="YES" id="8W8-wC-Sah"/>
                             <constraint firstItem="8CJ-Xn-MqA" firstAttribute="top" secondItem="YNf-2F-XxU" secondAttribute="bottom" constant="20" id="9Kh-CR-CWS"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dgt-xe-VYm" secondAttribute="trailing" constant="20" symbolic="YES" id="A0o-hb-abj"/>
                             <constraint firstItem="Osa-Co-4qr" firstAttribute="top" secondItem="fAL-Mw-mfc" secondAttribute="bottom" constant="8" symbolic="YES" id="Gu4-WF-AVC"/>
                             <constraint firstItem="8CJ-Xn-MqA" firstAttribute="leading" secondItem="xLH-uY-t5K" secondAttribute="leading" constant="20" symbolic="YES" id="NFv-2H-dOt"/>
                             <constraint firstItem="YNf-2F-XxU" firstAttribute="leading" secondItem="xLH-uY-t5K" secondAttribute="leading" constant="20" symbolic="YES" id="NGt-hN-aUC"/>
@@ -245,15 +257,17 @@
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1bt-JD-JaJ" secondAttribute="trailing" constant="20" symbolic="YES" id="Tjd-qI-IPL"/>
                             <constraint firstItem="q9X-Ow-X36" firstAttribute="leading" secondItem="xLH-uY-t5K" secondAttribute="leading" constant="20" symbolic="YES" id="WEc-Bj-x69"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YNf-2F-XxU" secondAttribute="trailing" constant="20" symbolic="YES" id="Xfo-ob-PyO"/>
-                            <constraint firstItem="YNf-2F-XxU" firstAttribute="top" secondItem="q9X-Ow-X36" secondAttribute="bottom" constant="8" symbolic="YES" id="YdV-xK-riG"/>
                             <constraint firstItem="1bt-JD-JaJ" firstAttribute="top" secondItem="Osa-Co-4qr" secondAttribute="bottom" constant="20" symbolic="YES" id="f5Y-8t-BZh"/>
                             <constraint firstAttribute="trailing" secondItem="Osa-Co-4qr" secondAttribute="trailing" constant="20" symbolic="YES" id="hHY-HV-QWR"/>
                             <constraint firstItem="fAL-Mw-mfc" firstAttribute="leading" secondItem="8CJ-Xn-MqA" secondAttribute="trailing" constant="8" symbolic="YES" id="j0E-jA-Dbf"/>
+                            <constraint firstItem="YNf-2F-XxU" firstAttribute="top" secondItem="dgt-xe-VYm" secondAttribute="bottom" constant="8" symbolic="YES" id="pYi-qQ-2fV"/>
                             <constraint firstItem="q9X-Ow-X36" firstAttribute="top" secondItem="KxX-aq-oPf" secondAttribute="bottom" constant="8" symbolic="YES" id="pk5-Xg-3CJ"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fAL-Mw-mfc" secondAttribute="trailing" constant="20" symbolic="YES" id="r1E-Em-XN3"/>
                             <constraint firstItem="1bt-JD-JaJ" firstAttribute="leading" secondItem="xLH-uY-t5K" secondAttribute="leading" constant="20" symbolic="YES" id="ssu-Zl-ouK"/>
                             <constraint firstAttribute="bottom" secondItem="1bt-JD-JaJ" secondAttribute="bottom" constant="20" symbolic="YES" id="tEP-zF-Hvs"/>
+                            <constraint firstItem="dgt-xe-VYm" firstAttribute="top" secondItem="q9X-Ow-X36" secondAttribute="bottom" constant="8" symbolic="YES" id="ut9-cV-shC"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="KxX-aq-oPf" secondAttribute="trailing" constant="20" symbolic="YES" id="yk5-OS-91a"/>
+                            <constraint firstItem="dgt-xe-VYm" firstAttribute="leading" secondItem="xLH-uY-t5K" secondAttribute="leading" constant="20" symbolic="YES" id="zO4-iR-ekZ"/>
                         </constraints>
                     </visualEffectView>
                 </subviews>
