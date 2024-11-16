@@ -33,7 +33,10 @@ public class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDeleg
     @objc private dynamic var mainWindowController        = MainWindowController()
     @objc private dynamic var preferencesWindowController = PreferencesWindowController()
 
-    private var updater     = GitHubUpdater( owner: "macmade", repository: "SDO" )
+    #if !APPSTORE
+        private var updater = GitHubUpdater( owner: "macmade", repository: "SDO" )
+    #endif
+
     private var previewImage: Image?
 
     public var previewItemURL: URL?
@@ -47,10 +50,12 @@ public class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDeleg
 
         self.mainWindowController.window?.makeKeyAndOrderFront( nil )
 
-        DispatchQueue.main.asyncAfter( deadline: .now() + .seconds( 2 ) )
-        {
-            self.updater?.checkForUpdates()
-        }
+        #if !APPSTORE
+            DispatchQueue.main.asyncAfter( deadline: .now() + .seconds( 2 ) )
+            {
+                self.updater?.checkForUpdates()
+            }
+        #endif
     }
 
     public func applicationWillTerminate( _ notification: Notification )
