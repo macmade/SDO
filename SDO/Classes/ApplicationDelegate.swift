@@ -37,7 +37,7 @@ public class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDeleg
         private var updater = GitHubUpdater( owner: "macmade", repository: "SDO" )
     #endif
 
-    private var previewImage: Image?
+    private var previewImage: ImageData?
 
     public var previewItemURL: URL?
 
@@ -132,7 +132,7 @@ public class ApplicationDelegate: NSObject, NSApplicationDelegate, NSWindowDeleg
         self.mainWindowController.saveDocument( sender )
     }
 
-    public func showQuickLookPanel( image: Image )
+    public func showQuickLookPanel( image: ImageData )
     {
         if self.previewItemURL == nil
         {

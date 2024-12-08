@@ -26,16 +26,67 @@ import SwiftUI
 
 struct ContentView: View
 {
+    @State private var images: [ ImageData ] = []
+    @State private var lastRefresh           = Date()
+
     var body: some View
     {
         VStack
         {
-            Image( systemName: "globe" )
-                .imageScale( .large )
-                .foregroundStyle( .tint )
-            Text( "Hello, world!" )
+            if self.images.isEmpty
+            {
+                LoadingView()
+            }
+            else
+            {
+                ImageListView( images: self.images )
+                {
+                    self.refresh()
+                }
+                header:
+                {
+                    HStack
+                    {
+                        Text( "Last Refresh: \( self.lastRefreshText )" )
+                            .font( .caption2 )
+                            .foregroundStyle( .secondary )
+                    }
+                }
+                footer:
+                {
+                    AboutView().padding()
+                }
+            }
         }
-        .padding()
+        .onAppear
+        {
+            self.refresh()
+        }
+    }
+
+    private func refresh()
+    {
+        self.images.removeAll()
+        SDO.shared?.downloadAll
+        {
+            self.lastRefresh = Date()
+
+            $0.forEach
+            {
+                self.images.append( $0 )
+            }
+        }
+    }
+
+    private var lastRefreshText: String
+    {
+        let formatter = DateFormatter()
+
+        formatter.dateStyle                  = .short
+        formatter.timeStyle                  = .short
+        formatter.doesRelativeDateFormatting = true
+
+        return formatter.string( from: self.lastRefresh )
     }
 }
 

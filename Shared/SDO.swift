@@ -22,7 +22,11 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import Cocoa
+#if os( macOS )
+    import Cocoa
+#else
+    import SwiftUI
+#endif
 
 public class SDO
 {
@@ -31,7 +35,7 @@ public class SDO
     private var url:    URL
     private let queue = DispatchQueue( label: "com.xs-labs.SDO", attributes: .concurrent, autoreleaseFrequency: .workItem )
 
-    @objc public private( set ) dynamic var latest: [ Image ] = []
+    @objc public private( set ) dynamic var latest: [ ImageData ] = []
 
     private init?()
     {
@@ -44,15 +48,15 @@ public class SDO
         self.url = url
     }
 
-    public func downloadAll( completion: @escaping ( [ Image ] ) -> Void )
+    public func downloadAll( completion: @escaping ( [ ImageData ] ) -> Void )
     {
         DispatchQueue.global( qos: .userInitiated ).async
         {
             let session = URLSession( configuration: .ephemeral )
 
-            let workers: [ ( image: Image, group: DispatchGroup ) ] = ImageInfo.all.map
+            let workers: [ ( image: ImageData, group: DispatchGroup ) ] = ImageInfo.all.map
             {
-                ( Image( info: $0 ), DispatchGroup() )
+                ( ImageData( info: $0 ), DispatchGroup() )
             }
 
             workers.forEach
@@ -86,7 +90,7 @@ public class SDO
         }
     }
 
-    private func download( worker: ( image: Image, group: DispatchGroup ), session: URLSession )
+    private func download( worker: ( image: ImageData, group: DispatchGroup ), session: URLSession )
     {
         Task
         {
@@ -97,10 +101,19 @@ public class SDO
 
             let url = self.url.appendingPathComponent( worker.image.file )
 
-            if let ( data, _ ) = try? await session.data( from: url ),
-               let image       = NSImage( data: data )
+            if let ( data, _ ) = try? await session.data( from: url )
             {
-                worker.image.image = image
+                #if os( macOS )
+                    if let image = NSImage( data: data )
+                    {
+                        worker.image.image = image
+                    }
+                #else
+                    if let image = UIImage( data: data )
+                    {
+                        worker.image.image = image
+                    }
+                #endif
             }
         }
     }

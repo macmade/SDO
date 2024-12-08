@@ -22,32 +22,31 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import Cocoa
+import SwiftUI
 
-@objc
-public class InfoViewController: NSViewController
+struct AboutView: View
 {
-    @objc private dynamic var image: ImageData
-
-    public init( image: ImageData )
+    var body: some View
     {
-        self.image = image
-
-        super.init( nibName: nil, bundle: nil )
+        VStack( alignment: .center, spacing: 5 )
+        {
+            Text( "This software is not affiliated with or endorsed by the NASA's Solar Dynamics Observatory." )
+                .multilineTextAlignment( .center )
+                .font( .caption2 )
+                .foregroundStyle( .secondary )
+            Text( "All data and images are courtesy of NASA/SDO and the AIA, EVE, and HMI science teams." )
+                .multilineTextAlignment( .center )
+                .font( .caption2 )
+                .foregroundStyle( .secondary )
+            Text( "Tap here to visit the official SDO website." )
+                .multilineTextAlignment( .center )
+                .font( .caption2 )
+                .foregroundStyle( .link )
+        }
     }
+}
 
-    required init?( coder: NSCoder )
-    {
-        nil
-    }
-
-    public override var nibName: NSNib.Name?
-    {
-        "InfoViewController"
-    }
-
-    public override func viewDidLoad()
-    {
-        super.viewDidLoad()
-    }
+#Preview
+{
+    AboutView()
 }

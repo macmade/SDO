@@ -22,32 +22,42 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import Cocoa
+import AVKit
+import SwiftUI
 
-@objc
-public class InfoViewController: NSViewController
+struct VideoView: View
 {
-    @objc private dynamic var image: ImageData
+    @State public var video: String
 
-    public init( image: ImageData )
+    var body: some View
     {
-        self.image = image
-
-        super.init( nibName: nil, bundle: nil )
+        if let player = self.player
+        {
+            VideoPlayer( player: player )
+        }
+        else
+        {
+            Label( "Invalid video URL", systemImage: "video.slash.fill" )
+        }
     }
 
-    required init?( coder: NSCoder )
+    private var player: AVPlayer?
     {
-        nil
-    }
+        guard let url = URL( string: "https://sdo.gsfc.nasa.gov/assets/img/latest/mpeg/\( self.video )" )
+        else
+        {
+            return nil
+        }
 
-    public override var nibName: NSNib.Name?
-    {
-        "InfoViewController"
-    }
+        let player = AVPlayer( url: url )
 
-    public override func viewDidLoad()
-    {
-        super.viewDidLoad()
+        player.play()
+
+        return player
     }
+}
+
+#Preview
+{
+    VideoView( video: PreviewData.images.first!.video! ).padding()
 }

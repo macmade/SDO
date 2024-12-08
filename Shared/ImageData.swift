@@ -22,32 +22,41 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import Cocoa
+#if os( macOS )
+    import Cocoa
+#else
+    import SwiftUI
+#endif
 
 @objc
-public class InfoViewController: NSViewController
+public class ImageData: NSObject
 {
-    @objc private dynamic var image: ImageData
+    @objc public dynamic var uuid:        String
+    @objc public dynamic var file:        String
+    @objc public dynamic var title:       String
+    @objc public dynamic var text:        String?
+    @objc public dynamic var location:    String?
+    @objc public dynamic var wavelength:  String?
+    @objc public dynamic var ions:        String?
+    @objc public dynamic var temperature: String?
+    @objc public dynamic var video:       String?
 
-    public init( image: ImageData )
+    #if os( macOS )
+        @objc public dynamic var image: NSImage?
+    #else
+        public dynamic var image: UIImage?
+    #endif
+
+    public init( info: ImageInfo )
     {
-        self.image = image
-
-        super.init( nibName: nil, bundle: nil )
-    }
-
-    required init?( coder: NSCoder )
-    {
-        nil
-    }
-
-    public override var nibName: NSNib.Name?
-    {
-        "InfoViewController"
-    }
-
-    public override func viewDidLoad()
-    {
-        super.viewDidLoad()
+        self.uuid        = info.uuid
+        self.file        = info.file
+        self.title       = info.title
+        self.text        = info.text
+        self.location    = info.location
+        self.wavelength  = info.wavelength
+        self.ions        = info.ions
+        self.temperature = info.temperature
+        self.video       = info.video
     }
 }

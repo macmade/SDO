@@ -22,32 +22,36 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import Cocoa
+import SwiftUI
 
-@objc
-public class InfoViewController: NSViewController
+struct SymbolButton: View
 {
-    @objc private dynamic var image: ImageData
+    @State public var image:    String
+    @State public var title:    String
+    @State public var opacity = 0.5
 
-    public init( image: ImageData )
+    public var action: () -> Void
+
+    var body: some View
     {
-        self.image = image
-
-        super.init( nibName: nil, bundle: nil )
+        Button
+        {
+            self.action()
+        }
+        label:
+        {
+            Image( systemName: self.image )
+        }
+        .foregroundColor( .white.opacity( self.opacity ) )
+        .accessibilityLabel( self.title )
     }
+}
 
-    required init?( coder: NSCoder )
+#Preview
+{
+    SymbolButton( image: "swift", title: "Click Me" )
     {
-        nil
+        print( "OK" )
     }
-
-    public override var nibName: NSNib.Name?
-    {
-        "InfoViewController"
-    }
-
-    public override func viewDidLoad()
-    {
-        super.viewDidLoad()
-    }
+    .padding()
 }

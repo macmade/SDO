@@ -22,32 +22,27 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import Cocoa
+import SwiftUI
 
-@objc
-public class InfoViewController: NSViewController
+struct ImageInfoDetailView: View
 {
-    @objc private dynamic var image: ImageData
+    @State public var title: String
+    @State public var text:  String
 
-    public init( image: ImageData )
+    var body: some View
     {
-        self.image = image
-
-        super.init( nibName: nil, bundle: nil )
+        VStack( alignment: .leading )
+        {
+            Text( self.title )
+                .font( .caption )
+                .foregroundStyle( .secondary )
+            Text( self.text )
+                .font( .caption )
+        }
     }
+}
 
-    required init?( coder: NSCoder )
-    {
-        nil
-    }
-
-    public override var nibName: NSNib.Name?
-    {
-        "InfoViewController"
-    }
-
-    public override func viewDidLoad()
-    {
-        super.viewDidLoad()
-    }
+#Preview
+{
+    ImageInfoDetailView( title: "Lorem ipsum:", text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit" ).padding()
 }

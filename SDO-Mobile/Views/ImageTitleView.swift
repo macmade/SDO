@@ -22,32 +22,50 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import Cocoa
+import SwiftUI
 
-@objc
-public class InfoViewController: NSViewController
+struct ImageTitleView: View
 {
-    @objc private dynamic var image: ImageData
+    @State public var image: ImageData
 
-    public init( image: ImageData )
+    public var action: () -> Void
+
+    var body: some View
     {
-        self.image = image
+        Button
+        {
+            self.action()
+        }
+        label:
+        {
+            HStack
+            {
+                Text( self.image.title )
+                    .font( .subheadline )
+                    .foregroundColor( .white.opacity( 0.75 ) )
 
-        super.init( nibName: nil, bundle: nil )
+                if self.image.text != nil
+                {
+                    Image( systemName: "info.circle.fill" )
+                        .scaleEffect( 0.75 )
+                        .foregroundColor( .white.opacity( 0.75 ) )
+                }
+            }
+            .padding( .horizontal, 10 )
+            .padding( .vertical, 5 )
+            .background( .white.opacity( 0.25 ) )
+            .cornerRadius( 5 )
+            .padding()
+        }
+        .disabled( self.image.text == nil )
     }
+}
 
-    required init?( coder: NSCoder )
+#Preview
+{
+    ImageTitleView( image: PreviewData.images.first! )
     {
-        nil
+        print( "Tapped" )
     }
-
-    public override var nibName: NSNib.Name?
-    {
-        "InfoViewController"
-    }
-
-    public override func viewDidLoad()
-    {
-        super.viewDidLoad()
-    }
+    .padding()
 }

@@ -27,7 +27,7 @@ import Cocoa
 @objc
 public class ImageItem: NSCollectionViewItem
 {
-    @objc public dynamic var image: Image?
+    @objc public dynamic var image: ImageData?
 
     private var infoViewController: InfoViewController?
     private var popover           = NSPopover()

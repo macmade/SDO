@@ -22,32 +22,55 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import Cocoa
+import SwiftUI
 
-@objc
-public class InfoViewController: NSViewController
+struct ImageInfoView: View
 {
-    @objc private dynamic var image: ImageData
+    @State public var image: ImageData
 
-    public init( image: ImageData )
+    var body: some View
     {
-        self.image = image
+        VStack
+        {
+            Text( self.image.title )
+                .font( .largeTitle )
+                .bold()
 
-        super.init( nibName: nil, bundle: nil )
-    }
+            if let text = self.image.text
+            {
+                Text( text )
+                    .padding( .top, 10 )
+            }
 
-    required init?( coder: NSCoder )
-    {
-        nil
-    }
+            VStack( alignment: .leading, spacing: 10 )
+            {
+                if let location = self.image.location
+                {
+                    ImageInfoDetailView( title: "Where:", text: location )
+                }
 
-    public override var nibName: NSNib.Name?
-    {
-        "InfoViewController"
-    }
+                if let wavelength = self.image.wavelength
+                {
+                    ImageInfoDetailView( title: "Wavelength:", text: wavelength )
+                }
 
-    public override func viewDidLoad()
-    {
-        super.viewDidLoad()
+                if let ions = self.image.ions
+                {
+                    ImageInfoDetailView( title: "Primary Ions Seen:", text: ions )
+                }
+
+                if let temperature = self.image.temperature
+                {
+                    ImageInfoDetailView( title: "Characteristic Temperature:", text: temperature )
+                }
+            }
+            .padding( .top, 20 )
+            .frame( maxWidth: .infinity, alignment: .leading )
+        }
     }
+}
+
+#Preview
+{
+    ImageInfoView( image: PreviewData.images.first! ).padding()
 }

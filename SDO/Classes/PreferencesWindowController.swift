@@ -205,7 +205,7 @@ public class PreferencesWindowController: NSWindowController, NSTableViewDelegat
 
         let popover                   = NSPopover()
         popover.behavior              = .semitransient
-        let controller                = InfoViewController( image: Image( info: item.info ) )
+        let controller                = InfoViewController( image: ImageData( info: item.info ) )
         popover.contentViewController = controller
         self.infoPopover              = popover
         self.infoController           = controller

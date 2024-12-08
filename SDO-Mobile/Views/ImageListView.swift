@@ -22,32 +22,53 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import Cocoa
+import SwiftUI
 
-@objc
-public class InfoViewController: NSViewController
+struct ImageListView< Header: View, Footer: View >: View
 {
-    @objc private dynamic var image: ImageData
+    @State public var images: [ ImageData ]
 
-    public init( image: ImageData )
+    public var onRefresh: () -> Void
+
+    let header: () -> Header
+    let footer: () -> Footer
+
+    var body: some View
     {
-        self.image = image
+        ScrollView
+        {
+            self.header()
 
-        super.init( nibName: nil, bundle: nil )
+            VStack( spacing: 10 )
+            {
+                ForEach( self.images, id: \.uuid )
+                {
+                    ImageView( image: $0 )
+                }
+            }
+            .padding( .horizontal )
+
+            self.footer()
+        }
+        .refreshable
+        {
+            self.onRefresh()
+        }
     }
+}
 
-    required init?( coder: NSCoder )
+#Preview
+{
+    ImageListView( images: PreviewData.images )
     {
-        nil
+        print( "Refreshing..." )
     }
-
-    public override var nibName: NSNib.Name?
+    header:
     {
-        "InfoViewController"
+        Text( "Header" )
     }
-
-    public override func viewDidLoad()
+    footer:
     {
-        super.viewDidLoad()
+        Text( "Footer" )
     }
 }

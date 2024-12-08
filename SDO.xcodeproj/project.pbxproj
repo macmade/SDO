@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0506F86E2CE8BCE600C42687 /* GitHubUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051A78A12C70D993006328DF /* GitHubUpdater.swift */; };
-		0506F86F2CE8BCE600C42687 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F0C4822C70E9A000CBCDD5 /* Image.swift */; };
+		0506F86F2CE8BCE600C42687 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F0C4822C70E9A000CBCDD5 /* ImageData.swift */; };
 		0506F8702CE8BCE600C42687 /* BlackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0514B56E2C730A6900F598BA /* BlackView.swift */; };
 		0506F8712CE8BCE600C42687 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0570C0182C722D9D0005089F /* PreferencesWindowController.swift */; };
 		0506F8722CE8BCE600C42687 /* ImageBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F0C48A2C70F6D700CBCDD5 /* ImageBackgroundView.swift */; };
@@ -66,7 +66,7 @@
 		05B9997C2C6ED4BD00DF4C08 /* MainWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05B9997B2C6ED4BD00DF4C08 /* MainWindowController.xib */; };
 		05CB9D212C6F48F800314AAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05CB9D202C6F48F800314AAC /* Assets.xcassets */; };
 		05F0C4812C70E74700CBCDD5 /* SDO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F0C4802C70E74700CBCDD5 /* SDO.swift */; };
-		05F0C4832C70E9A000CBCDD5 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F0C4822C70E9A000CBCDD5 /* Image.swift */; };
+		05F0C4832C70E9A000CBCDD5 /* ImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F0C4822C70E9A000CBCDD5 /* ImageData.swift */; };
 		05F0C4852C70ECFA00CBCDD5 /* RuntimeError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F0C4842C70ECFA00CBCDD5 /* RuntimeError.swift */; };
 		05F0C4872C70F1BF00CBCDD5 /* ImageItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05F0C4862C70F1BF00CBCDD5 /* ImageItem.swift */; };
 		05F0C4892C70F3FD00CBCDD5 /* ImageItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 05F0C4882C70F3FD00CBCDD5 /* ImageItem.xib */; };
@@ -180,7 +180,7 @@
 		05CB9D3C2C6F4AB100314AAC /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		05CB9D3D2C6F4AB100314AAC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		05F0C4802C70E74700CBCDD5 /* SDO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDO.swift; sourceTree = "<group>"; };
-		05F0C4822C70E9A000CBCDD5 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		05F0C4822C70E9A000CBCDD5 /* ImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageData.swift; sourceTree = "<group>"; };
 		05F0C4842C70ECFA00CBCDD5 /* RuntimeError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RuntimeError.swift; sourceTree = "<group>"; };
 		05F0C4862C70F1BF00CBCDD5 /* ImageItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItem.swift; sourceTree = "<group>"; };
 		05F0C4882C70F3FD00CBCDD5 /* ImageItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageItem.xib; sourceTree = "<group>"; };
@@ -220,6 +220,7 @@
 				05CB9D3C2C6F4AB100314AAC /* LICENSE */,
 				05CB9D3B2C6F4AB100314AAC /* CODE_OF_CONDUCT.md */,
 				05646BB7268503D300707676 /* xcconfig */,
+				05CE146B2D05DA8500C757FD /* Shared */,
 				05646B9C268501B300707676 /* SDO */,
 				05646B9B268501B300707676 /* Products */,
 				0566B96C2686B531006EE45A /* Frameworks */,
@@ -255,10 +256,8 @@
 				05F0C4A82C711F2C00CBCDD5 /* CollectionViewLayout.swift */,
 				05375F152C715F3900730090 /* CursorButton.swift */,
 				051A78A12C70D993006328DF /* GitHubUpdater.swift */,
-				05F0C4822C70E9A000CBCDD5 /* Image.swift */,
 				05F0C48A2C70F6D700CBCDD5 /* ImageBackgroundView.swift */,
 				05F0C4922C7104E800CBCDD5 /* ImageBorderView.swift */,
-				05375F172C71965D00730090 /* ImageInfo.swift */,
 				05F0C4862C70F1BF00CBCDD5 /* ImageItem.swift */,
 				05F0C4882C70F3FD00CBCDD5 /* ImageItem.xib */,
 				05F0C48E2C71005200CBCDD5 /* InfoViewController.swift */,
@@ -273,8 +272,6 @@
 				0514B56A2C72429000F598BA /* PreferencesImageItem.swift */,
 				0570C0182C722D9D0005089F /* PreferencesWindowController.swift */,
 				0570C01A2C722DC00005089F /* PreferencesWindowController.xib */,
-				05F0C4842C70ECFA00CBCDD5 /* RuntimeError.swift */,
-				05F0C4802C70E74700CBCDD5 /* SDO.swift */,
 				05F0C49E2C7111EB00CBCDD5 /* Slider.swift */,
 				0514B56C2C7309D800F598BA /* VideoDownloadBackgroundView.swift */,
 				05375F192C719F7900730090 /* VideoWindowController.swift */,
@@ -420,6 +417,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		05CE146B2D05DA8500C757FD /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				05F0C4822C70E9A000CBCDD5 /* ImageData.swift */,
+				05375F172C71965D00730090 /* ImageInfo.swift */,
+				05F0C4802C70E74700CBCDD5 /* SDO.swift */,
+				05F0C4842C70ECFA00CBCDD5 /* RuntimeError.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -556,7 +564,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0506F86E2CE8BCE600C42687 /* GitHubUpdater.swift in Sources */,
-				0506F86F2CE8BCE600C42687 /* Image.swift in Sources */,
+				0506F86F2CE8BCE600C42687 /* ImageData.swift in Sources */,
 				0506F8702CE8BCE600C42687 /* BlackView.swift in Sources */,
 				0506F8712CE8BCE600C42687 /* PreferencesWindowController.swift in Sources */,
 				0506F8722CE8BCE600C42687 /* ImageBackgroundView.swift in Sources */,
@@ -588,7 +596,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				051A78A22C70D993006328DF /* GitHubUpdater.swift in Sources */,
-				05F0C4832C70E9A000CBCDD5 /* Image.swift in Sources */,
+				05F0C4832C70E9A000CBCDD5 /* ImageData.swift in Sources */,
 				0514B56F2C730A6900F598BA /* BlackView.swift in Sources */,
 				0570C0192C722D9D0005089F /* PreferencesWindowController.swift in Sources */,
 				05F0C48B2C70F6D700CBCDD5 /* ImageBackgroundView.swift in Sources */,

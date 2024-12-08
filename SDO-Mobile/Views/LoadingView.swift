@@ -22,32 +22,21 @@
  * THE SOFTWARE.
  ******************************************************************************/
 
-import Cocoa
+import SwiftUI
 
-@objc
-public class InfoViewController: NSViewController
+struct LoadingView: View
 {
-    @objc private dynamic var image: ImageData
-
-    public init( image: ImageData )
+    var body: some View
     {
-        self.image = image
-
-        super.init( nibName: nil, bundle: nil )
+        VStack
+        {
+            ProgressView().scaleEffect( 1.5 ).padding()
+            Text( "Loading Latest Images from SDO\nPlease Wait" ).foregroundStyle( .secondary ).multilineTextAlignment( .center )
+        }
     }
+}
 
-    required init?( coder: NSCoder )
-    {
-        nil
-    }
-
-    public override var nibName: NSNib.Name?
-    {
-        "InfoViewController"
-    }
-
-    public override func viewDidLoad()
-    {
-        super.viewDidLoad()
-    }
+#Preview
+{
+    LoadingView()
 }

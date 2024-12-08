@@ -42,7 +42,7 @@ public class VideoWindowController: NSWindowController, NSWindowDelegate, URLSes
 
     @IBOutlet private var player: AVPlayerView?
 
-    public class func showWindow( for image: Image ) -> Bool
+    public class func showWindow( for image: ImageData ) -> Bool
     {
         guard let video = image.video, let url = URL( string: "https://sdo.gsfc.nasa.gov/assets/img/latest/mpeg/\( video )" )
         else

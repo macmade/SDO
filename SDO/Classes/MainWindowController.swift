@@ -29,8 +29,8 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
 {
     private let itemID = NSUserInterfaceItemIdentifier( "ImageItem" )
 
-    @objc private dynamic var allImages  = [ Image ]()
-    @objc private dynamic var images     = [ Image ]()
+    @objc private dynamic var allImages  = [ ImageData ]()
+    @objc private dynamic var images     = [ ImageData ]()
     @objc private dynamic var loading    = true
     @objc private dynamic var refreshing = false
     @objc private dynamic var empty      = false
@@ -295,7 +295,7 @@ public class MainWindowController: NSWindowController, NSCollectionViewDataSourc
 
     private func updateImages()
     {
-        var images: [ ( image: Image, display: Bool ) ] = Preferences.shared.images.compactMap
+        var images: [ ( image: ImageData, display: Bool ) ] = Preferences.shared.images.compactMap
         {
             guard let uuid    = $0[ "uuid" ]    as? String,
                   let display = $0[ "display" ] as? Bool,
