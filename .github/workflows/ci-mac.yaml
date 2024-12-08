@@ -6,8 +6,10 @@ jobs:
         strategy:
             matrix:
                 run-config:
-                    - { scheme: 'SDO', configuration: 'Debug',   project: 'SDO.xcodeproj', build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=macOS' }
-                    - { scheme: 'SDO', configuration: 'Release', project: 'SDO.xcodeproj', build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=macOS' }
+                    - { scheme: 'SDO',          configuration: 'Debug',   project: 'SDO.xcodeproj',        build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=macOS' }
+                    - { scheme: 'SDO',          configuration: 'Release', project: 'SDO.xcodeproj',        build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=macOS' }
+                    - { scheme: 'SDO - Mobile', configuration: 'Debug',   project: 'SDO-Mobile.xcodeproj', build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=iOS' }
+                    - { scheme: 'SDO - Mobile', configuration: 'Release', project: 'SDO-Mobile.xcodeproj', build: 1, analyze: 1, test: 0, info: 1, destination: 'platform=iOS' }
         steps:
             
             - uses: actions/checkout@v1
