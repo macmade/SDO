@@ -72,7 +72,7 @@ struct ImageView: View
                         }
                         .popover( isPresented: $isShowingVideoPopover, arrowEdge: .bottom )
                         {
-                            VideoView( video: video ).padding()
+                            VideoView( video: video )
                         }
                     }
                 }

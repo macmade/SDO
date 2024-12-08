@@ -27,28 +27,35 @@ import SwiftUI
 
 struct VideoView: View
 {
-    @State public var video: String
+    @State public var video:    String
+    @State public var download: VideoDownload?
 
     var body: some View
     {
-        if let player = self.player
+        ZStack
         {
-            VideoPlayer( player: player )
+            if let url = self.download?.url
+            {
+                VideoPlayer( player: self.player( url: url ) )
+            }
+            else
+            {
+                LoadingView( text: "Loading Video - Please Wait" )
+            }
         }
-        else
+        .frame( maxWidth: .infinity, maxHeight: .infinity )
+        .background( .black )
+        .onAppear
         {
-            Label( "Invalid video URL", systemImage: "video.slash.fill" )
+            VideoDownload.download( video: self.video )
+            {
+                self.download = $0
+            }
         }
     }
 
-    private var player: AVPlayer?
+    private func player( url: URL ) -> AVPlayer?
     {
-        guard let url = URL( string: "https://sdo.gsfc.nasa.gov/assets/img/latest/mpeg/\( self.video )" )
-        else
-        {
-            return nil
-        }
-
         let player = AVPlayer( url: url )
 
         player.play()
@@ -59,5 +66,5 @@ struct VideoView: View
 
 #Preview
 {
-    VideoView( video: PreviewData.images.first!.video! ).padding()
+    VideoView( video: PreviewData.images.first!.video! )
 }

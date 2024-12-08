@@ -10,6 +10,7 @@
 		052DCA792D060135003F7891 /* ImageInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052DCA782D060132003F7891 /* ImageInfoView.swift */; };
 		052DCA7B2D0603A7003F7891 /* ImageInfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052DCA7A2D0603A5003F7891 /* ImageInfoDetailView.swift */; };
 		05957BDF2D060BD200E021AA /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05957BDE2D060BCF00E021AA /* VideoView.swift */; };
+		05957BE42D06281200E021AA /* VideoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05957BE32D06280E00E021AA /* VideoDownload.swift */; };
 		05CE14112D05D30300C757FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05CE140B2D05D30300C757FD /* Preview Assets.xcassets */; };
 		05CE14122D05D30300C757FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05CE140D2D05D30300C757FD /* Assets.xcassets */; };
 		05CE14132D05D30300C757FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE140E2D05D30300C757FD /* ContentView.swift */; };
@@ -31,6 +32,7 @@
 		052DCA782D060132003F7891 /* ImageInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfoView.swift; sourceTree = "<group>"; };
 		052DCA7A2D0603A5003F7891 /* ImageInfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfoDetailView.swift; sourceTree = "<group>"; };
 		05957BDE2D060BCF00E021AA /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		05957BE32D06280E00E021AA /* VideoDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDownload.swift; sourceTree = "<group>"; };
 		05CE13FA2D05D2BC00C757FD /* SDO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05CE140B2D05D30300C757FD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		05CE140D2D05D30300C757FD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,6 +109,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05957BE02D0627F900E021AA /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				05CE147E2D05E65B00C757FD /* PreviewData.swift */,
+				05957BE32D06280E00E021AA /* VideoDownload.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		05CE13F12D05D2BC00C757FD = {
 			isa = PBXGroup;
 			children = (
@@ -128,7 +139,6 @@
 		05CE140C2D05D30300C757FD /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				05CE147E2D05E65B00C757FD /* PreviewData.swift */,
 				05CE140B2D05D30300C757FD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -137,6 +147,7 @@
 		05CE14102D05D30300C757FD /* SDO-Mobile */ = {
 			isa = PBXGroup;
 			children = (
+				05957BE02D0627F900E021AA /* Utility */,
 				05CE144F2D05D51D00C757FD /* Views */,
 				05CE140D2D05D30300C757FD /* Assets.xcassets */,
 				05CE144D2D05D51900C757FD /* Info.plist */,
@@ -406,6 +417,7 @@
 				052DCA7B2D0603A7003F7891 /* ImageInfoDetailView.swift in Sources */,
 				05CE14132D05D30300C757FD /* ContentView.swift in Sources */,
 				05CE14142D05D30300C757FD /* SDOApp.swift in Sources */,
+				05957BE42D06281200E021AA /* VideoDownload.swift in Sources */,
 				05CE14782D05E14300C757FD /* ImageView.swift in Sources */,
 				05957BDF2D060BD200E021AA /* VideoView.swift in Sources */,
 				05CE14762D05DE6F00C757FD /* ImageData.swift in Sources */,

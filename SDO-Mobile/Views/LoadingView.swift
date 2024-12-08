@@ -26,17 +26,19 @@ import SwiftUI
 
 struct LoadingView: View
 {
+    public var text: String
+
     var body: some View
     {
         VStack
         {
             ProgressView().scaleEffect( 1.5 ).padding()
-            Text( "Loading Latest Images from SDO\nPlease Wait" ).foregroundStyle( .secondary ).multilineTextAlignment( .center )
+            Text( self.text ).foregroundStyle( .secondary ).multilineTextAlignment( .center )
         }
     }
 }
 
 #Preview
 {
-    LoadingView()
+    LoadingView( text: "Loading..." ).padding()
 }

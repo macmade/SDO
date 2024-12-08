@@ -35,7 +35,7 @@ struct ContentView: View
         {
             if self.images.isEmpty
             {
-                LoadingView()
+                LoadingView( text: "Loading Latest Images from SDO\nPlease Wait" )
             }
             else
             {
