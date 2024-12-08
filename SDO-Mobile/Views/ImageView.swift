@@ -60,7 +60,9 @@ struct ImageView: View
                     }
                     .popover( isPresented: $isShowingInfoPopover, arrowEdge: .bottom )
                     {
-                        ImageInfoView( image: self.image ).padding()
+                        ImageInfoView( image: self.image )
+                            .padding()
+                            .presentationBackground( .regularMaterial )
                     }
                     Spacer()
 
