@@ -54,10 +54,13 @@ public class VideoDownload
                 return
             }
 
-            let copy = URL( fileURLWithPath: NSTemporaryDirectory() ).appendingPathComponent( NSUUID().uuidString ).appendingPathExtension( "mp4" )
+            let name = remoteURL.lastPathComponent
+            let dir  = URL( fileURLWithPath: NSTemporaryDirectory() ).appendingPathComponent( NSUUID().uuidString )
+            let copy = dir.appendingPathComponent( name )
 
             do
             {
+                try FileManager.default.createDirectory( at: dir, withIntermediateDirectories: true )
                 try FileManager.default.copyItem( at: location, to: copy )
             }
             catch
@@ -94,6 +97,7 @@ public class VideoDownload
         if let url = self.url
         {
             try? FileManager.default.removeItem( at: url )
+            try? FileManager.default.removeItem( at: url.deletingLastPathComponent() )
         }
     }
 
