@@ -38,8 +38,7 @@ struct ImageInfoView: View
 
             if let text = self.image.text
             {
-                Text( text )
-                    .padding( .top, 10 )
+                Text( text ).padding( .top, 10 )
             }
 
             VStack( alignment: .leading, spacing: 10 )
