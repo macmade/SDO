@@ -28,20 +28,20 @@ struct ContentView: View
 {
     @State private var images: [ ImageData ] = []
     @State private var lastRefresh           = Date()
+    @State private var isLoading             = false
 
     var body: some View
     {
-        VStack
+        ZStack
         {
-            if self.images.isEmpty
-            {
-                LoadingView( text: "Loading Latest Images from SDO\nPlease Wait" )
-            }
-            else
+            if self.images.isEmpty == false
             {
                 ImageListView( images: self.images )
                 {
-                    self.refresh()
+                    DispatchQueue.main.asyncAfter( deadline: .now() + .milliseconds( 500 ) )
+                    {
+                        self.refresh()
+                    }
                 }
                 header:
                 {
@@ -56,6 +56,13 @@ struct ContentView: View
                 {
                     AboutView().padding()
                 }
+                .blur( radius: self.isLoading ? 75 : 0 )
+                .disabled( self.isLoading )
+            }
+
+            if self.isLoading
+            {
+                LoadingView( text: "Loading Latest Images from SDO\nPlease Wait" )
             }
         }
         .frame( maxWidth: .infinity, maxHeight: .infinity )
@@ -68,15 +75,13 @@ struct ContentView: View
 
     private func refresh()
     {
-        self.images.removeAll()
+        self.isLoading = true
+
         SDO.shared?.downloadAll
         {
             self.lastRefresh = Date()
-
-            $0.forEach
-            {
-                self.images.append( $0 )
-            }
+            self.images      = $0
+            self.isLoading   = false
         }
     }
 
