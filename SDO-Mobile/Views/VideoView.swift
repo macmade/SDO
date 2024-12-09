@@ -43,6 +43,7 @@ struct VideoView: View
             {
                 Spacer()
             }
+
             ZStack
             {
                 if let url = self.download?.url
@@ -55,23 +56,13 @@ struct VideoView: View
                                 .font( .largeTitle )
                                 .bold()
                                 .frame( maxWidth: .infinity )
-                            SymbolButton( image: "paperplane", title: "Share" )
+                            SymbolButton( image: "paperplane.circle.fill", title: "Share" )
                             {
-                                if UIDevice.current.userInterfaceIdiom == .pad
-                                {
-                                    self.isShowingShareSheet = true
-                                }
-                                else
-                                {
-                                    SDOApp.share( url: url )
-                                }
+                                self.isShowingShareSheet = true
                             }
-                            .iPadOnly
+                            .sheet( isPresented: $isShowingShareSheet )
                             {
-                                $0.sheet( isPresented: $isShowingShareSheet )
-                                {
-                                    ActivityViewController( activityItems: [ url ] )
-                                }
+                                ActivityViewController( activityItems: [ url ] )
                             }
                             .padding( .trailing )
                         }

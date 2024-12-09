@@ -28,17 +28,10 @@ struct ImageInfoView: View
 {
     @State public var image: ImageData
 
-    @Environment( \.dismiss ) var dismiss
-
     var body: some View
     {
         VStack
         {
-            if UIDevice.current.userInterfaceIdiom == .pad
-            {
-                Spacer()
-            }
-
             Text( self.image.title )
                 .font( .largeTitle )
                 .bold()
@@ -74,16 +67,6 @@ struct ImageInfoView: View
             }
             .padding( .top, 20 )
             .frame( maxWidth: .infinity, alignment: .leading )
-
-            if UIDevice.current.userInterfaceIdiom == .pad
-            {
-                Spacer()
-                SymbolButton( image: "xmark.circle.fill", title: "Close" )
-                {
-                    dismiss()
-                }
-                .padding( .top )
-            }
         }
     }
 }

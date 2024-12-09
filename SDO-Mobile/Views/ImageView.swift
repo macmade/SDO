@@ -26,10 +26,10 @@ import SwiftUI
 
 struct ImageView: View
 {
-    @State public var image:                   ImageData
-    @State private var isShowingInfoPopover  = false
-    @State private var isShowingVideoPopover = false
-    @State private var isShowingShareSheet   = false
+    @State public var image:                 ImageData
+    @State private var isShowingInfoSheet  = false
+    @State private var isShowingVideoSheet = false
+    @State private var isShowingShareSheet = false
 
     var body: some View
     {
@@ -55,18 +55,18 @@ struct ImageView: View
                     {
                         SymbolButton( image: "video.circle.fill", title: "Show Video" )
                         {
-                            self.isShowingVideoPopover = true
+                            self.isShowingVideoSheet = true
                         }
                         .iPadOnly
                         {
-                            $0.fullScreenCover( isPresented: $isShowingVideoPopover )
+                            $0.fullScreenCover( isPresented: $isShowingVideoSheet )
                             {
                                 VideoView( title: self.image.title, video: video )
                             }
                         }
                         .iPhoneOnly
                         {
-                            $0.popover( isPresented: $isShowingVideoPopover, arrowEdge: .bottom )
+                            $0.sheet( isPresented: $isShowingVideoSheet )
                             {
                                 VideoView( title: self.image.title, video: video )
                             }
@@ -77,25 +77,13 @@ struct ImageView: View
                     {
                         SymbolButton( image: "info.circle.fill", title: "Show Info" )
                         {
-                            self.isShowingInfoPopover = true
+                            self.isShowingInfoSheet = true
                         }
-                        .iPadOnly
+                        .sheet( isPresented: $isShowingInfoSheet )
                         {
-                            $0.fullScreenCover( isPresented: $isShowingInfoPopover )
-                            {
-                                ImageInfoView( image: self.image )
-                                    .padding()
-                                    .presentationBackground( .regularMaterial )
-                            }
-                        }
-                        .iPhoneOnly
-                        {
-                            $0.popover( isPresented: $isShowingInfoPopover, arrowEdge: .bottom )
-                            {
-                                ImageInfoView( image: self.image )
-                                    .padding()
-                                    .presentationBackground( .regularMaterial )
-                            }
+                            ImageInfoView( image: self.image )
+                                .padding()
+                                .presentationBackground( .regularMaterial )
                         }
                     }
 
@@ -103,21 +91,11 @@ struct ImageView: View
                     {
                         SymbolButton( image: "paperplane.circle.fill", title: "Share" )
                         {
-                            if UIDevice.current.userInterfaceIdiom == .pad
-                            {
-                                self.isShowingShareSheet = true
-                            }
-                            else
-                            {
-                                SDOApp.share( url: url )
-                            }
+                            self.isShowingShareSheet = true
                         }
-                        .iPadOnly
+                        .sheet( isPresented: $isShowingShareSheet )
                         {
-                            $0.sheet( isPresented: $isShowingShareSheet )
-                            {
-                                ActivityViewController( activityItems: [ url ] )
-                            }
+                            ActivityViewController( activityItems: [ url ] )
                         }
                     }
                 }
