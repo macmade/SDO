@@ -45,7 +45,7 @@ struct VideoView: View
                             .font( .largeTitle )
                             .bold()
                             .frame( maxWidth: .infinity )
-                        SymbolButton( image: "square.and.arrow.up", title: "Share" )
+                        SymbolButton( image: "paperplane", title: "Share" )
                         {
                             SDOApp.share( url: url )
                         }

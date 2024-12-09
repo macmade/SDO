@@ -43,32 +43,16 @@ struct ImageView: View
                         .scaledToFit()
                 }
 
-                HStack
+                HStack( alignment: .center )
                 {
-                    if let url = self.image.imageURL
-                    {
-                        SymbolButton( image: "square.and.arrow.up", title: "Share" )
-                        {
-                            SDOApp.share( url: url )
-                        }
-                    }
-
-                    Spacer()
-                    ImageTitleView( image: self.image )
-                    {
-                        self.isShowingInfoPopover = true
-                    }
-                    .popover( isPresented: $isShowingInfoPopover, arrowEdge: .bottom )
-                    {
-                        ImageInfoView( image: self.image )
-                            .padding()
-                            .presentationBackground( .regularMaterial )
-                    }
+                    Text( self.image.title )
+                        .bold()
+                        .font( .headline )
                     Spacer()
 
                     if let video = self.image.video
                     {
-                        SymbolButton( image: "video.fill", title: "Show Info" )
+                        SymbolButton( image: "video.circle.fill", title: "Show Video" )
                         {
                             self.isShowingVideoPopover = true
                         }
@@ -77,8 +61,30 @@ struct ImageView: View
                             VideoView( title: self.image.title, video: video )
                         }
                     }
+
+                    if self.image.text != nil
+                    {
+                        SymbolButton( image: "info.circle.fill", title: "Show Info" )
+                        {
+                            self.isShowingInfoPopover = true
+                        }
+                        .popover( isPresented: $isShowingInfoPopover, arrowEdge: .bottom )
+                        {
+                            ImageInfoView( image: self.image )
+                                .padding()
+                                .presentationBackground( .regularMaterial )
+                        }
+                    }
+
+                    if let url = self.image.imageURL
+                    {
+                        SymbolButton( image: "paperplane.circle.fill", title: "Share" )
+                        {
+                            SDOApp.share( url: url )
+                        }
+                    }
                 }
-                .padding( .horizontal )
+                .padding()
             }
         }
         .background( .black )

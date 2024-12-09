@@ -25,7 +25,6 @@
 		05CE147F2D05E66000C757FD /* PreviewData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE147E2D05E65B00C757FD /* PreviewData.swift */; };
 		05CE14812D05F38D00C757FD /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE14802D05F38A00C757FD /* AboutView.swift */; };
 		05CE14852D05FD3600C757FD /* SymbolButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE14842D05FD3100C757FD /* SymbolButton.swift */; };
-		05CE14872D05FEB600C757FD /* ImageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05CE14862D05FEB300C757FD /* ImageTitleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,7 +94,6 @@
 		05CE147E2D05E65B00C757FD /* PreviewData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewData.swift; sourceTree = "<group>"; };
 		05CE14802D05F38A00C757FD /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		05CE14842D05FD3100C757FD /* SymbolButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolButton.swift; sourceTree = "<group>"; };
-		05CE14862D05FEB300C757FD /* ImageTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageTitleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,7 +288,6 @@
 				052DCA7A2D0603A5003F7891 /* ImageInfoDetailView.swift */,
 				052DCA782D060132003F7891 /* ImageInfoView.swift */,
 				05CE14792D05E21D00C757FD /* ImageListView.swift */,
-				05CE14862D05FEB300C757FD /* ImageTitleView.swift */,
 				05CE14772D05E14100C757FD /* ImageView.swift */,
 				05CE147B2D05E31900C757FD /* LoadingView.swift */,
 				05CE140F2D05D30300C757FD /* SDOApp.swift */,
@@ -408,7 +405,6 @@
 			files = (
 				052DCA792D060135003F7891 /* ImageInfoView.swift in Sources */,
 				05CE147F2D05E66000C757FD /* PreviewData.swift in Sources */,
-				05CE14872D05FEB600C757FD /* ImageTitleView.swift in Sources */,
 				05CE147A2D05E22200C757FD /* ImageListView.swift in Sources */,
 				05CE14812D05F38D00C757FD /* AboutView.swift in Sources */,
 				05CE14722D05DADA00C757FD /* ImageInfo.swift in Sources */,

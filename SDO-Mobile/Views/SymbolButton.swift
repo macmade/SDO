@@ -41,6 +41,9 @@ struct SymbolButton: View
         label:
         {
             Image( systemName: self.image )
+                .resizable()
+                .scaledToFit()
+                .frame( width: 22, height: 22 )
         }
         .foregroundColor( .white.opacity( self.opacity ) )
         .accessibilityLabel( self.title )
