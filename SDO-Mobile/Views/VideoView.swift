@@ -31,33 +31,52 @@ struct VideoView: View
     @State public var video:    String
     @State public var download: VideoDownload?
 
+    @Environment( \.dismiss ) var dismiss
+
     var body: some View
     {
-        ZStack
+        VStack
         {
-            if let url = self.download?.url
+            if UIDevice.current.userInterfaceIdiom == .pad
             {
-                VStack
+                Spacer()
+            }
+            ZStack
+            {
+                if let url = self.download?.url
                 {
-                    ZStack( alignment: .trailing )
+                    VStack
                     {
-                        Text( self.title )
-                            .font( .largeTitle )
-                            .bold()
-                            .frame( maxWidth: .infinity )
-                        SymbolButton( image: "paperplane", title: "Share" )
+                        ZStack( alignment: .trailing )
                         {
-                            SDOApp.share( url: url )
+                            Text( self.title )
+                                .font( .largeTitle )
+                                .bold()
+                                .frame( maxWidth: .infinity )
+                            SymbolButton( image: "paperplane", title: "Share" )
+                            {
+                                SDOApp.share( url: url )
+                            }
+                            .padding( .trailing )
                         }
-                        .padding( .trailing )
+                        .padding( .vertical )
+                        VideoPlayer( player: self.player( url: url ) )
                     }
-                    .padding( .vertical )
-                    VideoPlayer( player: self.player( url: url ) )
+                }
+                else
+                {
+                    LoadingView( text: "Loading Video - Please Wait" )
                 }
             }
-            else
+
+            if UIDevice.current.userInterfaceIdiom == .pad
             {
-                LoadingView( text: "Loading Video - Please Wait" )
+                Spacer()
+                SymbolButton( image: "xmark.circle.fill", title: "Close" )
+                {
+                    dismiss()
+                }
+                .padding( .top )
             }
         }
         .frame( maxWidth: .infinity, maxHeight: .infinity )

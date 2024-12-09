@@ -56,9 +56,19 @@ struct ImageView: View
                         {
                             self.isShowingVideoPopover = true
                         }
-                        .popover( isPresented: $isShowingVideoPopover, arrowEdge: .bottom )
+                        .iPadOnly
                         {
-                            VideoView( title: self.image.title, video: video )
+                            $0.fullScreenCover( isPresented: $isShowingVideoPopover )
+                            {
+                                VideoView( title: self.image.title, video: video )
+                            }
+                        }
+                        .iPhoneOnly
+                        {
+                            $0.popover( isPresented: $isShowingVideoPopover, arrowEdge: .bottom )
+                            {
+                                VideoView( title: self.image.title, video: video )
+                            }
                         }
                     }
 
@@ -68,11 +78,23 @@ struct ImageView: View
                         {
                             self.isShowingInfoPopover = true
                         }
-                        .popover( isPresented: $isShowingInfoPopover, arrowEdge: .bottom )
+                        .iPadOnly
                         {
-                            ImageInfoView( image: self.image )
-                                .padding()
-                                .presentationBackground( .regularMaterial )
+                            $0.fullScreenCover( isPresented: $isShowingInfoPopover )
+                            {
+                                ImageInfoView( image: self.image )
+                                    .padding()
+                                    .presentationBackground( .regularMaterial )
+                            }
+                        }
+                        .iPhoneOnly
+                        {
+                            $0.popover( isPresented: $isShowingInfoPopover, arrowEdge: .bottom )
+                            {
+                                ImageInfoView( image: self.image )
+                                    .padding()
+                                    .presentationBackground( .regularMaterial )
+                            }
                         }
                     }
 
