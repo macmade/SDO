@@ -28,7 +28,7 @@ struct SymbolButton: View
 {
     @State public var image:    String
     @State public var title:    String
-    @State public var opacity = 0.5
+    @State public var opacity = 1.0
 
     public var action: () -> Void
 
