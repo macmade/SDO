@@ -40,11 +40,18 @@ public class ImageData: NSObject
     @objc public dynamic var ions:        String?
     @objc public dynamic var temperature: String?
     @objc public dynamic var video:       String?
+    @objc public dynamic var imageURL:    URL?
 
     #if os( macOS )
         @objc public dynamic var image: NSImage?
     #else
-        public dynamic var image: UIImage?
+        @objc public dynamic var image: UIImage?
+        {
+            didSet
+            {
+                self.saveImage()
+            }
+        }
     #endif
 
     public init( info: ImageInfo )
@@ -58,5 +65,41 @@ public class ImageData: NSObject
         self.ions        = info.ions
         self.temperature = info.temperature
         self.video       = info.video
+    }
+
+    deinit
+    {
+        self.removeSavedImage()
+    }
+
+    private func saveImage()
+    {
+        self.removeSavedImage()
+
+        #if os( macOS )
+            let data = self.image?.tiffRepresentation
+        #else
+            let data = self.image?.pngData()
+        #endif
+
+        if let data = data
+        {
+            let dir  = URL( fileURLWithPath: NSTemporaryDirectory() ).appendingPathComponent( NSUUID().uuidString )
+            let copy = dir.appendingPathComponent( self.file ).deletingPathExtension().appendingPathExtension( "png" )
+
+            try? FileManager.default.createDirectory( at: dir, withIntermediateDirectories: true )
+            try? data.write( to: copy )
+
+            self.imageURL = copy
+        }
+    }
+
+    private func removeSavedImage()
+    {
+        if let url = self.imageURL
+        {
+            try? FileManager.default.removeItem( at: url )
+            try? FileManager.default.removeItem( at: url.deletingLastPathComponent() )
+        }
     }
 }
