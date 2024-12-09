@@ -45,11 +45,11 @@ struct ImageView: View
 
                 HStack
                 {
-                    if self.image.image != nil
+                    if let url = self.image.imageURL
                     {
                         SymbolButton( image: "square.and.arrow.up", title: "Share" )
                         {
-                            self.share()
+                            SDOApp.share( url: url )
                         }
                     }
 
@@ -74,31 +74,17 @@ struct ImageView: View
                         }
                         .popover( isPresented: $isShowingVideoPopover, arrowEdge: .bottom )
                         {
-                            VideoView( video: video )
+                            VideoView( title: self.image.title, video: video )
                         }
                     }
                 }
                 .padding( .horizontal )
             }
         }
-        .background( .white.opacity( 0.1 ) )
+        .background( .black )
         .cornerRadius( 10 )
         .cornerRadius( 10 )
         .overlay( RoundedRectangle( cornerRadius: 10 ).stroke( .white.opacity( 0.2 ), lineWidth: 1 ) )
-    }
-
-    private func share()
-    {
-        guard let image = self.image.image,
-              let scene = UIApplication.shared.connectedScenes.first as? UIWindowScene
-        else
-        {
-            return
-        }
-
-        let sheet = UIActivityViewController( activityItems: [ image ], applicationActivities: nil )
-
-        scene.keyWindow?.rootViewController?.present( sheet, animated: true, completion: nil )
     }
 }
 

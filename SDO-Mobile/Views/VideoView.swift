@@ -27,6 +27,7 @@ import SwiftUI
 
 struct VideoView: View
 {
+    @State public var title:    String
     @State public var video:    String
     @State public var download: VideoDownload?
 
@@ -36,7 +37,23 @@ struct VideoView: View
         {
             if let url = self.download?.url
             {
-                VideoPlayer( player: self.player( url: url ) )
+                VStack
+                {
+                    ZStack( alignment: .trailing )
+                    {
+                        Text( self.title )
+                            .font( .largeTitle )
+                            .bold()
+                            .frame( maxWidth: .infinity )
+                        SymbolButton( image: "square.and.arrow.up", title: "Share" )
+                        {
+                            SDOApp.share( url: url )
+                        }
+                        .padding( .trailing )
+                    }
+                    .padding( .vertical )
+                    VideoPlayer( player: self.player( url: url ) )
+                }
             }
             else
             {
@@ -66,5 +83,5 @@ struct VideoView: View
 
 #Preview
 {
-    VideoView( video: PreviewData.images.first!.video! )
+    VideoView( title: PreviewData.images.first!.title, video: PreviewData.images.first!.video! )
 }
