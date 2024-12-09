@@ -38,10 +38,20 @@ struct AboutView: View
                 .multilineTextAlignment( .center )
                 .font( .caption2 )
                 .foregroundStyle( .secondary )
-            Text( "Tap here to visit the official SDO website." )
-                .multilineTextAlignment( .center )
-                .font( .caption2 )
-                .foregroundStyle( .link )
+            Button
+            {
+                if let url = URL( string: "https://sdo.gsfc.nasa.gov" )
+                {
+                    UIApplication.shared.open( url )
+                }
+            }
+            label:
+            {
+                Text( "Tap here to visit the official SDO website." )
+                    .multilineTextAlignment( .center )
+                    .font( .caption2 )
+                    .foregroundStyle( .link )
+            }
         }
     }
 }
