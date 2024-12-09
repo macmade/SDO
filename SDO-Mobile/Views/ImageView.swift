@@ -42,8 +42,8 @@ struct ImageView: View
                         .resizable()
                         .scaledToFit()
                 }
-
-                HStack( alignment: .center )
+                Spacer()
+                HStack( alignment: .bottom )
                 {
                     Text( self.image.title )
                         .bold()
@@ -84,7 +84,7 @@ struct ImageView: View
                         }
                     }
                 }
-                .padding()
+                .padding( [ .horizontal, .bottom ] )
             }
         }
         .background( .black )

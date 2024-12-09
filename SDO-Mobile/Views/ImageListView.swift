@@ -26,7 +26,8 @@ import SwiftUI
 
 struct ImageListView< Header: View, Footer: View >: View
 {
-    @State public var images: [ ImageData ]
+    @State public var images:         [ ImageData ]
+    @State public var displayAsGrid = false
 
     public var onRefresh: () -> Void
 
@@ -41,11 +42,43 @@ struct ImageListView< Header: View, Footer: View >: View
 
             VStack( spacing: 10 )
             {
-                ForEach( self.images, id: \.uuid )
+                if self.displayAsGrid
                 {
-                    ImageView( image: $0 )
+                    ForEach( self.imageGroups, id: \.0.uuid )
+                    {
+                        image1, image2, image3 in HStack
+                        {
+                            ImageView( image: image1 ).frame( maxHeight: .infinity )
+
+                            if let image2 = image2
+                            {
+                                ImageView( image: image2 ).frame( maxHeight: .infinity )
+                            }
+                            else
+                            {
+                                ImageView( image: image1 ).frame( maxHeight: .infinity ).hidden()
+                            }
+
+                            if let image3 = image3
+                            {
+                                ImageView( image: image3 ).frame( maxHeight: .infinity )
+                            }
+                            else
+                            {
+                                ImageView( image: image1 ).frame( maxHeight: .infinity ).hidden()
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    ForEach( self.images, id: \.uuid )
+                    {
+                        ImageView( image: $0 )
+                    }
                 }
             }
+            .fixedSize( horizontal: false, vertical: true )
             .padding( .horizontal )
 
             self.footer()
@@ -53,6 +86,45 @@ struct ImageListView< Header: View, Footer: View >: View
         .refreshable
         {
             self.onRefresh()
+        }
+        .onAppear
+        {
+            self.displayAsGrid = UIDevice.current.userInterfaceIdiom == .pad || UIDevice.current.orientation.isLandscape
+        }
+        .onReceive( NotificationCenter.default.publisher( for: UIDevice.orientationDidChangeNotification ) )
+        {
+            _ in
+
+            if UIDevice.current.userInterfaceIdiom == .pad
+            {
+                self.displayAsGrid = true
+            }
+            else if UIDevice.current.orientation.isLandscape
+            {
+                self.displayAsGrid = true
+            }
+            else if UIDevice.current.orientation.isPortrait
+            {
+                self.displayAsGrid = false
+            }
+        }
+    }
+
+    private var imageGroups: [ ( ImageData, ImageData?, ImageData? ) ]
+    {
+        let col1 = self.images.enumerated().filter { $0.offset % 3 == 0 }.map { $0.element }.enumerated()
+        let col2 = self.images.enumerated().filter { $0.offset % 3 == 1 }.map { $0.element }.enumerated()
+        let col3 = self.images.enumerated().filter { $0.offset % 3 == 2 }.map { $0.element }.enumerated()
+
+        return col1.map
+        {
+            item in
+
+            let image1 = item.element
+            let image2 = col2.first { $0.offset == item.offset }?.element
+            let image3 = col3.first { $0.offset == item.offset }?.element
+
+            return ( image1, image2, image3 )
         }
     }
 }

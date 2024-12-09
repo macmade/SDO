@@ -50,6 +50,7 @@ struct ContentView: View
                         Text( "Last Refresh: \( self.lastRefreshText )" )
                             .font( .caption2 )
                             .foregroundStyle( .secondary )
+                            .padding( .top )
                     }
                 }
                 footer:
