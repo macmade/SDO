@@ -58,6 +58,8 @@ struct ContentView: View
                 }
             }
         }
+        .frame( maxWidth: .infinity, maxHeight: .infinity )
+        .background( .white.opacity( 0.05 ) )
         .onAppear
         {
             self.refresh()
