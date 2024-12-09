@@ -29,6 +29,7 @@ struct ImageView: View
     @State public var image:                   ImageData
     @State private var isShowingInfoPopover  = false
     @State private var isShowingVideoPopover = false
+    @State private var isShowingShareSheet   = false
 
     var body: some View
     {
@@ -102,7 +103,21 @@ struct ImageView: View
                     {
                         SymbolButton( image: "paperplane.circle.fill", title: "Share" )
                         {
-                            SDOApp.share( url: url )
+                            if UIDevice.current.userInterfaceIdiom == .pad
+                            {
+                                self.isShowingShareSheet = true
+                            }
+                            else
+                            {
+                                SDOApp.share( url: url )
+                            }
+                        }
+                        .iPadOnly
+                        {
+                            $0.sheet( isPresented: $isShowingShareSheet )
+                            {
+                                ActivityViewController( activityItems: [ url ] )
+                            }
                         }
                     }
                 }

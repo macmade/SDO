@@ -31,6 +31,8 @@ struct VideoView: View
     @State public var video:    String
     @State public var download: VideoDownload?
 
+    @State private var isShowingShareSheet = false
+
     @Environment( \.dismiss ) var dismiss
 
     var body: some View
@@ -55,7 +57,21 @@ struct VideoView: View
                                 .frame( maxWidth: .infinity )
                             SymbolButton( image: "paperplane", title: "Share" )
                             {
-                                SDOApp.share( url: url )
+                                if UIDevice.current.userInterfaceIdiom == .pad
+                                {
+                                    self.isShowingShareSheet = true
+                                }
+                                else
+                                {
+                                    SDOApp.share( url: url )
+                                }
+                            }
+                            .iPadOnly
+                            {
+                                $0.sheet( isPresented: $isShowingShareSheet )
+                                {
+                                    ActivityViewController( activityItems: [ url ] )
+                                }
                             }
                             .padding( .trailing )
                         }
