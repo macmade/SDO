@@ -34,4 +34,23 @@ struct SDOApp: App
             ContentView()
         }
     }
+
+    public static func share( url: URL )
+    {
+        guard let scene      = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              var controller = scene.keyWindow?.rootViewController
+        else
+        {
+            return
+        }
+
+        if let presented = controller.presentedViewController
+        {
+            controller = presented
+        }
+
+        let sheet = UIActivityViewController( activityItems: [ url ], applicationActivities: nil )
+
+        controller.present( sheet, animated: true, completion: nil )
+    }
 }
