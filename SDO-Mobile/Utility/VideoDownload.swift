@@ -29,11 +29,11 @@ public class VideoDownload
     public var url: URL?
 
     private let remoteURL:  URL
-    private var completion: ( ( VideoDownload ) -> Void )?
+    private var completion: ( ( Result< VideoDownload, RuntimeError > ) -> Void )?
 
     private static var downloads: [ VideoDownload ] = []
 
-    public init( remoteURL: URL, completion: @escaping ( VideoDownload ) -> Void )
+    public init( remoteURL: URL, completion: @escaping ( Result< VideoDownload, RuntimeError > ) -> Void )
     {
         self.remoteURL  = remoteURL
         self.completion = completion
@@ -49,7 +49,7 @@ public class VideoDownload
                   response.statusCode == 200
             else
             {
-                self.complete()
+                self.complete( result: .failure( RuntimeError( message: "Invalid HTTP response" ) ) )
 
                 return
             }
@@ -65,27 +65,37 @@ public class VideoDownload
             }
             catch
             {
-                self.complete()
+                self.complete( result: .failure( RuntimeError( message: "Cannot copy downloaded file" ) ) )
 
                 return
             }
 
             DispatchQueue.main.async
             {
-                self.url = copy
-
-                self.complete()
+                self.complete( result: .success( copy ) )
             }
         }
 
         task.resume()
     }
 
-    private func complete()
+    private func complete( result: Result< URL, RuntimeError > )
     {
         DispatchQueue.main.async
         {
-            self.completion?( self )
+            switch result
+            {
+                case .success( let url ):
+
+                    self.url = url
+
+                    self.completion?( .success( self ) )
+
+                case .failure( let error ):
+
+                    self.completion?( .failure( error ) )
+            }
+
             VideoDownload.downloads.removeAll( where: { $0 === self } )
 
             self.completion = nil
@@ -101,11 +111,13 @@ public class VideoDownload
         }
     }
 
-    public class func download( video: String, completion: @escaping ( VideoDownload ) -> Void )
+    public class func download( video: String, completion: @escaping ( Result< VideoDownload, RuntimeError > ) -> Void )
     {
         guard let url = URL( string: "https://sdo.gsfc.nasa.gov/assets/img/latest/mpeg/\( video )" )
         else
         {
+            completion( .failure( RuntimeError( message: "Invalid URL" ) ) )
+
             return
         }
 

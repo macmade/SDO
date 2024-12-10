@@ -91,9 +91,12 @@ struct ContentView: View
 
         SDO.shared?.downloadAll
         {
-            self.lastRefresh = Date()
-            self.images      = $0.filter { $0.image != nil }
-            self.isLoading   = false
+            images in DispatchQueue.main.asyncAfter( deadline: .now() + .milliseconds( 500 ) )
+            {
+                self.lastRefresh = Date()
+                self.images      = images.filter { $0.image != nil }
+                self.isLoading   = false
+            }
         }
     }
 

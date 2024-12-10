@@ -30,6 +30,8 @@ struct VideoView: View
     @State public var title:    String
     @State public var video:    String
     @State public var download: VideoDownload?
+    @State public var error:    RuntimeError?
+    @State public var loading = false
 
     @State private var isShowingShareSheet = false
 
@@ -46,7 +48,11 @@ struct VideoView: View
 
             ZStack
             {
-                if let url = self.download?.url
+                if self.loading
+                {
+                    LoadingView( text: "Loading Video - Please Wait" )
+                }
+                else if let url = self.download?.url
                 {
                     VStack
                     {
@@ -72,7 +78,17 @@ struct VideoView: View
                 }
                 else
                 {
-                    LoadingView( text: "Loading Video - Please Wait" )
+                    VStack
+                    {
+                        Image( systemName: "video.slash.fill" )
+                            .resizable()
+                            .frame( width: 50, height: 50 )
+                            .padding()
+                        TextButtonView( text: "Error Loading Video", button: "Refresh", symbol: "arrow.clockwise.circle.fill" )
+                        {
+                            self.refresh()
+                        }
+                    }
                 }
             }
 
@@ -90,9 +106,25 @@ struct VideoView: View
         .background( .black )
         .onAppear
         {
-            VideoDownload.download( video: self.video )
+            self.refresh()
+        }
+    }
+
+    private func refresh()
+    {
+        self.loading = true
+
+        VideoDownload.download( video: self.video )
+        {
+            result in DispatchQueue.main.asyncAfter( deadline: .now() + .milliseconds( 500 ) )
             {
-                self.download = $0
+                switch result
+                {
+                    case .success( let download ): self.download = download
+                    case .failure( let error ):    self.error    = error
+                }
+
+                self.loading = false
             }
         }
     }
