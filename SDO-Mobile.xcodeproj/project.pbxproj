@@ -11,6 +11,7 @@
 		052DCA7B2D0603A7003F7891 /* ImageInfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 052DCA7A2D0603A5003F7891 /* ImageInfoDetailView.swift */; };
 		0555A72A2D0794BA00ED0037 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0555A7292D0794B900ED0037 /* View.swift */; };
 		0555A72C2D079DB900ED0037 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0555A72B2D079DB400ED0037 /* ActivityViewController.swift */; };
+		0555A72E2D08377E00ED0037 /* TextButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0555A72D2D08377700ED0037 /* TextButtonView.swift */; };
 		05957BDF2D060BD200E021AA /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05957BDE2D060BCF00E021AA /* VideoView.swift */; };
 		05957BE42D06281200E021AA /* VideoDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05957BE32D06280E00E021AA /* VideoDownload.swift */; };
 		05CE14112D05D30300C757FD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 05CE140B2D05D30300C757FD /* Preview Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		052DCA7A2D0603A5003F7891 /* ImageInfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageInfoDetailView.swift; sourceTree = "<group>"; };
 		0555A7292D0794B900ED0037 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		0555A72B2D079DB400ED0037 /* ActivityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewController.swift; sourceTree = "<group>"; };
+		0555A72D2D08377700ED0037 /* TextButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextButtonView.swift; sourceTree = "<group>"; };
 		05957BDE2D060BCF00E021AA /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		05957BE32D06280E00E021AA /* VideoDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoDownload.swift; sourceTree = "<group>"; };
 		05CE13FA2D05D2BC00C757FD /* SDO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDO.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -296,8 +298,8 @@
 		05CE144F2D05D51D00C757FD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0555A72B2D079DB400ED0037 /* ActivityViewController.swift */,
 				05CE14802D05F38A00C757FD /* AboutView.swift */,
+				0555A72B2D079DB400ED0037 /* ActivityViewController.swift */,
 				05CE140E2D05D30300C757FD /* ContentView.swift */,
 				052DCA7A2D0603A5003F7891 /* ImageInfoDetailView.swift */,
 				052DCA782D060132003F7891 /* ImageInfoView.swift */,
@@ -306,6 +308,7 @@
 				05CE147B2D05E31900C757FD /* LoadingView.swift */,
 				05CE140F2D05D30300C757FD /* SDOApp.swift */,
 				05CE14842D05FD3100C757FD /* SymbolButton.swift */,
+				0555A72D2D08377700ED0037 /* TextButtonView.swift */,
 				05957BDE2D060BCF00E021AA /* VideoView.swift */,
 			);
 			path = Views;
@@ -430,6 +433,7 @@
 				05CE14132D05D30300C757FD /* ContentView.swift in Sources */,
 				05CE14142D05D30300C757FD /* SDOApp.swift in Sources */,
 				05957BE42D06281200E021AA /* VideoDownload.swift in Sources */,
+				0555A72E2D08377E00ED0037 /* TextButtonView.swift in Sources */,
 				05CE14782D05E14300C757FD /* ImageView.swift in Sources */,
 				05957BDF2D060BD200E021AA /* VideoView.swift in Sources */,
 				05CE14762D05DE6F00C757FD /* ImageData.swift in Sources */,

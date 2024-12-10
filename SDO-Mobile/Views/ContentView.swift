@@ -34,7 +34,18 @@ struct ContentView: View
     {
         ZStack
         {
-            if self.images.isEmpty == false
+            if self.images.isEmpty, self.isLoading == false
+            {
+                VStack
+                {
+                    Text( "SDO" ).font( .largeTitle )
+                    TextButtonView( text: "Could Not Load Images...", button: "Refresh", symbol: "arrow.clockwise.circle.fill" )
+                    {
+                        self.refresh()
+                    }
+                }
+            }
+            else if self.images.isEmpty == false
             {
                 ImageListView( images: self.images )
                 {
