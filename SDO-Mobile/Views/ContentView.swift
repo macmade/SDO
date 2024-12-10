@@ -67,7 +67,7 @@ struct ContentView: View
             }
         }
         .frame( maxWidth: .infinity, maxHeight: .infinity )
-        .background( .white.opacity( 0.05 ) )
+        .background( .white.opacity( 0.075  ) )
         .onAppear
         {
             self.refresh()
@@ -81,7 +81,7 @@ struct ContentView: View
         SDO.shared?.downloadAll
         {
             self.lastRefresh = Date()
-            self.images      = $0
+            self.images      = $0.filter { $0.image != nil }
             self.isLoading   = false
         }
     }

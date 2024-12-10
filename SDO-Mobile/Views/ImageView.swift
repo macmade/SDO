@@ -106,6 +106,7 @@ struct ImageView: View
         .cornerRadius( 10 )
         .cornerRadius( 10 )
         .overlay( RoundedRectangle( cornerRadius: 10 ).stroke( .white.opacity( 0.2 ), lineWidth: 1 ) )
+        .shadow( color: .black, radius: 5, x: 0, y: 2 )
     }
 }
 
