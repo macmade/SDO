@@ -38,7 +38,10 @@ struct ContentView: View
             {
                 VStack
                 {
-                    Text( "SDO" ).font( .largeTitle )
+                    Image( systemName: "sun.max.trianglebadge.exclamationmark.fill" )
+                        .resizable()
+                        .frame( width: 50, height: 50 )
+                        .padding()
                     TextButtonView( text: "Could Not Load Images...", button: "Refresh", symbol: "arrow.clockwise.circle.fill" )
                     {
                         self.refresh()
