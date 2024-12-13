@@ -32,7 +32,7 @@ class PreviewData
     public static let images: [ ImageData ] = ImageInfo.all.map
     {
         let image   = ImageData( info: $0 )
-        image.image = UIImage( named: "Sun" )
+        image.image = UIImage( named: ( $0.file as NSString ).deletingPathExtension )
 
         return image
     }
