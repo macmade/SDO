@@ -38,6 +38,7 @@
 		054DE7C22D0DE37900A52D1A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054DE7BF2D0DE37900A52D1A /* ContentView.swift */; };
 		054DE7C32D0DE37900A52D1A /* SDOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054DE7C02D0DE37900A52D1A /* SDOApp.swift */; };
 		054DE7C42D0DE41600A52D1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 054DE6F82D0DD66F00A52D1A /* Preview Assets.xcassets */; };
+		054DE7C62D0DE54500A52D1A /* TextButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054DE71B2D0DD7FE00A52D1A /* TextButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -532,6 +533,7 @@
 				054DE7A42D0DDFEB00A52D1A /* ImageData.swift in Sources */,
 				054DE7BC2D0DE27F00A52D1A /* PreviewData.swift in Sources */,
 				054DE7A52D0DDFEB00A52D1A /* RuntimeError.swift in Sources */,
+				054DE7C62D0DE54500A52D1A /* TextButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
