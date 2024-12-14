@@ -24,25 +24,50 @@
 
 import SwiftUI
 
-struct InfoDetailView: View
+struct ImageInfoView: View
 {
-    @State public var title: String
-    @State public var text:  String
+    @State public var image: ImageData
 
     var body: some View
     {
-        VStack( alignment: .leading )
+        ScrollView
         {
-            Text( self.title )
-                .font( .caption )
-                .foregroundStyle( .secondary )
-            Text( self.text )
-                .font( .caption )
+            VStack( alignment: .leading, spacing: 10 )
+            {
+                Text( self.image.title )
+                    .font( .title3 )
+                    .bold()
+
+                if let text = self.image.text
+                {
+                    Text( text )
+                }
+
+                if let location = self.image.location
+                {
+                    ImageInfoDetailView( title: "Where:", text: location )
+                }
+
+                if let wavelength = self.image.wavelength
+                {
+                    ImageInfoDetailView( title: "Wavelength:", text: wavelength )
+                }
+
+                if let ions = self.image.ions
+                {
+                    ImageInfoDetailView( title: "Primary Ions Seen:", text: ions )
+                }
+
+                if let temperature = self.image.temperature
+                {
+                    ImageInfoDetailView( title: "Characteristic Temperature:", text: temperature )
+                }
+            }
         }
     }
 }
 
 #Preview
 {
-    InfoDetailView( title: "Lorem ipsum:", text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit" ).padding()
+    ImageInfoView( image: PreviewData.images.first! )
 }

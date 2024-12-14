@@ -27,7 +27,6 @@ import SwiftUI
 struct ContentView: View
 {
     @State private var images: [ ImageData ] = []
-    @State private var lastRefresh           = Date()
     @State private var isLoading             = false
     @State private var isShowingInfoSheet    = false
 
@@ -52,51 +51,17 @@ struct ContentView: View
             }
             else if self.images.isEmpty == false
             {
-                ScrollView
+                ImageListView( images: self.images )
                 {
-                    VStack( spacing: 0 )
+                    Button()
                     {
-                        Button()
-                        {
-                            self.refresh()
-                        }
-                        label:
-                        {
-                            Label( "Refresh", systemImage: "arrow.trianglehead.2.counterclockwise" )
-                        }
-                        .buttonStyle( .borderless )
-
-                        ForEach( self.images, id: \.uuid )
-                        {
-                            info in if let image = info.image
-                            {
-                                VStack
-                                {
-                                    Button()
-                                    {
-                                        self.isShowingInfoSheet = true
-                                    }
-                                    label:
-                                    {
-                                        Image( uiImage: image )
-                                            .resizable()
-                                            .aspectRatio( contentMode: .fill )
-                                    }
-                                    .disabled( info.text == nil )
-                                    .sheet( isPresented: $isShowingInfoSheet )
-                                    {
-                                        InfoView( image: info ).padding( .horizontal )
-                                    }
-                                }
-                                .buttonStyle( .borderless )
-                                Text( info.title )
-                                    .font( .caption2 )
-                                    .bold()
-                                    .multilineTextAlignment( .center )
-                                    .padding( 10 )
-                            }
-                        }
+                        self.refresh()
                     }
+                    label:
+                    {
+                        Label( "Refresh", systemImage: "arrow.trianglehead.2.counterclockwise" )
+                    }
+                    .buttonStyle( .borderless )
                 }
                 .blur( radius: self.isLoading ? 75 : 0 )
                 .disabled( self.isLoading )
@@ -129,22 +94,10 @@ struct ContentView: View
         {
             images in DispatchQueue.main.asyncAfter( deadline: .now() + .milliseconds( 500 ) )
             {
-                self.lastRefresh = Date()
-                self.images      = images.filter { $0.image != nil }
-                self.isLoading   = false
+                self.images    = images.filter { $0.image != nil }
+                self.isLoading = false
             }
         }
-    }
-
-    private var lastRefreshText: String
-    {
-        let formatter = DateFormatter()
-
-        formatter.dateStyle                  = .short
-        formatter.timeStyle                  = .short
-        formatter.doesRelativeDateFormatting = true
-
-        return formatter.string( from: self.lastRefresh )
     }
 }
 

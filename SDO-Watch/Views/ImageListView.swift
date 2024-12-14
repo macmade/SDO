@@ -24,43 +24,23 @@
 
 import SwiftUI
 
-struct InfoView: View
+struct ImageListView< Header: View >: View
 {
-    @State public var image: ImageData
+    @State public var images: [ ImageData ]
+
+    let header: () -> Header
 
     var body: some View
     {
         ScrollView
         {
-            VStack( alignment: .leading, spacing: 10 )
+            VStack( spacing: 0 )
             {
-                Text( self.image.title )
-                    .font( .title3 )
-                    .bold()
+                self.header()
 
-                if let text = self.image.text
+                ForEach( self.images, id: \.uuid )
                 {
-                    Text( text )
-                }
-
-                if let location = self.image.location
-                {
-                    InfoDetailView( title: "Where:", text: location )
-                }
-
-                if let wavelength = self.image.wavelength
-                {
-                    InfoDetailView( title: "Wavelength:", text: wavelength )
-                }
-
-                if let ions = self.image.ions
-                {
-                    InfoDetailView( title: "Primary Ions Seen:", text: ions )
-                }
-
-                if let temperature = self.image.temperature
-                {
-                    InfoDetailView( title: "Characteristic Temperature:", text: temperature )
+                    ImageView( image: $0 )
                 }
             }
         }
@@ -69,5 +49,8 @@ struct InfoView: View
 
 #Preview
 {
-    InfoView( image: PreviewData.images.first! )
+    ImageListView( images: PreviewData.images )
+    {
+        Text( "Header" )
+    }
 }
