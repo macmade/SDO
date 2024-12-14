@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -455,6 +455,7 @@
 				};
 			};
 			buildConfigurationList = 054DE6CC2D0DD64E00A52D1A /* Build configuration list for PBXProject "SDO-Mobile" */;
+			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -463,7 +464,6 @@
 			);
 			mainGroup = 054DE6C82D0DD64E00A52D1A;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			productRefGroup = 054DE6D22D0DD64F00A52D1A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
