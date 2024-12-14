@@ -29,6 +29,7 @@ struct ContentView: View
     @State private var images: [ ImageData ] = []
     @State private var lastRefresh           = Date()
     @State private var isLoading             = false
+    @State private var isShowingInfoSheet    = false
 
     var body: some View
     {
@@ -67,12 +68,28 @@ struct ContentView: View
 
                         ForEach( self.images, id: \.uuid )
                         {
-                            if let image = $0.image
+                            info in if let image = info.image
                             {
-                                Image( uiImage: image )
-                                    .resizable()
-                                    .aspectRatio( contentMode: .fill )
-                                Text( $0.title )
+                                VStack
+                                {
+                                    Button()
+                                    {
+                                        self.isShowingInfoSheet = true
+                                    }
+                                    label:
+                                    {
+                                        Image( uiImage: image )
+                                            .resizable()
+                                            .aspectRatio( contentMode: .fill )
+                                    }
+                                    .disabled( info.text == nil )
+                                    .sheet( isPresented: $isShowingInfoSheet )
+                                    {
+                                        InfoView( image: info ).padding( .horizontal )
+                                    }
+                                }
+                                .buttonStyle( .borderless )
+                                Text( info.title )
                                     .font( .caption2 )
                                     .bold()
                                     .multilineTextAlignment( .center )

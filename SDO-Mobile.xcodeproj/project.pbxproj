@@ -39,6 +39,8 @@
 		054DE7C32D0DE37900A52D1A /* SDOApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054DE7C02D0DE37900A52D1A /* SDOApp.swift */; };
 		054DE7C42D0DE41600A52D1A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 054DE6F82D0DD66F00A52D1A /* Preview Assets.xcassets */; };
 		054DE7C62D0DE54500A52D1A /* TextButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054DE71B2D0DD7FE00A52D1A /* TextButtonView.swift */; };
+		054DE7C82D0E08DC00A52D1A /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054DE7C72D0E08D900A52D1A /* InfoView.swift */; };
+		054DE7CC2D0E0AD800A52D1A /* InfoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 054DE7CB2D0E0AD200A52D1A /* InfoDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +142,8 @@
 		054DE7712D0DDBB000A52D1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = Info.plist; sourceTree = "<group>"; };
 		054DE7BF2D0DE37900A52D1A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		054DE7C02D0DE37900A52D1A /* SDOApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SDOApp.swift; sourceTree = "<group>"; };
+		054DE7C72D0E08D900A52D1A /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		054DE7CB2D0E0AD200A52D1A /* InfoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -388,6 +392,8 @@
 			isa = PBXGroup;
 			children = (
 				054DE7BF2D0DE37900A52D1A /* ContentView.swift */,
+				054DE7C72D0E08D900A52D1A /* InfoView.swift */,
+				054DE7CB2D0E0AD200A52D1A /* InfoDetailView.swift */,
 				054DE7C02D0DE37900A52D1A /* SDOApp.swift */,
 			);
 			path = Views;
@@ -531,8 +537,10 @@
 				054DE7A22D0DDFEB00A52D1A /* ImageInfo.swift in Sources */,
 				054DE7A32D0DDFEB00A52D1A /* SDO.swift in Sources */,
 				054DE7A42D0DDFEB00A52D1A /* ImageData.swift in Sources */,
+				054DE7CC2D0E0AD800A52D1A /* InfoDetailView.swift in Sources */,
 				054DE7BC2D0DE27F00A52D1A /* PreviewData.swift in Sources */,
 				054DE7A52D0DDFEB00A52D1A /* RuntimeError.swift in Sources */,
+				054DE7C82D0E08DC00A52D1A /* InfoView.swift in Sources */,
 				054DE7C62D0DE54500A52D1A /* TextButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
