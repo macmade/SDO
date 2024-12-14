@@ -15,9 +15,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "054DE6D02D0DD64F00A52D1A"
-               BuildableName = "SDO.app"
-               BlueprintName = "SDO"
+               BlueprintIdentifier = "054DE6E02D0DD65000A52D1A"
+               BuildableName = "SDO Watch App.app"
+               BlueprintName = "SDO Watch App"
                ReferencedContainer = "container:SDO-Mobile.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,9 +44,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "054DE6D02D0DD64F00A52D1A"
-            BuildableName = "SDO.app"
-            BlueprintName = "SDO"
+            BlueprintIdentifier = "054DE6E02D0DD65000A52D1A"
+            BuildableName = "SDO Watch App.app"
+            BlueprintName = "SDO Watch App"
             ReferencedContainer = "container:SDO-Mobile.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -60,9 +60,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "054DE6D02D0DD64F00A52D1A"
-            BuildableName = "SDO.app"
-            BlueprintName = "SDO"
+            BlueprintIdentifier = "054DE6E02D0DD65000A52D1A"
+            BuildableName = "SDO Watch App.app"
+            BlueprintName = "SDO Watch App"
             ReferencedContainer = "container:SDO-Mobile.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
